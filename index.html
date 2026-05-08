@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajesh Kumar — Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              DEFAULT: '#0D1B3E',
+              light: '#1a3a6b',
+              dark: '#091430',
+            },
+            accent: {
+              DEFAULT: '#2563EB',
+              light: '#3b82f6',
+              dark: '#1d4ed8',
+            },
+            surface: {
+              light: '#F8FAFC',
+              muted: '#F1F5F9',
+              white: '#FFFFFF',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --navy: #0D1B3E;
+      --navy-light: #1a3a6b;
+      --accent: #2563EB;
+      --surface-light: #F8FAFC;
+      --surface-muted: #F1F5F9;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #1e293b;
+    }
+
+    /* Scroll progress bar */
+    #scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--navy);
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* Typing cursor */
+    .typing-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.2em;
+      background: #2563EB;
+      margin-left: 4px;
+      vertical-align: text-bottom;
+      animation: blink 0.75s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Float animation for tech pills */
+    @keyframes floatA {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(2deg); }
+    }
+    @keyframes floatB {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(-2deg); }
+    }
+    @keyframes floatC {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .float-a { animation: floatA 4s ease-in-out infinite; }
+    .float-b { animation: floatB 5s ease-in-out infinite; }
+    .float-c { animation: floatC 3.5s ease-in-out infinite; }
+
+    /* Scroll fade-in */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Skill pill hover */
+    .skill-pill {
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .skill-pill:hover {
+      background-color: var(--navy) !important;
+      color: #fff !important;
+      border-color: var(--navy) !important;
+    }
+
+    /* Timeline line */
+    .timeline-line {
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--navy);
+      border-radius: 2px;
+    }
+    @media (min-width: 768px) {
+      .timeline-line {
+        left: 19px;
+      }
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      width: 19px;
+      height: 19px;
+      background: var(--navy);
+      border: 3px solid #fff;
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow: 0 0 0 3px var(--navy);
+    }
+    @media (min-width: 768px) {
+      .timeline-dot {
+        left: 11px;
+      }
+    }
+
+    /* Navbar active link */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Section heading underline */
+    .section-heading::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--navy);
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Smooth highlight on stat cards */
+    .stat-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(13, 27, 62, 0.13);
+    }
+
+    /* Experience card */
+    .exp-card {
+      transition: box-shadow 0.3s;
+    }
+    .exp-card:hover {
+      box-shadow: 0 8px 28px rgba(13, 27, 62, 0.1);
+    }
+
+    /* CTA button */
+    .cta-btn {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+    }
+
+    /* Contact card hover */
+    .contact-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    /* Project card */
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 16px 40px rgba(13, 27, 62, 0.15);
+    }
+
+    /* Browser mockup */
+    .browser-mockup {
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .browser-chrome {
+      background: #e2e8f0;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* Bar chart animation */
+    @keyframes growBar {
+      from { height: 0; }
+    }
+    .bar-animate {
+      animation: growBar 1s ease-out forwards;
+    }
+
+    /* Progress bar animation */
+    @keyframes progressFill {
+      from { width: 0%; }
+      to { width: 100%; }
+    }
+    .progress-animate {
+      animation: progressFill 3s ease-in-out infinite;
+    }
+
+    /* Metric circle */
+    .metric-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 11px;
+      color: #fff;
+      position: relative;
+    }
+
+    /* Back to top button */
+    #back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 16px rgba(13,27,62,0.25);
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(13,27,62,0.35);
+    }
+
+    /* Skills grid equal height */
+    #skills-grid-w3pq > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Fake code line glow */
+    .code-line-green { color: #4ade80; }
+    .code-line-cyan { color: #22d3ee; }
+
+    /* Arrow connector for microservices */
+    .arrow-connector {
+      display: flex;
+      align-items: center;
+      color: #94a3b8;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* Hero email link hover underline */
+    .hero-email-link {
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .hero-email-link:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
+
+    /* Resume preview section heading */
+    .resume-section-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0D1B3E;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(13,27,62,0.3);
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body data-id="0" class="bg-white">
+  <app-icon data-id="1" hidden data-icon="code-2" data-palette="Dark"></app-icon>
+
+  <!-- Scroll progress bar -->
+  <div data-id="2" id="scroll-progress-bar"></div>
+
+  <!-- STICKY NAVBAR -->
+  <header data-id="3" id="navbar-j8kl" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
+    <div data-id="4" class="max-w-6xl mx-auto flex items-center justify-between px-4 md:px-6 h-16">
+      <a data-id="5" href="#" id="logo-r2kd" class="flex items-center gap-2 no-underline">
+        <div data-id="6" class="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white font-bold text-lg tracking-tight select-none">RK</div>
+        <span data-id="7" class="text-navy font-bold text-lg hidden sm:inline">Rajesh Kumar</span>
+      </a>
+      <nav data-id="8" id="desktop-nav-a4lm" class="hidden md:flex gap-7 items-center">
+        <a data-id="9" href="#about" class="nav-link text-sm font-medium text-gray-700 hover:text-navy no-underline">About</a>
+        <a data-id="10" href="#skills" class="nav-link text-sm font-medium text-gray-700 hover:text-navy no-underline">Skills</a>
+        <a data-id="11" id="nav-projects-d2kl" href="#projects" class="nav-link text-sm font-medium text-gray-700 hover:text-navy no-underline">Projects</a>
+        <a data-id="12" href="#experience" class="nav-link text-sm font-medium text-gray-700 hover:text-navy no-underline">Experience</a>
+        <a data-id="13" href="#education" class="nav-link text-sm font-medium text-gray-700 hover:text-navy no-underline">Education</a>
+        <a data-id="14" href="#contact" class="nav-link text-sm font-medium text-white bg-navy px-4 py-2 rounded-lg hover:bg-navy-light no-underline transition">Contact</a>
+      </nav>
+      <button data-id="15" id="mobile-menu-btn-x9ql" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition" aria-label="Open menu">
+        <i data-id="16" data-lucide="menu" class="w-6 h-6 text-navy"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <nav data-id="17" id="mobile-menu-p3vn" class="fixed inset-0 bg-white z-[60] flex-col p-6 hidden" style="display:none;" aria-label="Mobile navigation">
+    <div data-id="18" class="flex items-center justify-between mb-10">
+      <div data-id="19" class="flex items-center gap-2">
+        <div data-id="20" class="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white font-bold text-lg">RK</div>
+        <span data-id="21" class="text-navy font-bold text-lg">Rajesh Kumar</span>
+      </div>
+      <button data-id="22" id="mobile-menu-close-k2wn" class="p-2 rounded-lg hover:bg-gray-100 transition" aria-label="Close menu">
+        <i data-id="23" data-lucide="x" class="w-6 h-6 text-navy"></i>
+      </button>
+    </div>
+    <div data-id="24" class="flex flex-col gap-5">
+      <a data-id="25" href="#about" class="mobile-link text-xl font-semibold text-navy no-underline py-2 border-b border-gray-100">About</a>
+      <a data-id="26" href="#skills" class="mobile-link text-xl font-semibold text-navy no-underline py-2 border-b border-gray-100">Skills</a>
+      <a data-id="27" id="mob-projects-f3mn" href="#projects" class="mobile-link text-xl font-semibold text-navy no-underline py-2 border-b border-gray-100">Projects</a>
+      <a data-id="28" href="#experience" class="mobile-link text-xl font-semibold text-navy no-underline py-2 border-b border-gray-100">Experience</a>
+      <a data-id="29" href="#education" class="mobile-link text-xl font-semibold text-navy no-underline py-2 border-b border-gray-100">Education</a>
+      <a data-id="30" href="#contact" class="mobile-link text-xl font-semibold text-white bg-navy text-center no-underline py-3 rounded-lg mt-2">Contact</a>
+    </div>
+  </nav>
+
+  <main data-id="31">
+    <!-- HERO SECTION -->
+    <section data-id="32" id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" style="background: linear-gradient(160deg, #0D1B3E 0%, #1a3a6b 100%);">
+      <div data-id="33" class="absolute inset-0 pointer-events-none select-none hidden md:block" aria-hidden="true">
+        <span data-id="34" class="absolute top-[12%] left-[8%] float-a bg-white/10 text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/15">Java</span>
+        <span data-id="35" class="absolute top-[18%] right-[10%] float-b bg-white/10 text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/15">Spring Boot</span>
+        <span data-id="36" class="absolute top-[35%] left-[5%] float-c bg-white/10 text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/15">AWS</span>
+        <span data-id="37" class="absolute top-[60%] left-[12%] float-b bg-white/10 text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/15">React</span>
+        <span data-id="38" class="absolute top-[55%] right-[7%] float-a bg-white/10 text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/15">Angular</span>
+        <span data-id="39" class="absolute top-[75%] right-[15%] float-c bg-white/10 text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/15">Python</span>
+        <span data-id="40" class="absolute top-[80%] left-[20%] float-a bg-white/10 text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/15">Docker</span>
+        <span data-id="41" class="absolute top-[25%] right-[30%] float-c bg-white/10 text-white/70 text-xs font-medium px-3 py-1.5 rounded-full border border-white/15">Kubernetes</span>
+      </div>
+
+      <div data-id="42" class="relative z-10 text-center px-5 max-w-3xl mx-auto">
+        <p data-id="43" id="hero-greeting-ld3k" class="text-accent-light text-sm md:text-base font-medium tracking-widest uppercase mb-4">Welcome to my portfolio</p>
+        <h1 data-id="44" id="hero-name-k3nm" class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 tracking-tight">Rajesh Kumar</h1>
+        <div data-id="45" class="flex items-center justify-center text-lg md:text-2xl text-blue-300 font-semibold mb-5 min-h-[2.2em]">
+          <span data-id="46" id="typing-text-v4kl"></span><span data-id="47" class="typing-cursor"></span>
+        </div>
+        <p data-id="48" id="hero-subtitle-y2bn" class="text-white/70 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">4+ years building scalable, cloud-native applications</p>
+        <div data-id="49" class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+          <a data-id="50" href="#experience" id="cta-work-x8mn" class="cta-btn inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dark text-white font-semibold px-7 py-3.5 rounded-xl no-underline text-sm md:text-base transition">
+            <i data-id="51" data-lucide="briefcase" class="w-5 h-5"></i> View My Work
+          </a>
+          <a data-id="52" href="#contact" id="cta-contact-a9lp" class="cta-btn inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-7 py-3.5 rounded-xl border border-white/20 no-underline text-sm md:text-base transition">
+            <i data-id="53" data-lucide="mail" class="w-5 h-5"></i> Contact Me
+          </a>
+        </div>
+        <div data-id="54" class="mt-2 mb-10 text-center">
+          <a data-id="55" href="mailto:rajeshdevandla11@gmail.com" class="hero-email-link inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition">
+            <i data-id="56" data-lucide="mail" class="w-4 h-4"></i> rajeshdevandla11@gmail.com
+          </a>
+        </div>
+        <div data-id="57" class="flex gap-5 justify-center">
+          <a data-id="58" href="https://linkedin.com/in/rajesh-kumar-devandla" target="_blank" rel="noopener noreferrer" id="social-linkedin-z3kl" class="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-accent text-white transition no-underline" aria-label="LinkedIn">
+            <i data-id="59" data-lucide="linkedin" class="w-5 h-5"></i>
+          </a>
+          <a data-id="60" href="mailto:rajeshdevandla11@gmail.com" id="social-email-p4mn" class="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-accent text-white transition no-underline" aria-label="Email">
+            <i data-id="61" data-lucide="mail" class="w-5 h-5"></i>
+          </a>
+          <a data-id="62" href="https://github.com" target="_blank" rel="noopener noreferrer" id="social-github-q5rn" class="w-11 h-11 flex items-center justify-center rounded-full bg-white/10 hover:bg-accent text-white transition no-underline" aria-label="GitHub">
+            <i data-id="63" data-lucide="github" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+      <div data-id="64" class="absolute bottom-0 left-0 right-0">
+        <svg data-id="65" viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full"><path data-id="66" d="M0 60L1440 60L1440 20C1200 50 800 0 400 30C200 45 80 55 0 40L0 60Z" fill="#F1F5F9"/></svg>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section data-id="67" id="about" class="py-16 md:py-24 bg-surface-muted">
+      <div data-id="68" class="fade-section max-w-6xl mx-auto px-5">
+        <h2 data-id="69" id="about-heading-m3kd" class="section-heading text-3xl md:text-4xl font-extrabold text-navy text-center mb-14">About Me</h2>
+        <div data-id="70" class="flex flex-col md:flex-row gap-10 md:gap-16 items-center mb-14">
+          <div data-id="71" id="about-avatar-z2ln" class="flex-shrink-0">
+            <div data-id="72" class="w-36 h-36 md:w-44 md:h-44 rounded-full bg-navy flex items-center justify-center text-white text-5xl md:text-6xl font-extrabold tracking-tight shadow-xl ring-4 ring-accent/20 select-none">RK</div>
+          </div>
+          <div data-id="73" id="about-bio-v8ql">
+            <p data-id="74" class="text-gray-700 text-base md:text-lg leading-relaxed">I'm a Software Development Engineer and Full Stack Developer based in Chicago, IL, with 4+ years of experience delivering scalable, high-performance applications. I specialize in Java/Spring Boot backends, Angular/React frontends, cloud-native AWS architecture, and AI/LLM integrations. I thrive in Agile environments and enjoy building products that solve real problems at scale.</p>
+          </div>
+        </div>
+        <div data-id="75" id="about-stats-c4xn" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          <div data-id="76" class="stat-card bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+            <div data-id="77" class="text-3xl md:text-4xl font-extrabold text-navy mb-1">4+</div>
+            <div data-id="78" class="text-sm text-gray-500 font-medium">Years Experience</div>
+          </div>
+          <div data-id="79" class="stat-card bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+            <div data-id="80" class="text-3xl md:text-4xl font-extrabold text-navy mb-1">3</div>
+            <div data-id="81" class="text-sm text-gray-500 font-medium">Companies</div>
+          </div>
+          <div data-id="82" class="stat-card bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+            <div data-id="83" class="text-3xl md:text-4xl font-extrabold text-navy mb-1">2</div>
+            <div data-id="84" class="text-sm text-gray-500 font-medium">Degrees</div>
+          </div>
+          <div data-id="85" class="stat-card bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+            <div data-id="86" class="text-3xl md:text-4xl font-extrabold text-navy mb-1">99.9%</div>
+            <div data-id="87" class="text-sm text-gray-500 font-medium">Uptime Achieved</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section data-id="88" id="skills" class="py-16 md:py-24 bg-white">
+      <div data-id="89" class="fade-section max-w-6xl mx-auto px-5">
+        <h2 data-id="90" id="skills-heading-n7ql" class="section-heading text-3xl md:text-4xl font-extrabold text-navy text-center mb-14">Technical Skills</h2>
+        <div data-id="91" id="skills-grid-w3pq" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          <div data-id="92" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="93" class="flex items-center gap-2 mb-4">
+              <i data-id="94" data-lucide="code" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="95" class="font-bold text-navy text-base">Languages</h3>
+            </div>
+            <div data-id="96" class="flex flex-wrap gap-2">
+              <span data-id="97" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Java (11/17)</span>
+              <span data-id="98" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">JavaScript</span>
+              <span data-id="99" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">TypeScript</span>
+              <span data-id="100" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Python</span>
+              <span data-id="101" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">SQL</span>
+              <span data-id="102" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">PL/SQL</span>
+            </div>
+          </div>
+          <div data-id="103" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="104" class="flex items-center gap-2 mb-4">
+              <i data-id="105" data-lucide="globe" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="106" class="font-bold text-navy text-base">Front-End / Web</h3>
+            </div>
+            <div data-id="107" class="flex flex-wrap gap-2">
+              <span data-id="108" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">HTML5</span>
+              <span data-id="109" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">CSS3</span>
+              <span data-id="110" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Angular 12/13</span>
+              <span data-id="111" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">React.js</span>
+              <span data-id="112" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Vue.js</span>
+              <span data-id="113" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">jQuery</span>
+              <span data-id="114" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Node.js</span>
+            </div>
+          </div>
+          <div data-id="115" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="116" class="flex items-center gap-2 mb-4">
+              <i data-id="117" data-lucide="settings" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="118" class="font-bold text-navy text-base">Backend / Java EE</h3>
+            </div>
+            <div data-id="119" class="flex flex-wrap gap-2">
+              <span data-id="120" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Spring Boot</span>
+              <span data-id="121" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Spring MVC</span>
+              <span data-id="122" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Microservices</span>
+              <span data-id="123" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Hibernate</span>
+              <span data-id="124" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">JPA</span>
+              <span data-id="125" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Spring Security</span>
+              <span data-id="126" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Spring IOC</span>
+              <span data-id="127" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Spring AOP</span>
+            </div>
+          </div>
+          <div data-id="128" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="129" class="flex items-center gap-2 mb-4">
+              <i data-id="130" data-lucide="cloud" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="131" class="font-bold text-navy text-base">Cloud & DevOps</h3>
+            </div>
+            <div data-id="132" class="flex flex-wrap gap-2">
+              <span data-id="133" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">AWS (EC2, S3, Lambda)</span>
+              <span data-id="134" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">DynamoDB</span>
+              <span data-id="135" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">SNS / SQS</span>
+              <span data-id="136" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">CloudWatch</span>
+              <span data-id="137" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Docker</span>
+              <span data-id="138" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Kubernetes</span>
+              <span data-id="139" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Jenkins</span>
+              <span data-id="140" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Maven</span>
+              <span data-id="141" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Gradle</span>
+              <span data-id="142" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Git</span>
+              <span data-id="143" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Linux</span>
+            </div>
+          </div>
+          <div data-id="144" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="145" class="flex items-center gap-2 mb-4">
+              <i data-id="146" data-lucide="bot" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="147" class="font-bold text-navy text-base">AI / ML Tools</h3>
+            </div>
+            <div data-id="148" class="flex flex-wrap gap-2">
+              <span data-id="149" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Pandas</span>
+              <span data-id="150" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">NumPy</span>
+              <span data-id="151" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Flask</span>
+              <span data-id="152" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">FastAPI</span>
+              <span data-id="153" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">OpenAI</span>
+              <span data-id="154" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">AWS Bedrock</span>
+              <span data-id="155" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Claude</span>
+              <span data-id="156" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Gemini</span>
+              <span data-id="157" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Elasticsearch</span>
+              <span data-id="158" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Pinecone</span>
+            </div>
+          </div>
+          <div data-id="159" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="160" class="flex items-center gap-2 mb-4">
+              <i data-id="161" data-lucide="link" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="162" class="font-bold text-navy text-base">Web Services</h3>
+            </div>
+            <div data-id="163" class="flex flex-wrap gap-2">
+              <span data-id="164" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">REST APIs</span>
+              <span data-id="165" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">GraphQL</span>
+              <span data-id="166" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">SOAP</span>
+              <span data-id="167" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">WSDL</span>
+              <span data-id="168" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">JAX-RS</span>
+              <span data-id="169" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">JAX-WS</span>
+            </div>
+          </div>
+          <div data-id="170" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="171" class="flex items-center gap-2 mb-4">
+              <i data-id="172" data-lucide="zap" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="173" class="font-bold text-navy text-base">Caching & Messaging</h3>
+            </div>
+            <div data-id="174" class="flex flex-wrap gap-2">
+              <span data-id="175" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Redis</span>
+              <span data-id="176" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Kafka</span>
+              <span data-id="177" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">RabbitMQ</span>
+              <span data-id="178" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Nginx</span>
+            </div>
+          </div>
+          <div data-id="179" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="180" class="flex items-center gap-2 mb-4">
+              <i data-id="181" data-lucide="database" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="182" class="font-bold text-navy text-base">Databases</h3>
+            </div>
+            <div data-id="183" class="flex flex-wrap gap-2">
+              <span data-id="184" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">MySQL</span>
+              <span data-id="185" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">PostgreSQL</span>
+              <span data-id="186" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Oracle</span>
+              <span data-id="187" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">MongoDB</span>
+              <span data-id="188" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Cassandra</span>
+              <span data-id="189" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">DynamoDB</span>
+            </div>
+          </div>
+          <div data-id="190" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="191" class="flex items-center gap-2 mb-4">
+              <i data-id="192" data-lucide="wrench" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="193" class="font-bold text-navy text-base">Tools & IDEs</h3>
+            </div>
+            <div data-id="194" class="flex flex-wrap gap-2">
+              <span data-id="195" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">IntelliJ</span>
+              <span data-id="196" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Eclipse</span>
+              <span data-id="197" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">VS Code</span>
+              <span data-id="198" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Postman</span>
+              <span data-id="199" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">PyCharm</span>
+              <span data-id="200" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">JIRA</span>
+              <span data-id="201" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">GitHub</span>
+            </div>
+          </div>
+          <div data-id="202" class="bg-surface-muted rounded-2xl p-5 border border-gray-100">
+            <div data-id="203" class="flex items-center gap-2 mb-4">
+              <i data-id="204" data-lucide="monitor" class="w-5 h-5 text-navy"></i>
+              <h3 data-id="205" class="font-bold text-navy text-base">Operating Systems</h3>
+            </div>
+            <div data-id="206" class="flex flex-wrap gap-2">
+              <span data-id="207" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Windows</span>
+              <span data-id="208" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">Linux</span>
+              <span data-id="209" class="skill-pill text-xs font-medium px-3 py-1.5 rounded-full border-2 border-navy text-navy bg-white cursor-default">UNIX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section data-id="210" id="projects" class="py-16 md:py-24 bg-white">
+      <div data-id="211" class="fade-section max-w-6xl mx-auto px-5">
+        <h2 data-id="212" id="projects-heading-k3mn" class="section-heading text-3xl md:text-4xl font-extrabold text-navy text-center mb-4">Featured Projects</h2>
+        <p data-id="213" id="projects-subtitle-m4qr" class="text-gray-500 text-base md:text-lg text-center mb-14 max-w-2xl mx-auto">A selection of impactful systems I've built and shipped.</p>
+
+        <div data-id="214" class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+
+          <!-- PROJECT 1: Insurance Customer Portal -->
+          <div data-id="215" id="project1-card-a2bn" class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+            <div data-id="216" class="browser-mockup">
+              <div data-id="217" class="browser-chrome">
+                <span data-id="218" class="browser-dot" style="background:#ef4444;"></span>
+                <span data-id="219" class="browser-dot" style="background:#f59e0b;"></span>
+                <span data-id="220" class="browser-dot" style="background:#22c55e;"></span>
+                <span data-id="221" class="ml-3 text-xs text-gray-500 font-medium">customer-portal.app</span>
+              </div>
+              <!-- Dashboard mockup -->
+              <div data-id="222" style="background:#0D1B3E; height: 200px; display: flex; overflow: hidden;">
+                <!-- Sidebar -->
+                <div data-id="223" style="width: 50px; background: #091430; padding: 12px 8px; display: flex; flex-direction: column; gap: 8px; flex-shrink:0;">
+                  <div data-id="224" style="width: 100%; height: 6px; background: rgba(255,255,255,0.3); border-radius: 3px;"></div>
+                  <div data-id="225" style="width: 100%; height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px;"></div>
+                  <div data-id="226" style="width: 100%; height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px;"></div>
+                  <div data-id="227" style="width: 100%; height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px;"></div>
+                  <div data-id="228" style="width: 100%; height: 6px; background: rgba(255,255,255,0.15); border-radius: 3px;"></div>
+                </div>
+                <!-- Main content -->
+                <div data-id="229" style="flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 10px;">
+                  <!-- Metric cards -->
+                  <div data-id="230" style="display: flex; gap: 8px;">
+                    <div data-id="231" style="flex:1; background: #22c55e; border-radius: 6px; padding: 8px 10px;">
+                      <div data-id="232" style="font-size:10px; color: rgba(255,255,255,0.8);">Policies</div>
+                      <div data-id="233" style="font-size:16px; font-weight:800; color:#fff;">1,247</div>
+                    </div>
+                    <div data-id="234" style="flex:1; background: #3b82f6; border-radius: 6px; padding: 8px 10px;">
+                      <div data-id="235" style="font-size:10px; color: rgba(255,255,255,0.8);">Claims</div>
+                      <div data-id="236" style="font-size:16px; font-weight:800; color:#fff;">384</div>
+                    </div>
+                    <div data-id="237" style="flex:1; background: #f59e0b; border-radius: 6px; padding: 8px 10px;">
+                      <div data-id="238" style="font-size:10px; color: rgba(255,255,255,0.8);">Revenue</div>
+                      <div data-id="239" style="font-size:16px; font-weight:800; color:#fff;">$2.4M</div>
+                    </div>
+                  </div>
+                  <!-- Bar chart -->
+                  <div data-id="240" style="flex:1; display: flex; align-items: flex-end; gap: 6px; padding-top: 4px;">
+                    <div data-id="241" class="bar-animate" style="flex:1; background: #3b82f6; border-radius: 3px 3px 0 0; height: 60%;"></div>
+                    <div data-id="242" class="bar-animate" style="flex:1; background: #3b82f6; border-radius: 3px 3px 0 0; height: 80%; animation-delay: 0.1s;"></div>
+                    <div data-id="243" class="bar-animate" style="flex:1; background: #3b82f6; border-radius: 3px 3px 0 0; height: 45%; animation-delay: 0.2s;"></div>
+                    <div data-id="244" class="bar-animate" style="flex:1; background: #2563EB; border-radius: 3px 3px 0 0; height: 95%; animation-delay: 0.3s;"></div>
+                    <div data-id="245" class="bar-animate" style="flex:1; background: #3b82f6; border-radius: 3px 3px 0 0; height: 70%; animation-delay: 0.4s;"></div>
+                    <div data-id="246" class="bar-animate" style="flex:1; background: #3b82f6; border-radius: 3px 3px 0 0; height: 55%; animation-delay: 0.5s;"></div>
+                    <div data-id="247" class="bar-animate" style="flex:1; background: #3b82f6; border-radius: 3px 3px 0 0; height: 88%; animation-delay: 0.6s;"></div>
+                    <div data-id="248" class="bar-animate" style="flex:1; background: #3b82f6; border-radius: 3px 3px 0 0; height: 65%; animation-delay: 0.7s;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-id="249" class="p-5 md:p-6">
+              <h3 data-id="250" id="proj1-title-q2mn" class="text-lg font-bold text-navy mb-2">Insurance Customer Portal</h3>
+              <p data-id="251" id="proj1-desc-r3mn" class="text-sm text-gray-600 mb-4 leading-relaxed">Full-stack enterprise portal for Mutual of Omaha customers to manage policies, claims, and transactions in real time.</p>
+              <ul data-id="252" class="space-y-1.5 text-sm text-gray-700 mb-4">
+                <li data-id="253" class="flex gap-2 items-start"><i data-id="254" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="255">Reduced page load time by 35% via code splitting</span></li>
+                <li data-id="256" class="flex gap-2 items-start"><i data-id="257" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="258">99.9% uptime on AWS infrastructure</span></li>
+                <li data-id="259" class="flex gap-2 items-start"><i data-id="260" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="261">CI/CD pipelines cut release time by 40%</span></li>
+              </ul>
+              <div data-id="262" class="flex flex-wrap gap-1.5 mb-4">
+                <span data-id="263" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">React.js</span>
+                <span data-id="264" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Angular</span>
+                <span data-id="265" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Java 17</span>
+                <span data-id="266" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Spring Boot</span>
+                <span data-id="267" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">AWS</span>
+                <span data-id="268" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Docker</span>
+                <span data-id="269" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Kubernetes</span>
+              </div>
+              <a data-id="270" href="#" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline"><i data-id="271" data-lucide="external-link" class="w-4 h-4"></i> View Details</a>
+            </div>
+          </div>
+
+          <!-- PROJECT 2: AI-Powered Data Pipeline -->
+          <div data-id="272" id="project2-card-b4cn" class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+            <div data-id="273" class="browser-mockup">
+              <div data-id="274" class="browser-chrome">
+                <span data-id="275" class="browser-dot" style="background:#ef4444;"></span>
+                <span data-id="276" class="browser-dot" style="background:#f59e0b;"></span>
+                <span data-id="277" class="browser-dot" style="background:#22c55e;"></span>
+                <span data-id="278" class="ml-3 text-xs text-gray-500 font-medium">ai-pipeline.dashboard</span>
+              </div>
+              <div data-id="279" style="background:#0f172a; height: 200px; padding: 14px 16px; font-family: 'Courier New', monospace; display: flex; flex-direction: column; justify-content: space-between;">
+                <div data-id="280">
+                  <div data-id="281" style="font-size: 11px; color: #22d3ee; font-weight: 700; margin-bottom: 10px;">AI Pipeline Dashboard</div>
+                  <div data-id="282" style="font-size: 11px; color: #4ade80; margin-bottom: 5px;">→ Processing batch 1,247 records...</div>
+                  <div data-id="283" style="font-size: 11px; color: #22d3ee; margin-bottom: 5px;">✓ LLM extraction complete</div>
+                  <div data-id="284" style="font-size: 11px; color: #4ade80; margin-bottom: 5px;">→ Embedding vectors stored</div>
+                  <div data-id="285" style="font-size: 11px; color: #22d3ee; margin-bottom: 5px;">✓ Classification accuracy: 97.3%</div>
+                  <div data-id="286" style="font-size: 11px; color: #4ade80;">✓ Pipeline complete in 1.2s</div>
+                </div>
+                <div data-id="287">
+                  <div data-id="288" style="font-size: 9px; color: #64748b; margin-bottom: 4px;">Progress</div>
+                  <div data-id="289" style="width: 100%; height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden;">
+                    <div data-id="290" class="progress-animate" style="height: 100%; background: linear-gradient(90deg, #22d3ee, #4ade80); border-radius: 3px;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-id="291" class="p-5 md:p-6">
+              <h3 data-id="292" id="proj2-title-s5dn" class="text-lg font-bold text-navy mb-2">AI-Powered Data Pipeline</h3>
+              <p data-id="293" id="proj2-desc-t6en" class="text-sm text-gray-600 mb-4 leading-relaxed">Intelligent backend pipeline using LLM APIs to automate data extraction, classification, and vector-based search at enterprise scale.</p>
+              <ul data-id="294" class="space-y-1.5 text-sm text-gray-700 mb-4">
+                <li data-id="295" class="flex gap-2 items-start"><i data-id="296" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="297">Integrated OpenAI & AWS Bedrock APIs</span></li>
+                <li data-id="298" class="flex gap-2 items-start"><i data-id="299" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="300">Reduced manual data processing by 80%</span></li>
+                <li data-id="301" class="flex gap-2 items-start"><i data-id="302" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="303">Sub-2-second pipeline execution</span></li>
+              </ul>
+              <div data-id="304" class="flex flex-wrap gap-1.5 mb-4">
+                <span data-id="305" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Python</span>
+                <span data-id="306" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">LLM APIs</span>
+                <span data-id="307" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">AWS Bedrock</span>
+                <span data-id="308" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Pandas</span>
+                <span data-id="309" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">FastAPI</span>
+                <span data-id="310" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Elasticsearch</span>
+                <span data-id="311" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Pinecone</span>
+              </div>
+              <a data-id="312" href="#" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline"><i data-id="313" data-lucide="external-link" class="w-4 h-4"></i> View Details</a>
+            </div>
+          </div>
+
+          <!-- PROJECT 3: Banking Transaction Microservices -->
+          <div data-id="314" id="project3-card-c6fn" class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+            <div data-id="315" class="browser-mockup">
+              <div data-id="316" class="browser-chrome">
+                <span data-id="317" class="browser-dot" style="background:#ef4444;"></span>
+                <span data-id="318" class="browser-dot" style="background:#f59e0b;"></span>
+                <span data-id="319" class="browser-dot" style="background:#22c55e;"></span>
+                <span data-id="320" class="ml-3 text-xs text-gray-500 font-medium">banking-services.internal</span>
+              </div>
+              <div data-id="321" style="background:#ffffff; height: 200px; padding: 12px 14px; display:flex; flex-direction:column; gap: 10px; overflow:hidden;">
+                <div data-id="322" style="font-size:11px; font-weight:700; color:#0D1B3E; margin-bottom:2px;">Transaction Flow</div>
+                <!-- Flow diagram -->
+                <div data-id="323" style="display:flex; align-items:center; gap:4px; flex-wrap: nowrap; overflow: hidden;">
+                  <div data-id="324" style="flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0; border-left: 3px solid #2563EB; border-radius:6px; padding:6px 8px; font-size:9px; font-weight:600; color:#0D1B3E; white-space:nowrap;">API Gateway</div>
+                  <div data-id="325" style="color:#94a3b8; font-size:12px; flex-shrink:0;">→</div>
+                  <div data-id="326" style="flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0; border-left: 3px solid #22c55e; border-radius:6px; padding:6px 8px; font-size:9px; font-weight:600; color:#0D1B3E; white-space:nowrap;">Auth Service</div>
+                  <div data-id="327" style="color:#94a3b8; font-size:12px; flex-shrink:0;">→</div>
+                  <div data-id="328" style="flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0; border-left: 3px solid #f59e0b; border-radius:6px; padding:6px 8px; font-size:9px; font-weight:600; color:#0D1B3E; white-space:nowrap;">Transaction</div>
+                  <div data-id="329" style="color:#94a3b8; font-size:12px; flex-shrink:0;">→</div>
+                  <div data-id="330" style="flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0; border-left: 3px solid #ef4444; border-radius:6px; padding:6px 8px; font-size:9px; font-weight:600; color:#0D1B3E; white-space:nowrap;">DB</div>
+                </div>
+                <!-- Table -->
+                <div data-id="331" style="flex:1; overflow:hidden;">
+                  <table data-id="332" style="width:100%; border-collapse:collapse; font-size:9px;">
+                    <thead data-id="333">
+                      <tr data-id="334" style="border-bottom:1px solid #e2e8f0;">
+                        <th data-id="335" style="text-align:left; padding:4px 6px; color:#64748b; font-weight:600;">ID</th>
+                        <th data-id="336" style="text-align:left; padding:4px 6px; color:#64748b; font-weight:600;">Amount</th>
+                        <th data-id="337" style="text-align:left; padding:4px 6px; color:#64748b; font-weight:600;">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody data-id="338">
+                      <tr data-id="339" style="border-bottom:1px solid #f1f5f9;">
+                        <td data-id="340" style="padding:4px 6px; color:#334155;">#TXN-4821</td>
+                        <td data-id="341" style="padding:4px 6px; color:#334155;">$12,450</td>
+                        <td data-id="342" style="padding:4px 6px;"><span data-id="343" style="background:#dcfce7; color:#16a34a; font-size:8px; font-weight:600; padding:2px 6px; border-radius:8px;">Completed</span></td>
+                      </tr>
+                      <tr data-id="344" style="border-bottom:1px solid #f1f5f9;">
+                        <td data-id="345" style="padding:4px 6px; color:#334155;">#TXN-4822</td>
+                        <td data-id="346" style="padding:4px 6px; color:#334155;">$8,200</td>
+                        <td data-id="347" style="padding:4px 6px;"><span data-id="348" style="background:#fef3c7; color:#d97706; font-size:8px; font-weight:600; padding:2px 6px; border-radius:8px;">Pending</span></td>
+                      </tr>
+                      <tr data-id="349">
+                        <td data-id="350" style="padding:4px 6px; color:#334155;">#TXN-4823</td>
+                        <td data-id="351" style="padding:4px 6px; color:#334155;">$24,100</td>
+                        <td data-id="352" style="padding:4px 6px;"><span data-id="353" style="background:#dcfce7; color:#16a34a; font-size:8px; font-weight:600; padding:2px 6px; border-radius:8px;">Completed</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div data-id="354" class="p-5 md:p-6">
+              <h3 data-id="355" id="proj3-title-d7gn" class="text-lg font-bold text-navy mb-2">Banking Transaction Microservices</h3>
+              <p data-id="356" id="proj3-desc-e8hn" class="text-sm text-gray-600 mb-4 leading-relaxed">Secure, high-throughput microservices architecture for MUFG Bank handling millions of financial transactions with real-time streaming.</p>
+              <ul data-id="357" class="space-y-1.5 text-sm text-gray-700 mb-4">
+                <li data-id="358" class="flex gap-2 items-start"><i data-id="359" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="360">Migrated monolith to 8 microservices</span></li>
+                <li data-id="361" class="flex gap-2 items-start"><i data-id="362" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="363">45% faster query execution after DB optimization</span></li>
+                <li data-id="364" class="flex gap-2 items-start"><i data-id="365" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="366">60% faster release cadence with CI/CD</span></li>
+              </ul>
+              <div data-id="367" class="flex flex-wrap gap-1.5 mb-4">
+                <span data-id="368" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Java</span>
+                <span data-id="369" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Spring Boot</span>
+                <span data-id="370" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Kafka</span>
+                <span data-id="371" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">RabbitMQ</span>
+                <span data-id="372" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">PostgreSQL</span>
+                <span data-id="373" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Docker</span>
+                <span data-id="374" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Jenkins</span>
+              </div>
+              <a data-id="375" href="#" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline"><i data-id="376" data-lucide="external-link" class="w-4 h-4"></i> View Details</a>
+            </div>
+          </div>
+
+          <!-- PROJECT 4: DevOps Monitoring Dashboard -->
+          <div data-id="377" id="project4-card-f9jn" class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
+            <div data-id="378" class="browser-mockup">
+              <div data-id="379" class="browser-chrome">
+                <span data-id="380" class="browser-dot" style="background:#ef4444;"></span>
+                <span data-id="381" class="browser-dot" style="background:#f59e0b;"></span>
+                <span data-id="382" class="browser-dot" style="background:#22c55e;"></span>
+                <span data-id="383" class="ml-3 text-xs text-gray-500 font-medium">devops-monitor.cloud</span>
+              </div>
+              <div data-id="384" style="background:#1e293b; height: 200px; padding: 14px 16px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div data-id="385" style="font-size:11px; font-weight:700; color:#fff; margin-bottom:8px;">System Health</div>
+                <!-- Metric circles -->
+                <div data-id="386" style="display:flex; justify-content:space-around; align-items:center;">
+                  <div data-id="387" style="text-align:center;">
+                    <div data-id="388" class="metric-circle" style="background: conic-gradient(#3b82f6 0deg 259deg, #334155 259deg 360deg); margin: 0 auto;">
+                      <div data-id="389" style="width:50px; height:50px; background:#1e293b; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#3b82f6;">72%</div>
+                    </div>
+                    <div data-id="390" style="font-size:9px; color:#94a3b8; margin-top:4px;">CPU</div>
+                  </div>
+                  <div data-id="391" style="text-align:center;">
+                    <div data-id="392" class="metric-circle" style="background: conic-gradient(#22c55e 0deg 162deg, #334155 162deg 360deg); margin: 0 auto;">
+                      <div data-id="393" style="width:50px; height:50px; background:#1e293b; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#22c55e;">45%</div>
+                    </div>
+                    <div data-id="394" style="font-size:9px; color:#94a3b8; margin-top:4px;">Memory</div>
+                  </div>
+                  <div data-id="395" style="text-align:center;">
+                    <div data-id="396" class="metric-circle" style="background: conic-gradient(#f59e0b 0deg 356deg, #334155 356deg 360deg); margin: 0 auto;">
+                      <div data-id="397" style="width:50px; height:50px; background:#1e293b; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#f59e0b;">99.9%</div>
+                    </div>
+                    <div data-id="398" style="font-size:9px; color:#94a3b8; margin-top:4px;">Uptime</div>
+                  </div>
+                  <div data-id="399" style="text-align:center;">
+                    <div data-id="400" class="metric-circle" style="background: conic-gradient(#a78bfa 0deg 300deg, #334155 300deg 360deg); margin: 0 auto;">
+                      <div data-id="401" style="width:50px; height:50px; background:#1e293b; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#a78bfa;">847</div>
+                    </div>
+                    <div data-id="402" style="font-size:9px; color:#94a3b8; margin-top:4px;">Deploys</div>
+                  </div>
+                </div>
+                <!-- Status pills -->
+                <div data-id="403" style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
+                  <span data-id="404" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">12 Services ✓</span>
+                  <span data-id="405" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">3 Regions ✓</span>
+                  <span data-id="406" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">Zero Downtime ✓</span>
+                </div>
+              </div>
+            </div>
+            <div data-id="407" class="p-5 md:p-6">
+              <h3 data-id="408" id="proj4-title-g2kn" class="text-lg font-bold text-navy mb-2">DevOps & Cloud Infrastructure</h3>
+              <p data-id="409" id="proj4-desc-h3ln" class="text-sm text-gray-600 mb-4 leading-relaxed">End-to-end cloud infrastructure and CI/CD automation managing multi-region AWS deployments with real-time monitoring and alerting.</p>
+              <ul data-id="410" class="space-y-1.5 text-sm text-gray-700 mb-4">
+                <li data-id="411" class="flex gap-2 items-start"><i data-id="412" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="413">Orchestrated Docker/Kubernetes across 3 AWS regions</span></li>
+                <li data-id="414" class="flex gap-2 items-start"><i data-id="415" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="416">Automated 100% of deployment pipeline</span></li>
+                <li data-id="417" class="flex gap-2 items-start"><i data-id="418" data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span data-id="419">Reduced incident response time by 45%</span></li>
+              </ul>
+              <div data-id="420" class="flex flex-wrap gap-1.5 mb-4">
+                <span data-id="421" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">AWS</span>
+                <span data-id="422" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Docker</span>
+                <span data-id="423" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Kubernetes</span>
+                <span data-id="424" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Jenkins</span>
+                <span data-id="425" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">GitHub Actions</span>
+                <span data-id="426" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">CloudWatch</span>
+                <span data-id="427" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Terraform</span>
+              </div>
+              <a data-id="428" href="#" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline"><i data-id="429" data-lucide="external-link" class="w-4 h-4"></i> View Details</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section data-id="430" id="experience" class="py-16 md:py-24 bg-surface-muted">
+      <div data-id="431" class="fade-section max-w-5xl mx-auto px-5">
+        <h2 data-id="432" id="exp-heading-k2qr" class="section-heading text-3xl md:text-4xl font-extrabold text-navy text-center mb-14">Work Experience</h2>
+        <div data-id="433" class="relative pl-10 md:pl-14">
+          <div data-id="434" class="timeline-line"></div>
+
+          <!-- Job 1 -->
+          <div data-id="435" class="relative mb-12">
+            <div data-id="436" class="timeline-dot"></div>
+            <div data-id="437" class="exp-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+              <div data-id="438" class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
+                <div data-id="439">
+                  <h3 data-id="440" id="exp1-title-q3mn" class="text-lg md:text-xl font-bold text-navy">Full Stack Developer</h3>
+                  <p data-id="441" class="text-accent font-semibold text-sm">Mutual of Omaha</p>
+                </div>
+                <div data-id="442" class="flex items-center gap-3">
+                  <span data-id="443" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="444" data-lucide="calendar" class="w-3.5 h-3.5"></i> Jan 2025 – Present</span>
+                  <span data-id="445" class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-0.5 rounded-full">Current</span>
+                </div>
+              </div>
+              <p data-id="446" class="text-xs text-gray-400 mb-4 flex items-center gap-1"><i data-id="447" data-lucide="map-pin" class="w-3 h-3"></i> Remote</p>
+              <ul data-id="448" class="space-y-2 text-sm text-gray-700 leading-relaxed mb-5">
+                <li data-id="449" class="flex gap-2"><span data-id="450" class="text-accent mt-1 flex-shrink-0"><i data-id="451" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="452">Designed cloud-native backend services using Java 17, Spring Boot, and Microservices architecture, writing modular and reusable components.</span></li>
+                <li data-id="453" class="flex gap-2"><span data-id="454" class="text-accent mt-1 flex-shrink-0"><i data-id="455" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="456">Enhanced React.js and Angular front-end applications, reducing page load time by 35% through code splitting and lazy loading.</span></li>
+                <li data-id="457" class="flex gap-2"><span data-id="458" class="text-accent mt-1 flex-shrink-0"><i data-id="459" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="460">Developed and maintained REST and GraphQL APIs ensuring security, scalability, and optimization for high-traffic workloads.</span></li>
+                <li data-id="461" class="flex gap-2"><span data-id="462" class="text-accent mt-1 flex-shrink-0"><i data-id="463" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="464">Integrated AI/LLM APIs (OpenAI, AWS Bedrock) enabling automated data extraction, intelligent recommendations, and text processing.</span></li>
+                <li data-id="465" class="flex gap-2"><span data-id="466" class="text-accent mt-1 flex-shrink-0"><i data-id="467" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="468">Implemented CI/CD pipelines via GitHub Actions and Jenkins, cutting release cycle time by 40% and reducing deployment errors by 90%.</span></li>
+                <li data-id="469" class="flex gap-2"><span data-id="470" class="text-accent mt-1 flex-shrink-0"><i data-id="471" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="472">Monitored AWS systems (Lambda, SQS, SNS, EC2, S3, DynamoDB), improving uptime to 99.9% and reducing incident response time by 45%.</span></li>
+              </ul>
+              <div data-id="473" class="flex flex-wrap gap-2">
+                <span data-id="474" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Java 17</span>
+                <span data-id="475" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Spring Boot</span>
+                <span data-id="476" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">React.js</span>
+                <span data-id="477" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Angular</span>
+                <span data-id="478" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">AWS</span>
+                <span data-id="479" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Docker</span>
+                <span data-id="480" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Kubernetes</span>
+                <span data-id="481" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">LLM APIs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 2 -->
+          <div data-id="482" class="relative mb-12">
+            <div data-id="483" class="timeline-dot"></div>
+            <div data-id="484" class="exp-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+              <div data-id="485" class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                <div data-id="486">
+                  <h3 data-id="487" id="exp2-title-w5pn" class="text-lg md:text-xl font-bold text-navy">Full Stack Developer</h3>
+                  <p data-id="488" class="text-accent font-semibold text-sm">Mutual of Omaha</p>
+                </div>
+                <span data-id="489" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="490" data-lucide="calendar" class="w-3.5 h-3.5"></i> Jan 2023 – Dec 2023</span>
+              </div>
+              <ul data-id="491" class="space-y-2 text-sm text-gray-700 leading-relaxed mb-5">
+                <li data-id="492" class="flex gap-2"><span data-id="493" class="text-accent mt-1 flex-shrink-0"><i data-id="494" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="495">Built full-stack applications using Angular and Spring Boot + Java 11, ensuring seamless UI–API integration.</span></li>
+                <li data-id="496" class="flex gap-2"><span data-id="497" class="text-accent mt-1 flex-shrink-0"><i data-id="498" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="499">Designed and implemented RESTful APIs, reducing average API response latency by 30%.</span></li>
+                <li data-id="500" class="flex gap-2"><span data-id="501" class="text-accent mt-1 flex-shrink-0"><i data-id="502" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="503">Integrated AWS services (Lambda, EC2, S3) to automate background tasks and improve system reliability.</span></li>
+                <li data-id="504" class="flex gap-2"><span data-id="505" class="text-accent mt-1 flex-shrink-0"><i data-id="506" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="507">Built asynchronous data streaming flows using Kafka, improving event processing and real-time data movement.</span></li>
+                <li data-id="508" class="flex gap-2"><span data-id="509" class="text-accent mt-1 flex-shrink-0"><i data-id="510" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="511">Wrote automated test cases using JUnit and Mockito, achieving 85% code coverage and reducing production defects by 50%.</span></li>
+              </ul>
+              <div data-id="512" class="flex flex-wrap gap-2">
+                <span data-id="513" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Java 11</span>
+                <span data-id="514" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Angular 12</span>
+                <span data-id="515" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Spring Boot</span>
+                <span data-id="516" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Kafka</span>
+                <span data-id="517" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">AWS</span>
+                <span data-id="518" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Docker</span>
+                <span data-id="519" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">MongoDB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Job 3 -->
+          <div data-id="520" class="relative">
+            <div data-id="521" class="timeline-dot"></div>
+            <div data-id="522" class="exp-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
+              <div data-id="523" class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                <div data-id="524">
+                  <h3 data-id="525" id="exp3-title-r8kn" class="text-lg md:text-xl font-bold text-navy">Software Engineer</h3>
+                  <p data-id="526" class="text-accent font-semibold text-sm">MUFG Bank, PUB Bank</p>
+                </div>
+                <span data-id="527" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="528" data-lucide="calendar" class="w-3.5 h-3.5"></i> Feb 2020 – Aug 2022</span>
+              </div>
+              <ul data-id="529" class="space-y-2 text-sm text-gray-700 leading-relaxed mb-5">
+                <li data-id="530" class="flex gap-2"><span data-id="531" class="text-accent mt-1 flex-shrink-0"><i data-id="532" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="533">Developed backend components using Java, Spring Boot, Hibernate, JPA, and JDBC focusing on secure data handling and high throughput.</span></li>
+                <li data-id="534" class="flex gap-2"><span data-id="535" class="text-accent mt-1 flex-shrink-0"><i data-id="536" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="537">Designed RESTful Web Services integrating multiple banking modules ensuring secure financial data flow.</span></li>
+                <li data-id="538" class="flex gap-2"><span data-id="539" class="text-accent mt-1 flex-shrink-0"><i data-id="540" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="541">Migrated legacy monolithic applications to microservices, improving modularity, scalability, and maintainability.</span></li>
+                <li data-id="542" class="flex gap-2"><span data-id="543" class="text-accent mt-1 flex-shrink-0"><i data-id="544" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="545">Optimized SQL queries and database schemas for PostgreSQL, MySQL, and MongoDB, improving query execution speed by 45%.</span></li>
+                <li data-id="546" class="flex gap-2"><span data-id="547" class="text-accent mt-1 flex-shrink-0"><i data-id="548" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="549">Implemented CI/CD pipelines using Jenkins and GitLab, accelerating release cadence by 60%.</span></li>
+              </ul>
+              <div data-id="550" class="flex flex-wrap gap-2">
+                <span data-id="551" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Java</span>
+                <span data-id="552" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Spring Boot</span>
+                <span data-id="553" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">React.js</span>
+                <span data-id="554" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Kafka</span>
+                <span data-id="555" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">PostgreSQL</span>
+                <span data-id="556" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Docker</span>
+                <span data-id="557" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Jenkins</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section data-id="558" id="education" class="py-16 md:py-24 bg-white">
+      <div data-id="559" class="fade-section max-w-5xl mx-auto px-5">
+        <h2 data-id="560" id="edu-heading-a4mn" class="section-heading text-3xl md:text-4xl font-extrabold text-navy text-center mb-14">Education</h2>
+        <div data-id="561" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          <div data-id="562" id="edu-card1-b7qn" class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 bg-white">
+            <div data-id="563" class="p-5 md:p-6" style="background: linear-gradient(135deg, #0D1B3E, #1a3a6b);">
+              <div data-id="564" class="flex items-center gap-3">
+                <i data-id="565" data-lucide="graduation-cap" class="w-8 h-8 text-white"></i>
+                <div data-id="566">
+                  <h3 data-id="567" class="text-white font-bold text-base md:text-lg">DePaul University</h3>
+                  <p data-id="568" class="text-blue-200 text-sm">Chicago, IL</p>
+                </div>
+              </div>
+            </div>
+            <div data-id="569" class="p-5 md:p-6">
+              <p data-id="570" class="font-semibold text-navy text-sm md:text-base mb-2">Master of Science in Information Systems & Project Management</p>
+              <p data-id="571" class="text-gray-500 text-sm flex items-center gap-1.5"><i data-id="572" data-lucide="calendar" class="w-4 h-4"></i> September 2022 – November 2024</p>
+            </div>
+          </div>
+          <div data-id="573" id="edu-card2-c9rn" class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 bg-white">
+            <div data-id="574" class="p-5 md:p-6" style="background: linear-gradient(135deg, #2563EB, #3b82f6);">
+              <div data-id="575" class="flex items-center gap-3">
+                <i data-id="576" data-lucide="graduation-cap" class="w-8 h-8 text-white"></i>
+                <div data-id="577">
+                  <h3 data-id="578" class="text-white font-bold text-base md:text-lg">GITAM University</h3>
+                  <p data-id="579" class="text-blue-100 text-sm">Hyderabad, India</p>
+                </div>
+              </div>
+            </div>
+            <div data-id="580" class="p-5 md:p-6">
+              <p data-id="581" class="font-semibold text-navy text-sm md:text-base mb-2">Bachelor of Science in Computer Science</p>
+              <p data-id="582" class="text-gray-500 text-sm flex items-center gap-1.5"><i data-id="583" data-lucide="calendar" class="w-4 h-4"></i> August 2017 – June 2021</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section data-id="584" id="contact" class="py-16 md:py-24" style="background: linear-gradient(160deg, #0D1B3E 0%, #1a3a6b 100%);">
+      <div data-id="585" class="fade-section max-w-5xl mx-auto px-5 text-center">
+        <h2 data-id="586" id="contact-heading-d3mn" class="text-3xl md:text-4xl font-extrabold text-white mb-4">Get In Touch</h2>
+        <div data-id="587" class="w-14 h-[3px] bg-accent mx-auto mb-5 rounded-full"></div>
+        <p data-id="588" class="text-blue-200 text-base md:text-lg mb-12">Open to exciting opportunities and collaborations</p>
+
+        <div data-id="589" class="grid grid-cols-1 sm:grid-cols-3 gap-5 md:gap-6 mb-12">
+          <a data-id="590" href="mailto:rajeshdevandla11@gmail.com" id="contact-email-f5qn" class="contact-card bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 flex flex-col items-center gap-4 no-underline group">
+            <div data-id="591" class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-accent transition">
+              <i data-id="592" data-lucide="mail" class="w-6 h-6 text-white"></i>
+            </div>
+            <div data-id="593">
+              <p data-id="594" class="text-white/60 text-xs font-medium uppercase tracking-wider mb-1">Email</p>
+              <p data-id="595" class="text-white font-semibold text-sm break-all">rajeshdevandla11@gmail.com</p>
+            </div>
+          </a>
+          <a data-id="596" href="https://linkedin.com/in/rajesh-kumar-devandla" target="_blank" rel="noopener noreferrer" id="contact-linkedin-g7rn" class="contact-card bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 flex flex-col items-center gap-4 no-underline group">
+            <div data-id="597" class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-accent transition">
+              <i data-id="598" data-lucide="linkedin" class="w-6 h-6 text-white"></i>
+            </div>
+            <div data-id="599">
+              <p data-id="600" class="text-white/60 text-xs font-medium uppercase tracking-wider mb-1">LinkedIn</p>
+              <p data-id="601" class="text-white font-semibold text-sm">rajesh-kumar-devandla</p>
+            </div>
+          </a>
+          <div data-id="602" id="contact-location-h2sn" class="contact-card bg-white/10 border border-white/15 rounded-2xl p-6 md:p-8 flex flex-col items-center gap-4">
+            <div data-id="603" class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center">
+              <i data-id="604" data-lucide="map-pin" class="w-6 h-6 text-white"></i>
+            </div>
+            <div data-id="605">
+              <p data-id="606" class="text-white/60 text-xs font-medium uppercase tracking-wider mb-1">Location</p>
+              <p data-id="607" class="text-white font-semibold text-sm">Chicago, IL, USA</p>
+            </div>
+          </div>
+        </div>
+        <a data-id="608" href="#" id="resume-btn-j4tn" class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white font-bold px-8 py-4 rounded-xl text-base no-underline transition">
+          <i data-id="609" data-lucide="download" class="w-5 h-5"></i> Download Resume
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer data-id="610" id="footer-k5un" class="bg-navy-dark py-8 w-full">
+    <div data-id="611" class="max-w-6xl mx-auto px-5 text-center">
+      <div data-id="612" class="flex justify-center gap-4 mb-5">
+        <a data-id="613" href="https://linkedin.com/in/rajesh-kumar-devandla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-accent text-white transition no-underline" aria-label="LinkedIn">
+          <i data-id="614" data-lucide="linkedin" class="w-4 h-4"></i>
+        </a>
+        <a data-id="615" href="mailto:rajeshdevandla11@gmail.com" class="w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-accent text-white transition no-underline" aria-label="Email">
+          <i data-id="616" data-lucide="mail" class="w-4 h-4"></i>
+        </a>
+      </div>
+      <p data-id="617" class="text-white/50 text-sm">&copy; 2026 Rajesh Kumar &middot; Chicago, IL</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button data-id="618" id="back-to-top" aria-label="Back to top">
+    <i data-id="619" data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Mobile menu toggle
+    var mobileMenuBtn = document.getElementById('mobile-menu-btn-x9ql');
+    var mobileMenu = document.getElementById('mobile-menu-p3vn');
+    var mobileMenuClose = document.getElementById('mobile-menu-close-k2wn');
+
+    mobileMenuBtn.addEventListener('click', function() {
+      mobileMenu.style.display = 'flex';
+      mobileMenu.classList.remove('hidden');
+    });
+
+    mobileMenuClose.addEventListener('click', function() {
+      mobileMenu.style.display = 'none';
+      mobileMenu.classList.add('hidden');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.style.display = 'none';
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Typing animation
+    var roles = [
+      'Full Stack Developer',
+      'Software Development Engineer',
+      'Cloud & AI Engineer',
+      'Java & Spring Boot Expert'
+    ];
+    var typingEl = document.getElementById('typing-text-v4kl');
+    var roleIndex = 0;
+    var charIndex = 0;
+    var isDeleting = false;
+    var typingSpeed = 80;
+
+    function typeEffect() {
+      var currentRole = roles[roleIndex];
+
+      if (!isDeleting) {
+        typingEl.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === currentRole.length) {
+          isDeleting = true;
+          typingSpeed = 2500;
+        } else {
+          typingSpeed = 80;
+        }
+      } else {
+        typingEl.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 40;
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+          typingSpeed = 400;
+        }
+      }
+
+      setTimeout(typeEffect, typingSpeed);
+    }
+
+    typeEffect();
+
+    // Scroll fade-in using IntersectionObserver
+    var fadeSections = document.querySelectorAll('.fade-section');
+    var fadeObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    fadeSections.forEach(function(section) {
+      fadeObserver.observe(section);
+    });
+
+    // Navbar active link highlighting on scroll
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-link');
+
+    function highlightNavLink() {
+      var scrollY = window.scrollY + 120;
+      sections.forEach(function(section) {
+        var sectionTop = section.offsetTop;
+        var sectionHeight = section.offsetHeight;
+        var sectionId = section.getAttribute('id');
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + sectionId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightNavLink);
+
+    // Navbar shadow on scroll
+    var navbar = document.getElementById('navbar-j8kl');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 20) {
+        navbar.classList.add('shadow-md');
+        navbar.classList.remove('shadow-sm');
+      } else {
+        navbar.classList.remove('shadow-md');
+        navbar.classList.add('shadow-sm');
+      }
+    });
+
+    // Scroll progress bar
+    var progressBar = document.getElementById('scroll-progress-bar');
+    window.addEventListener('scroll', function() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = scrollPercent + '%';
+    });
+
+    // Back to top button
+    var backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
