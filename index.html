@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rajesh Kumar — Portfolio</title>
+  <title>Rajesh Kumar â Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -345,6 +345,85 @@
       margin-bottom: 12px;
     }
   </style>
+<style id="vu-css">
+/* ===== ULTIMATE VISUAL UPGRADE v3 ===== */
+
+/* --- Custom Cursor --- */
+#vu-dot{position:fixed;width:8px;height:8px;background:#2563EB;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .15s,height .15s;mix-blend-mode:difference;}
+#vu-ring{position:fixed;width:36px;height:36px;border:2px solid rgba(37,99,235,.55);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .2s,height .2s,border-color .2s;}
+body:hover #vu-dot,body:hover #vu-ring{opacity:1;}
+
+/* --- Aurora Hero --- */
+@keyframes vu-aurora{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.vu-aurora{background:linear-gradient(-45deg,#060d1f,#0D1B3E,#0a2a6e,#0D1B3E,#091a45,#1a3a6b,#0d1f50)!important;background-size:400% 400%!important;animation:vu-aurora 10s ease infinite!important;}
+
+/* --- Glitch Name --- */
+@keyframes vu-glitch{
+  0%,89%,100%{clip-path:none;transform:none;opacity:1;}
+  90%{clip-path:polygon(0 15%,100% 15%,100% 22%,0 22%);transform:translate(-3px,0);color:#00ffff;}
+  91%{clip-path:polygon(0 55%,100% 55%,100% 62%,0 62%);transform:translate(3px,0);color:#ff00ff;}
+  92%{clip-path:none;transform:none;opacity:1;}
+  95%{clip-path:polygon(0 30%,100% 30%,100% 35%,0 35%);transform:translate(-2px,0);}
+  96%{clip-path:none;transform:none;}
+}
+@keyframes vu-glitch2{
+  0%,89%,100%{opacity:0;}
+  90%{opacity:.7;clip-path:polygon(0 50%,100% 50%,100% 58%,0 58%);transform:translate(4px,0);color:#ff00ff;left:2px;}
+  91%{opacity:0;}
+  95%{opacity:.5;clip-path:polygon(0 10%,100% 10%,100% 18%,0 18%);transform:translate(-4px,0);color:#00ffff;left:-2px;}
+  96%{opacity:0;}
+}
+.vu-glitch{position:relative;animation:vu-glitch 5s infinite;}
+.vu-glitch::before,.vu-glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;color:inherit;}
+.vu-glitch::before{animation:vu-glitch2 5s infinite .05s;pointer-events:none;}
+.vu-glitch::after{animation:vu-glitch2 5s infinite .1s;pointer-events:none;}
+
+/* --- Particle / Matrix canvas --- */
+#vu-particles,#vu-matrix{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+#vu-matrix{opacity:.06;}
+
+/* --- Lightning --- */
+@keyframes vu-flash{0%,88%,100%{opacity:0}89%{opacity:.12}90.5%{opacity:0}92%{opacity:.06}93%{opacity:0}}
+#vu-lightning{position:absolute;inset:0;background:#fff;pointer-events:none;z-index:0;animation:vu-flash 9s infinite;}
+
+/* --- 3D tilt base --- */
+.project-card{transform-style:preserve-3d;will-change:transform;transition:box-shadow .3s!important;}
+.project-card:hover{box-shadow:0 24px 60px rgba(13,27,62,.22)!important;}
+
+/* --- Holographic shimmer --- */
+.project-card{overflow:hidden!important;}
+.project-card::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 25%,rgba(100,220,255,.12) 40%,rgba(200,100,255,.12) 55%,transparent 70%);opacity:0;transition:opacity .4s,transform .6s;transform:translateX(-100%);pointer-events:none;z-index:5;}
+.project-card:hover::after{opacity:1;transform:translateX(100%);}
+
+/* --- Glassmorphism navbar --- */
+#navbar-j8kl{background:rgba(255,255,255,.72)!important;backdrop-filter:blur(24px) saturate(200%)!important;-webkit-backdrop-filter:blur(24px) saturate(200%)!important;border-bottom:1px solid rgba(255,255,255,.4)!important;box-shadow:0 2px 32px rgba(0,0,0,.07)!important;}
+
+/* --- Open To Work badge --- */
+@keyframes vu-otw-pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}50%{box-shadow:0 0 0 9px rgba(34,197,94,0)}}
+@keyframes vu-dot-blink{0%,100%{opacity:1}50%{opacity:.3}}
+#vu-otw{position:fixed;bottom:82px;right:22px;background:linear-gradient(135deg,#15803d,#22c55e);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 15px;border-radius:999px;z-index:9000;animation:vu-otw-pulse 2s infinite;display:flex;align-items:center;gap:7px;cursor:default;box-shadow:0 4px 14px rgba(34,197,94,.35);}
+#vu-otw span{width:7px;height:7px;background:#fff;border-radius:50%;animation:vu-dot-blink 1.2s infinite;flex-shrink:0;}
+
+/* --- Button ripple --- */
+.cta-btn{overflow:hidden!important;position:relative!important;}
+.cta-btn .vu-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:vu-ripple-anim .5s linear;}
+@keyframes vu-ripple-anim{to{transform:scale(4);opacity:0;}}
+
+/* --- Scroll progress glow --- */
+#scroll-progress-bar{background:linear-gradient(90deg,#0D1B3E,#2563EB,#00d4ff)!important;box-shadow:0 0 10px rgba(37,99,235,.7)!important;height:3px!important;}
+
+/* --- Wave divider between sections --- */
+.vu-wave{display:block;width:100%;overflow:hidden;line-height:0;margin-bottom:-2px;}
+
+/* --- Floating skill pills enhanced --- */
+.float-a,.float-b,.float-c{text-shadow:0 0 12px rgba(255,255,255,.3)!important;border:1px solid rgba(255,255,255,.25)!important;}
+
+/* --- Stat cards animated border on hover --- */
+.stat-card{position:relative;overflow:hidden;}
+.stat-card::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,#0D1B3E,#2563EB,#00d4ff,#ff00c1);border-radius:inherit;z-index:-1;opacity:0;transition:opacity .3s;}
+.stat-card:hover::before{opacity:1;}
+.stat-card:hover{transform:translateY(-6px)!important;box-shadow:0 14px 40px rgba(13,27,62,.16)!important;}
+</style>
 </head>
 <body data-id="0" class="bg-white">
   <app-icon data-id="1" hidden="" data-icon="code-2" data-palette="Dark"></app-icon>
@@ -710,7 +789,7 @@
                 <span data-id="268" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Docker</span>
                 <span data-id="269" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Kubernetes</span>
               </div>
-              <a data-id="270" href="https://github.com/Rajeshdevandla/insurance-customer-portal" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+              <a data-id="270" href="https://github.com/Rajeshdevandla/insurance-customer-portal" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline" target="_blank" rel="noopener noreferrer">View on GitHub â</a>
             </div>
           </div>
 
@@ -726,11 +805,11 @@
               <div data-id="279" style="background:#0f172a; height: 200px; padding: 14px 16px; font-family: 'Courier New', monospace; display: flex; flex-direction: column; justify-content: space-between;">
                 <div data-id="280">
                   <div data-id="281" style="font-size: 11px; color: #22d3ee; font-weight: 700; margin-bottom: 10px;">AI Pipeline Dashboard</div>
-                  <div data-id="282" style="font-size: 11px; color: #4ade80; margin-bottom: 5px;">→ Processing batch 1,247 records...</div>
-                  <div data-id="283" style="font-size: 11px; color: #22d3ee; margin-bottom: 5px;">✓ LLM extraction complete</div>
-                  <div data-id="284" style="font-size: 11px; color: #4ade80; margin-bottom: 5px;">→ Embedding vectors stored</div>
-                  <div data-id="285" style="font-size: 11px; color: #22d3ee; margin-bottom: 5px;">✓ Classification accuracy: 97.3%</div>
-                  <div data-id="286" style="font-size: 11px; color: #4ade80;">✓ Pipeline complete in 1.2s</div>
+                  <div data-id="282" style="font-size: 11px; color: #4ade80; margin-bottom: 5px;">â Processing batch 1,247 records...</div>
+                  <div data-id="283" style="font-size: 11px; color: #22d3ee; margin-bottom: 5px;">â LLM extraction complete</div>
+                  <div data-id="284" style="font-size: 11px; color: #4ade80; margin-bottom: 5px;">â Embedding vectors stored</div>
+                  <div data-id="285" style="font-size: 11px; color: #22d3ee; margin-bottom: 5px;">â Classification accuracy: 97.3%</div>
+                  <div data-id="286" style="font-size: 11px; color: #4ade80;">â Pipeline complete in 1.2s</div>
                 </div>
                 <div data-id="287">
                   <div data-id="288" style="font-size: 9px; color: #64748b; margin-bottom: 4px;">Progress</div>
@@ -757,7 +836,7 @@
                 <span data-id="310" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Elasticsearch</span>
                 <span data-id="311" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Pinecone</span>
               </div>
-              <a data-id="312" href="https://github.com/Rajeshdevandla/ai-data-pipeline" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+              <a data-id="312" href="https://github.com/Rajeshdevandla/ai-data-pipeline" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline" target="_blank" rel="noopener noreferrer">View on GitHub â</a>
             </div>
           </div>
 
@@ -775,11 +854,11 @@
                 <!-- Flow diagram -->
                 <div data-id="323" style="display:flex; align-items:center; gap:4px; flex-wrap: nowrap; overflow: hidden;">
                   <div data-id="324" style="flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0; border-left: 3px solid #2563EB; border-radius:6px; padding:6px 8px; font-size:9px; font-weight:600; color:#0D1B3E; white-space:nowrap;">API Gateway</div>
-                  <div data-id="325" style="color:#94a3b8; font-size:12px; flex-shrink:0;">→</div>
+                  <div data-id="325" style="color:#94a3b8; font-size:12px; flex-shrink:0;">â</div>
                   <div data-id="326" style="flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0; border-left: 3px solid #22c55e; border-radius:6px; padding:6px 8px; font-size:9px; font-weight:600; color:#0D1B3E; white-space:nowrap;">Auth Service</div>
-                  <div data-id="327" style="color:#94a3b8; font-size:12px; flex-shrink:0;">→</div>
+                  <div data-id="327" style="color:#94a3b8; font-size:12px; flex-shrink:0;">â</div>
                   <div data-id="328" style="flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0; border-left: 3px solid #f59e0b; border-radius:6px; padding:6px 8px; font-size:9px; font-weight:600; color:#0D1B3E; white-space:nowrap;">Transaction</div>
-                  <div data-id="329" style="color:#94a3b8; font-size:12px; flex-shrink:0;">→</div>
+                  <div data-id="329" style="color:#94a3b8; font-size:12px; flex-shrink:0;">â</div>
                   <div data-id="330" style="flex-shrink:0; background:#f8fafc; border:1px solid #e2e8f0; border-left: 3px solid #ef4444; border-radius:6px; padding:6px 8px; font-size:9px; font-weight:600; color:#0D1B3E; white-space:nowrap;">DB</div>
                 </div>
                 <!-- Table -->
@@ -830,7 +909,7 @@
                 <span data-id="373" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Docker</span>
                 <span data-id="374" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Jenkins</span>
               </div>
-              <a data-id="375" href="https://github.com/Rajeshdevandla/banking-transaction-microservices" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+              <a data-id="375" href="https://github.com/Rajeshdevandla/banking-transaction-microservices" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline" target="_blank" rel="noopener noreferrer">View on GitHub â</a>
             </div>
           </div>
 
@@ -874,9 +953,9 @@
                 </div>
                 <!-- Status pills -->
                 <div data-id="403" style="display:flex; gap:8px; justify-content:center; margin-top:8px;">
-                  <span data-id="404" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">12 Services ✓</span>
-                  <span data-id="405" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">3 Regions ✓</span>
-                  <span data-id="406" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">Zero Downtime ✓</span>
+                  <span data-id="404" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">12 Services â</span>
+                  <span data-id="405" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">3 Regions â</span>
+                  <span data-id="406" style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">Zero Downtime â</span>
                 </div>
               </div>
             </div>
@@ -897,7 +976,7 @@
                 <span data-id="426" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">CloudWatch</span>
                 <span data-id="427" class="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-navy/10 text-navy">Terraform</span>
               </div>
-              <a data-id="428" href="https://github.com/Rajeshdevandla/devops-cloud-infrastructure" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+              <a data-id="428" href="https://github.com/Rajeshdevandla/devops-cloud-infrastructure" class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-dark transition no-underline" target="_blank" rel="noopener noreferrer">View on GitHub â</a>
             </div>
           </div><div class="project-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
             <div class="browser-mockup">
@@ -909,23 +988,23 @@
               </div>
               <div style="background:#0f172a; height:200px; padding:14px 16px; font-family:'Courier New',monospace; display:flex; flex-direction:column; justify-content:space-between;">
                 <div>
-                  <div style="font-size:11px; color:#a78bfa; font-weight:700; margin-bottom:10px;">🤖 DocIQ — AI Document Intelligence</div>
-                  <div style="font-size:11px; color:#4ade80; margin-bottom:5px;">→ PDF uploaded via drag-and-drop</div>
-                  <div style="font-size:11px; color:#22d3ee; margin-bottom:5px;">✓ Kafka event: document.uploaded</div>
-                  <div style="font-size:11px; color:#4ade80; margin-bottom:5px;">→ AWS Textract OCR processing...</div>
-                  <div style="font-size:11px; color:#22d3ee; margin-bottom:5px;">✓ GPT-4o extraction complete</div>
-                  <div style="font-size:11px; color:#4ade80;">✓ Analytics dashboard updated</div>
+                  <div style="font-size:11px; color:#a78bfa; font-weight:700; margin-bottom:10px;">ð¤ DocIQ â AI Document Intelligence</div>
+                  <div style="font-size:11px; color:#4ade80; margin-bottom:5px;">â PDF uploaded via drag-and-drop</div>
+                  <div style="font-size:11px; color:#22d3ee; margin-bottom:5px;">â Kafka event: document.uploaded</div>
+                  <div style="font-size:11px; color:#4ade80; margin-bottom:5px;">â AWS Textract OCR processing...</div>
+                  <div style="font-size:11px; color:#22d3ee; margin-bottom:5px;">â GPT-4o extraction complete</div>
+                  <div style="font-size:11px; color:#4ade80;">â Analytics dashboard updated</div>
                 </div>
                 <div style="display:flex; gap:6px; flex-wrap:wrap;">
-                  <span style="background:#1e1b4b; color:#a78bfa; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">122 Files ✓</span>
-                  <span style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">4 Microservices ✓</span>
-                  <span style="background:#0c1a2e; color:#22d3ee; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">GPT-4o ✓</span>
+                  <span style="background:#1e1b4b; color:#a78bfa; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">122 Files â</span>
+                  <span style="background:#052e16; color:#4ade80; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">4 Microservices â</span>
+                  <span style="background:#0c1a2e; color:#22d3ee; font-size:9px; font-weight:600; padding:3px 8px; border-radius:8px;">GPT-4o â</span>
                 </div>
               </div>
             </div>
             <div class="p-5 md:p-6">
               <h3 class="text-lg font-bold text-navy mb-2">AI Document Intelligence Platform</h3>
-              <p class="text-sm text-gray-600 mb-4 leading-relaxed">Enterprise-grade AI document processing system — upload PDFs, run OCR via AWS Textract, extract structured data with GPT-4o/Claude, and visualize real-time analytics.</p>
+              <p class="text-sm text-gray-600 mb-4 leading-relaxed">Enterprise-grade AI document processing system â upload PDFs, run OCR via AWS Textract, extract structured data with GPT-4o/Claude, and visualize real-time analytics.</p>
               <ul class="space-y-1.5 text-sm text-gray-700 mb-4">
                 <li class="flex gap-2 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span>4 Spring Boot 3.2 microservices + Python FastAPI OCR pipeline</span></li>
                 <li class="flex gap-2 items-start"><i data-lucide="check-circle-2" class="w-4 h-4 text-accent mt-0.5 flex-shrink-0"></i><span>Apache Kafka event streaming + AWS (S3, DynamoDB, MSK, ECS)</span></li>
@@ -966,7 +1045,7 @@
                   <p data-id="441" class="text-accent font-semibold text-sm">Mutual of Omaha</p>
                 </div>
                 <div data-id="442" class="flex items-center gap-3">
-                  <span data-id="443" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="444" data-lucide="calendar" class="w-3.5 h-3.5"></i> Jan 2025 – Present</span>
+                  <span data-id="443" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="444" data-lucide="calendar" class="w-3.5 h-3.5"></i> Jan 2025 â Present</span>
                   <span data-id="445" class="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-0.5 rounded-full">Current</span>
                 </div>
               </div>
@@ -1001,10 +1080,10 @@
                   <h3 data-id="487" id="exp2-title-w5pn" class="text-lg md:text-xl font-bold text-navy">Full Stack Developer</h3>
                   <p data-id="488" class="text-accent font-semibold text-sm">Mutual of Omaha</p>
                 </div>
-                <span data-id="489" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="490" data-lucide="calendar" class="w-3.5 h-3.5"></i> Jan 2023 – Dec 2023</span>
+                <span data-id="489" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="490" data-lucide="calendar" class="w-3.5 h-3.5"></i> Jan 2023 â Dec 2023</span>
               </div>
               <ul data-id="491" class="space-y-2 text-sm text-gray-700 leading-relaxed mb-5">
-                <li data-id="492" class="flex gap-2"><span data-id="493" class="text-accent mt-1 flex-shrink-0"><i data-id="494" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="495">Built full-stack applications using Angular and Spring Boot + Java 11, ensuring seamless UI–API integration.</span></li>
+                <li data-id="492" class="flex gap-2"><span data-id="493" class="text-accent mt-1 flex-shrink-0"><i data-id="494" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="495">Built full-stack applications using Angular and Spring Boot + Java 11, ensuring seamless UIâAPI integration.</span></li>
                 <li data-id="496" class="flex gap-2"><span data-id="497" class="text-accent mt-1 flex-shrink-0"><i data-id="498" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="499">Designed and implemented RESTful APIs, reducing average API response latency by 30%.</span></li>
                 <li data-id="500" class="flex gap-2"><span data-id="501" class="text-accent mt-1 flex-shrink-0"><i data-id="502" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="503">Integrated AWS services (Lambda, EC2, S3) to automate background tasks and improve system reliability.</span></li>
                 <li data-id="504" class="flex gap-2"><span data-id="505" class="text-accent mt-1 flex-shrink-0"><i data-id="506" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="507">Built asynchronous data streaming flows using Kafka, improving event processing and real-time data movement.</span></li>
@@ -1031,7 +1110,7 @@
                   <h3 data-id="525" id="exp3-title-r8kn" class="text-lg md:text-xl font-bold text-navy">Software Engineer</h3>
                   <p data-id="526" class="text-accent font-semibold text-sm">MUFG Bank, PUB Bank</p>
                 </div>
-                <span data-id="527" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="528" data-lucide="calendar" class="w-3.5 h-3.5"></i> Feb 2020 – Aug 2022</span>
+                <span data-id="527" class="text-xs font-medium text-gray-500 flex items-center gap-1"><i data-id="528" data-lucide="calendar" class="w-3.5 h-3.5"></i> Feb 2020 â Aug 2022</span>
               </div>
               <ul data-id="529" class="space-y-2 text-sm text-gray-700 leading-relaxed mb-5">
                 <li data-id="530" class="flex gap-2"><span data-id="531" class="text-accent mt-1 flex-shrink-0"><i data-id="532" data-lucide="check-circle-2" class="w-4 h-4"></i></span><span data-id="533">Developed backend components using Java, Spring Boot, Hibernate, JPA, and JDBC focusing on secure data handling and high throughput.</span></li>
@@ -1072,7 +1151,7 @@
             </div>
             <div data-id="569" class="p-5 md:p-6">
               <p data-id="570" class="font-semibold text-navy text-sm md:text-base mb-2">Master of Science in Information Systems &amp; Project Management</p>
-              <p data-id="571" class="text-gray-500 text-sm flex items-center gap-1.5"><i data-id="572" data-lucide="calendar" class="w-4 h-4"></i> September 2022 – November 2024</p>
+              <p data-id="571" class="text-gray-500 text-sm flex items-center gap-1.5"><i data-id="572" data-lucide="calendar" class="w-4 h-4"></i> September 2022 â November 2024</p>
             </div>
           </div>
           <div data-id="573" id="edu-card2-c9rn" class="rounded-2xl overflow-hidden shadow-sm border border-gray-100 bg-white">
@@ -1087,7 +1166,7 @@
             </div>
             <div data-id="580" class="p-5 md:p-6">
               <p data-id="581" class="font-semibold text-navy text-sm md:text-base mb-2">Bachelor of Science in Computer Science</p>
-              <p data-id="582" class="text-gray-500 text-sm flex items-center gap-1.5"><i data-id="583" data-lucide="calendar" class="w-4 h-4"></i> August 2017 – June 2021</p>
+              <p data-id="582" class="text-gray-500 text-sm flex items-center gap-1.5"><i data-id="583" data-lucide="calendar" class="w-4 h-4"></i> August 2017 â June 2021</p>
             </div>
           </div>
         </div>
@@ -1148,7 +1227,7 @@
           <i data-id="616" data-lucide="mail" class="w-4 h-4"></i>
         </a>
       </div>
-      <p data-id="617" class="text-white/50 text-sm">© 2026 Rajesh Kumar · Chicago, IL</p>
+      <p data-id="617" class="text-white/50 text-sm">Â© 2026 Rajesh Kumar Â· Chicago, IL</p>
     </div>
   </footer>
 
@@ -1303,4 +1382,123 @@
     });
   </script>
 
+<script id="vu-js">
+(function(){
+  /* --- Custom Cursor --- */
+  var dot=document.createElement('div');dot.id='vu-dot';
+  var ring=document.createElement('div');ring.id='vu-ring';
+  document.body.appendChild(dot);document.body.appendChild(ring);
+  var mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  setInterval(function(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+'px';ring.style.top=ry+'px';},16);
+  document.querySelectorAll('a,button').forEach(function(el){
+    el.addEventListener('mouseenter',function(){ring.style.width='54px';ring.style.height='54px';ring.style.borderColor='rgba(37,99,235,.9)';});
+    el.addEventListener('mouseleave',function(){ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(37,99,235,.55)';});
+  });
+
+  /* --- Aurora Hero --- */
+  var hero=document.getElementById('hero');
+  if(hero) hero.classList.add('vu-aurora');
+
+  /* --- Glitch Name --- */
+  var nm=document.getElementById('hero-name-k3nm');
+  if(nm){nm.classList.add('vu-glitch');nm.setAttribute('data-text',nm.textContent);}
+
+  /* --- Particle Canvas --- */
+  if(hero){
+    var pc=document.createElement('canvas');pc.id='vu-particles';
+    hero.insertBefore(pc,hero.firstChild);
+    var ctx2=pc.getContext('2d');
+    function rsz(){pc.width=hero.offsetWidth;pc.height=hero.offsetHeight;}rsz();
+    window.addEventListener('resize',rsz);
+    var pts=[];for(var i=0;i<70;i++)pts.push({x:Math.random()*pc.width,y:Math.random()*pc.height,r:Math.random()*1.8+.4,dx:(Math.random()-.5)*.35,dy:(Math.random()-.5)*.35,o:Math.random()*.45+.08});
+    function animP(){
+      ctx2.clearRect(0,0,pc.width,pc.height);
+      for(var p of pts){p.x+=p.dx;p.y+=p.dy;if(p.x<0)p.x=pc.width;if(p.x>pc.width)p.x=0;if(p.y<0)p.y=pc.height;if(p.y>pc.height)p.y=0;ctx2.beginPath();ctx2.arc(p.x,p.y,p.r,0,Math.PI*2);ctx2.fillStyle='rgba(255,255,255,'+p.o+')';ctx2.fill();}
+      for(var a=0;a<pts.length;a++)for(var b=a+1;b<pts.length;b++){var ddx=pts[a].x-pts[b].x,ddy=pts[a].y-pts[b].y,d=Math.sqrt(ddx*ddx+ddy*ddy);if(d<90){ctx2.beginPath();ctx2.moveTo(pts[a].x,pts[a].y);ctx2.lineTo(pts[b].x,pts[b].y);ctx2.strokeStyle='rgba(255,255,255,'+(0.07*(1-d/90))+')';ctx2.lineWidth=.5;ctx2.stroke();}}
+      requestAnimationFrame(animP);
+    }animP();
+
+    /* --- Matrix Canvas --- */
+    var mc=document.createElement('canvas');mc.id='vu-matrix';
+    hero.insertBefore(mc,hero.firstChild);
+    var mctx=mc.getContext('2d');
+    function mrsz(){mc.width=hero.offsetWidth;mc.height=hero.offsetHeight;}mrsz();
+    window.addEventListener('resize',mrsz);
+    var cols=Math.floor(mc.width/14),drops=Array(cols).fill(1);
+    function drawMatrix(){
+      mctx.fillStyle='rgba(13,27,62,.18)';mctx.fillRect(0,0,mc.width,mc.height);
+      mctx.fillStyle='#22c55e';mctx.font='12px monospace';
+      for(var i=0;i<drops.length;i++){mctx.fillText(String.fromCharCode(0x30A0+Math.random()*96),i*14,drops[i]*14);if(drops[i]*14>mc.height&&Math.random()>.975)drops[i]=0;drops[i]++;}
+    }
+    setInterval(drawMatrix,80);
+
+    /* --- Lightning --- */
+    var lg=document.createElement('div');lg.id='vu-lightning';hero.appendChild(lg);
+  }
+
+  /* --- Open To Work Badge --- */
+  var otw=document.createElement('div');otw.id='vu-otw';
+  otw.innerHTML='<span></span>Open to Work';
+  document.body.appendChild(otw);
+
+  /* --- 3D Card Tilt --- */
+  document.querySelectorAll('.project-card').forEach(function(card){
+    card.addEventListener('mousemove',function(e){
+      var r=card.getBoundingClientRect();
+      var xp=e.clientX-r.left,yp=e.clientY-r.top;
+      var cx=r.width/2,cy=r.height/2;
+      var rx2=((yp-cy)/cy)*7,ry2=((cx-xp)/cx)*7;
+      card.style.transform='perspective(900px) rotateX('+rx2+'deg) rotateY('+ry2+'deg) scale(1.025)';
+    });
+    card.addEventListener('mouseleave',function(){card.style.transform='';});
+  });
+
+  /* --- Button Ripple --- */
+  document.querySelectorAll('.cta-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      var r=btn.getBoundingClientRect();
+      var circle=document.createElement('span');circle.className='vu-ripple';
+      var sz=Math.max(btn.clientWidth,btn.clientHeight);
+      circle.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-r.left-sz/2)+'px;top:'+(e.clientY-r.top-sz/2)+'px;';
+      btn.appendChild(circle);setTimeout(function(){circle.remove();},500);
+    });
+  });
+
+  /* --- Animated Counters --- */
+  var statsEl=document.getElementById('about-stats-c4xn');
+  if(statsEl){
+    var cards=statsEl.querySelectorAll('.stat-card');
+    var targets=[{val:4,sfx:'+',dur:1400},{val:3,sfx:'',dur:1000},{val:2,sfx:'',dur:800},{val:99.9,sfx:'%',dur:2000}];
+    var triggered=false;
+    var obs=new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting&&!triggered){
+        triggered=true;
+        cards.forEach(function(card,i){
+          var tgt=targets[i];if(!tgt)return;
+          var numEl=card.querySelector('div:first-child');if(!numEl)return;
+          var start=Date.now();
+          (function tick(){
+            var elapsed=Date.now()-start;
+            var prog=Math.min(elapsed/tgt.dur,1);
+            var eased=1-Math.pow(1-prog,3);
+            var v=tgt.val*eased;
+            numEl.textContent=(Number.isInteger(tgt.val)?Math.floor(v).toString():v.toFixed(1))+tgt.sfx;
+            if(prog<1)requestAnimationFrame(tick);else numEl.textContent=tgt.val+tgt.sfx;
+          })();
+        });
+      }
+    },{threshold:.4});
+    obs.observe(statsEl);
+  }
+
+  /* --- Parallax Hero --- */
+  window.addEventListener('scroll',function(){
+    var sy=window.scrollY;
+    var hc=document.querySelector('#hero .relative.z-10');
+    if(hc&&sy<window.innerHeight)hc.style.transform='translateY('+(sy*.28)+'px)';
+  },{passive:true});
+
+})();
+</script>
 </body></html>
