@@ -1,1324 +1,1527 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Rajesh Kumar — Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rajesh Kumar — Java & Full Stack Developer specializing in Spring Boot, Microservices, AWS, and React/Angular." />
-
-  <!-- Font & Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous" />
-
-  <!-- Basic Styling (you can move this to styles.css) -->
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --accent: #915eff;
-      --accent-soft: rgba(145, 94, 255, 0.15);
-      --text: #f5f5f5;
-      --muted: #a0a0b8;
-      --border: #26263a;
-      --card-bg: #0f172a;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --radius-pill: 999px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* Layout */
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-    }
-
-    /* Navbar */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.75), transparent);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-    }
-
-    .navbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .brand-avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0, #22d3ee, #6366f1 40%, #0f172a 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #e5e7eb;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #e5e7eb;
-    }
-
-    .brand-role {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      color: #cbd5f5;
-      padding: 0.25rem 0;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.2rem;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(to right, #22d3ee, #a855f7, #f97316);
-      transition: width 0.2s ease-out;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .nav-cta a.btn-outline {
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.35rem 0.9rem;
-      font-size: 0.8rem;
-      color: #e5e7eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 55%);
-    }
-
-    .nav-cta a.btn-outline:hover {
-      border-color: #e5e7eb;
-      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.3), transparent 60%);
-    }
-
-    .nav-cta a.icon-link {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #e5e7eb;
-      font-size: 0.8rem;
-      background: radial-gradient(circle at top, rgba(148, 163, 184, 0.25), transparent 60%);
-    }
-
-    .nav-cta a.icon-link:hover {
-      border-color: #e5e7eb;
-      transform: translateY(-1px);
-    }
-
-    /* Hero */
-    .hero {
-      padding: 3.5rem 0 2.5rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .hero-kicker {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #a5b4fc;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .hero-kicker span.dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: radial-gradient(circle at center, #22d3ee, #0ea5e9);
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
-    }
-
-    .hero-title {
-      font-size: clamp(2.1rem, 3vw, 2.7rem);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero-title span.accent {
-      background: linear-gradient(to right, #22d3ee, #a855f7, #f97316);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 0.95rem;
-      color: var(--muted);
-      max-width: 34rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .tag {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: #e5e7eb;
-      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
-    }
-
-    .tag-primary {
-      border-color: rgba(129, 140, 248, 0.9);
-      background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.35), transparent 60%);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      align-items: center;
-      margin-bottom: 1.4rem;
-    }
-
-    .btn-primary {
-      border-radius: var(--radius-pill);
-      padding: 0.55rem 1.3rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-      border: none;
-      color: #0b1020;
-      background: linear-gradient(135deg, #22d3ee, #a855f7, #f97316);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.05);
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      border-radius: var(--radius-pill);
-      padding: 0.55rem 1.1rem;
-      font-size: 0.85rem;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: #e5e7eb;
-      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .btn-ghost:hover {
-      border-color: #e5e7eb;
-    }
-
-    .hero-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-    }
-
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .hero-meta i {
-      color: #a5b4fc;
-    }
-
-    .hero-card {
-      border-radius: 24px;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: var(--shadow-soft);
-      padding: 1.4rem 1.3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .hero-card-title {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #e5e7eb;
-    }
-
-    .hero-card-sub {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .hero-card-badge {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(52, 211, 153, 0.7);
-      color: #bbf7d0;
-      background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.25), transparent 60%);
-    }
-
-    .hero-card-body {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 1.1rem;
-      align-items: center;
-    }
-
-    .hero-card-list {
-      font-size: 0.8rem;
-      color: #cbd5f5;
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .hero-card-list span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-card-list i {
-      color: #22d3ee;
-      font-size: 0.75rem;
-    }
-
-    .hero-card-visual {
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.35), rgba(15, 23, 42, 0.95));
-      padding: 0.7rem 0.8rem;
-      font-size: 0.75rem;
-      color: #e5e7eb;
-      display: grid;
-      gap: 0.35rem;
-    }
-
-    .hero-card-visual-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .hero-card-visual-label {
-      color: #a5b4fc;
-    }
-
-    .hero-card-visual-pill {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-    }
-
-    /* Sections */
-    section {
-      padding: 2.5rem 0;
-    }
-
-    .section-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .section-kicker {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #a5b4fc;
-      margin-bottom: 0.4rem;
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 32rem;
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .about-text {
-      font-size: 0.9rem;
-      color: #e5e7eb;
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .about-highlight {
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
-      padding: 0.8rem 0.9rem;
-      font-size: 0.8rem;
-      color: #cbd5f5;
-    }
-
-    .about-highlight strong {
-      color: #e5e7eb;
-    }
-
-    .about-meta {
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .about-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .about-meta i {
-      color: #a5b4fc;
-    }
-
-    .about-card {
-      border-radius: 20px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
-      padding: 1rem 1rem 1.1rem;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.8rem;
-      color: #e5e7eb;
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .about-card-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .about-card-label {
-      color: #a5b4fc;
-    }
-
-    .about-card-pill {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: rgba(15, 23, 42, 0.7);
-    }
-
-    .about-card-list {
-      display: grid;
-      gap: 0.25rem;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 1rem;
-    }
-
-    .skill-card {
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
-      padding: 0.9rem 0.9rem 0.95rem;
-      font-size: 0.8rem;
-      color: #e5e7eb;
-      display: grid;
-      gap: 0.45rem;
-    }
-
-    .skill-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.2rem;
-    }
-
-    .skill-card-title {
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .skill-card-badge {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: #cbd5f5;
-      background: rgba(15, 23, 42, 0.7);
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-
-    .skill-tag {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .project-card {
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
-      padding: 0.95rem 0.95rem 1rem;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.8rem;
-      color: #e5e7eb;
-      display: grid;
-      gap: 0.55rem;
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .project-title {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .project-links {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .project-links a {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .project-links a:hover {
-      border-color: #e5e7eb;
-    }
-
-    .project-meta {
-      font-size: 0.75rem;
-      color: #a5b4fc;
-    }
-
-    .project-body {
-      font-size: 0.8rem;
-      color: #cbd5f5;
-    }
-
-    .project-list {
-      margin-top: 0.35rem;
-      display: grid;
-      gap: 0.25rem;
-    }
-
-    .project-list span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .project-list i {
-      color: #22d3ee;
-      font-size: 0.7rem;
-    }
-
-    .project-tags {
-      margin-top: 0.4rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-
-    .project-tag {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-      color: #e5e7eb;
-    }
-
-    /* Contact */
-    .contact-card {
-      border-radius: 18px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
-      padding: 1rem 1rem 1.1rem;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.85rem;
-      color: #e5e7eb;
-      display: grid;
-      gap: 0.7rem;
-    }
-
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .contact-info {
-      display: grid;
-      gap: 0.3rem;
-      font-size: 0.8rem;
-      color: #cbd5f5;
-    }
-
-    .contact-info span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .contact-info i {
-      color: #a5b4fc;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      align-items: center;
-    }
-
-    .contact-actions a {
-      font-size: 0.8rem;
-    }
-
-    /* Footer */
-    .footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.18);
-      padding: 1.2rem 0 1.4rem;
-      margin-top: 1.5rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.7rem;
-    }
-
-    .footer-meta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .footer-meta span.dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 999px;
-      background: #64748b;
-    }
-
-    .footer-links {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .footer-links a {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      color: #e5e7eb;
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .footer-links a:hover {
-      border-color: #e5e7eb;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero-grid,
-      .about-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero {
-        padding-top: 2.5rem;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .navbar-inner {
-        flex-wrap: wrap;
-        gap: 0.7rem;
-      }
-
-      .nav-links {
-        display: none; /* keep it simple; you can add a mobile menu later */
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Rajesh Kumar — Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Rajesh Kumar — Java & Full Stack Developer specializing in Spring Boot, Microservices, AWS, and React/Angular." />
+
+<!-- Font & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous" />
+
+<!-- Basic Styling (you can move this to styles.css) -->
+<style>
+:root {
+  --bg: #050816;
+  --bg-alt: #0b1020;
+  --accent: #915eff;
+  --accent-soft: rgba(145, 94, 255, 0.15);
+  --text: #f5f5f5;
+  --muted: #a0a0b8;
+  --border: #26263a;
+  --card-bg: #0f172a;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Layout */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.75), transparent);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+  position: relative;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 0, #22d3ee, #6366f1 40%, #0f172a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+}
+
+.brand-role {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.nav-links a {
+  color: #cbd5f5;
+  padding: 0.25rem 0;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #22d3ee, #a855f7, #f97316);
+  transition: width 0.2s ease-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-cta a.btn-outline {
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  color: #e5e7eb;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 55%);
+}
+
+.nav-cta a.btn-outline:hover {
+  border-color: #e5e7eb;
+  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.3), transparent 60%);
+}
+
+.nav-cta a.icon-link {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e5e7eb;
+  font-size: 0.8rem;
+  background: radial-gradient(circle at top, rgba(148, 163, 184, 0.25), transparent 60%);
+}
+
+.nav-cta a.icon-link:hover {
+  border-color: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* Hamburger menu button */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  border-radius: var(--radius-md);
+  color: #e5e7eb;
+  cursor: pointer;
+  padding: 0.4rem 0.55rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.nav-hamburger:hover {
+  border-color: #e5e7eb;
+  background: rgba(148, 163, 184, 0.1);
+}
+
+/* Mobile nav overlay */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  background: rgba(2, 6, 23, 0.97);
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+  padding: 1rem 1.25rem 1.25rem;
+  position: absolute;
+  top: 100%;
+  left: -1.25rem;
+  right: -1.25rem;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+}
+
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-nav a {
+  color: #cbd5f5;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav a:hover {
+  color: #e5e7eb;
+}
+
+.mobile-nav-divider {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.15);
+  margin: 0.5rem 0;
+}
+
+/* Hero */
+.hero {
+  padding: 3.5rem 0 2.5rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-kicker {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #a5b4fc;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.hero-kicker span.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle at center, #22d3ee, #0ea5e9);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+}
+
+.hero-title {
+  font-size: clamp(2.1rem, 3vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.7rem;
+}
+
+.hero-title span.accent {
+  background: linear-gradient(to right, #22d3ee, #a855f7, #f97316);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 34rem;
+  margin-bottom: 1.4rem;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.6rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #e5e7eb;
+  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
+}
+
+.tag-primary {
+  border-color: rgba(129, 140, 248, 0.9);
+  background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.35), transparent 60%);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  margin-bottom: 1.4rem;
+}
+
+.btn-primary {
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.3rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  color: #0b1020;
+  background: linear-gradient(135deg, #22d3ee, #a855f7, #f97316);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  border-radius: var(--radius-pill);
+  padding: 0.55rem 1.1rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  color: #e5e7eb;
+  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.btn-ghost:hover {
+  border-color: #e5e7eb;
+}
+
+.hero-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hero-meta i {
+  color: #a5b4fc;
+}
+
+.hero-card {
+  border-radius: 24px;
+  background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: var(--shadow-soft);
+  padding: 1.4rem 1.3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.hero-card-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #e5e7eb;
+}
+
+.hero-card-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.hero-card-badge {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(52, 211, 153, 0.7);
+  color: #bbf7d0;
+  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.25), transparent 60%);
+}
+
+.hero-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: center;
+}
+
+.hero-card-list {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.hero-card-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-card-list i {
+  color: #22d3ee;
+  font-size: 0.75rem;
+}
+
+.hero-card-visual {
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.35), rgba(15, 23, 42, 0.95));
+  padding: 0.7rem 0.8rem;
+  font-size: 0.75rem;
+  color: #e5e7eb;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.hero-card-visual-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-card-visual-label {
+  color: #a5b4fc;
+}
+
+.hero-card-visual-pill {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+/* Sections */
+section {
+  padding: 2.5rem 0;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-kicker {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #a5b4fc;
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 32rem;
+}
+
+/* About */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.about-text {
+  font-size: 0.9rem;
+  color: #e5e7eb;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.about-highlight {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
+  padding: 0.8rem 0.9rem;
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.about-highlight strong {
+  color: #e5e7eb;
+}
+
+.about-meta {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.about-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.about-meta i {
+  color: #a5b4fc;
+}
+
+.about-card {
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
+  padding: 1rem 1rem 1.1rem;
+  box-shadow: var(--shadow-soft);
+  font-size: 0.8rem;
+  color: #e5e7eb;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.about-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-card-label {
+  color: #a5b4fc;
+}
+
+.about-card-pill {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.about-card-list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.skill-card {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
+  padding: 0.9rem 0.9rem 0.95rem;
+  font-size: 0.8rem;
+  color: #e5e7eb;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.skill-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.skill-card-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.skill-card-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  color: #cbd5f5;
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.skill-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+/* Projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.project-card {
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
+  padding: 0.95rem 0.95rem 1rem;
+  box-shadow: var(--shadow-soft);
+  font-size: 0.8rem;
+  color: #e5e7eb;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.project-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.project-links a {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.project-links a:hover {
+  border-color: #e5e7eb;
+}
+
+.project-meta {
+  font-size: 0.75rem;
+  color: #a5b4fc;
+}
+
+.project-body {
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.project-list {
+  margin-top: 0.35rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.project-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.project-list i {
+  color: #22d3ee;
+  font-size: 0.7rem;
+}
+
+.project-tags {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.project-tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+}
+
+/* Contact */
+.contact-card {
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
+  padding: 1rem 1rem 1.1rem;
+  box-shadow: var(--shadow-soft);
+  font-size: 0.85rem;
+  color: #e5e7eb;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-info {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.contact-info span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.contact-info i {
+  color: #a5b4fc;
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.contact-actions a {
+  font-size: 0.8rem;
+}
+
+/* Contact Form */
+.contact-form {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+  padding-top: 1rem;
+}
+
+.contact-form-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #e5e7eb;
+  margin-bottom: 0.15rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.form-group {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.form-group input,
+.form-group textarea {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: var(--radius-md);
+  color: #e5e7eb;
+  font-family: inherit;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.75rem;
+  outline: none;
+  transition: border-color 0.15s;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #4b5563;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(129, 140, 248, 0.7);
+}
+
+.form-submit {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.form-status {
+  font-size: 0.8rem;
+  color: #22d3ee;
+  display: none;
+}
+
+.form-status.visible {
+  display: block;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  padding: 1.2rem 0 1.4rem;
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.footer-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-meta span.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #64748b;
+}
+
+.footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.footer-links a:hover {
+  border-color: #e5e7eb;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero-grid,
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero {
+    padding-top: 2.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
 <body>
-  <div class="page">
-    <!-- NAVBAR -->
-    <header class="navbar">
+<div class="page">
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <div class="brand">
+          <div class="brand-avatar">RK</div>
+          <div class="brand-text">
+            <span class="brand-name">Rajesh Kumar</span>
+            <span class="brand-role">Java &amp; Full Stack Developer</span>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn-outline" href="/assets/Rajesh_Kumar_Resume.pdf" download>
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>Download Resume</span>
+          </a>
+          <a class="icon-link" href="https://github.com/Rajeshdevandla" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a class="icon-link" href="https://www.linkedin.com/in/rajesh-kumar-devandla" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+        <!-- Hamburger button (mobile only) -->
+        <button class="nav-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+          <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
+        </button>
+      </div>
+      <!-- Mobile dropdown nav -->
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <a href="#about" onclick="closeMobileNav()"><i class="fa-solid fa-user"></i> About</a>
+        <a href="#skills" onclick="closeMobileNav()"><i class="fa-solid fa-code"></i> Skills</a>
+        <a href="#projects" onclick="closeMobileNav()"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+        <a href="#contact" onclick="closeMobileNav()"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+        <div class="mobile-nav-divider"></div>
+        <a href="/assets/Rajesh_Kumar_Resume.pdf" download><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+        <a href="https://github.com/Rajeshdevandla" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/rajesh-kumar-devandla" target="_blank"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
       <div class="container">
-        <div class="navbar-inner">
-          <div class="brand">
-            <div class="brand-avatar">RK</div>
-            <div class="brand-text">
-              <span class="brand-name">Rajesh Kumar</span>
-              <span class="brand-role">Java & Full Stack Developer</span>
+        <div class="hero-grid">
+          <div>
+            <div class="hero-kicker">
+              <span class="dot"></span>
+              <span>Building reliable backend systems &amp; clean UIs</span>
+            </div>
+            <h1 class="hero-title">
+              Java &amp; Full Stack Developer crafting
+              <span class="accent">production&#8209;ready microservices</span>
+              and modern web apps.
+            </h1>
+            <p class="hero-subtitle">
+              I specialize in Java, Spring Boot, Microservices, and AWS—backed by hands&#8209;on experience with React/Angular
+              frontends and event&#8209;driven architectures. I enjoy taking ideas from requirements to deployed, observable systems.
+            </p>
+
+            <div class="hero-tags">
+              <span class="tag tag-primary">Java · Spring Boot · Microservices</span>
+              <span class="tag">AWS (EC2, S3, Lambda, DynamoDB, SQS, SNS)</span>
+              <span class="tag">React · Angular</span>
+              <span class="tag">Kafka · Event&#8209;Driven</span>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn-primary">
+                <i class="fa-solid fa-diagram-project"></i>
+                <span>View Selected Projects</span>
+              </a>
+              <a href="#contact" class="btn-ghost">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Open to Java Developer roles</span>
+              </a>
+            </div>
+
+            <div class="hero-meta">
+              <span>
+                <i class="fa-solid fa-location-dot"></i>
+                Chicago Area · Open to relocation within US
+              </span>
+              <span>
+                <i class="fa-solid fa-briefcase"></i>
+                Focus: Backend&#8209;heavy Full Stack · Microservices · Cloud&#8209;native
+              </span>
             </div>
           </div>
-          <nav class="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <div class="nav-cta">
-            <a class="btn-outline" href="/assets/Rajesh_Kumar_Resume.pdf" download>
-              <i class="fa-solid fa-file-arrow-down"></i>
-              <span>Download Resume</span>
-            </a>
-            <a class="icon-link" href="https://github.com/rajeshdevandla" target="_blank" aria-label="GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a class="icon-link" href="https://www.linkedin.com/in/rajesh-kumar-devandla" target="_blank" aria-label="LinkedIn">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
+
+          <aside class="hero-card" aria-label="Snapshot of current stack">
+            <div class="hero-card-header">
+              <div>
+                <div class="hero-card-title">Current Focus</div>
+                <div class="hero-card-sub">Production&#8209;grade backend &amp; AI&#8209;adjacent systems</div>
+              </div>
+              <span class="hero-card-badge">Actively interviewing</span>
+            </div>
+            <div class="hero-card-body">
+              <div class="hero-card-list">
+                <span><i class="fa-solid fa-circle-check"></i> Java · Spring Boot · REST APIs · Microservices</span>
+                <span><i class="fa-solid fa-circle-check"></i> AWS: EC2, S3, Lambda, DynamoDB, SQS, SNS</span>
+                <span><i class="fa-solid fa-circle-check"></i> React / Angular frontends with reusable components</span>
+                <span><i class="fa-solid fa-circle-check"></i> Kafka &amp; event&#8209;driven architecture</span>
+                <span><i class="fa-solid fa-circle-check"></i> AI/OCR pipelines &amp; document intelligence</span>
+              </div>
+              <div class="hero-card-visual">
+                <div class="hero-card-visual-row">
+                  <span class="hero-card-visual-label">Recent work</span>
+                  <span class="hero-card-visual-pill">AI Document Intelligence</span>
+                </div>
+                <div class="hero-card-visual-row">
+                  <span class="hero-card-visual-label">Stack</span>
+                  <span class="hero-card-visual-pill">Spring Boot · AWS · React</span>
+                </div>
+                <div class="hero-card-visual-row">
+                  <span class="hero-card-visual-label">Focus</span>
+                  <span class="hero-card-visual-pill">Scalable APIs &amp; clean UX</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">About</div>
+          <h2 class="section-title">Who I am as an engineer</h2>
+          <p class="section-subtitle">
+            I enjoy building systems that are reliable, observable, and pleasant to work with—both for users and other developers.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I'm a Java&#8209;focused Full Stack Developer with strong experience in Spring Boot, RESTful microservices, and AWS.
+              I've built event&#8209;driven backends, integrated AI/OCR pipelines, and shipped frontends using React and Angular.
+            </p>
+            <p>
+              I care about clean abstractions, clear APIs, and making debugging easier through logging, metrics, and tracing.
+              I thrive in Agile environments and enjoy collaborating closely with product and QA to ship features that actually
+              solve user problems.
+            </p>
+            <div class="about-highlight">
+              <strong>What I'm looking for:</strong> Java Developer / Backend&#8209;leaning Full Stack roles where I can own services
+              end&#8209;to&#8209;end—design, implementation, testing, deployment, and monitoring—ideally in a cloud&#8209;native, microservices&#8209;based
+              environment.
+            </div>
+            <div class="about-meta">
+              <span>
+                <i class="fa-solid fa-location-dot"></i>
+                Based in the Chicago area · Open to hybrid/remote roles across the US
+              </span>
+              <span>
+                <i class="fa-solid fa-code-branch"></i>
+                Comfortable with Git, CI/CD pipelines, and collaborative code reviews
+              </span>
+              <span>
+                <i class="fa-solid fa-users"></i>
+                Enjoy mentoring, pairing, and breaking down complex tasks into shippable pieces
+              </span>
+            </div>
+          </div>
+
+          <aside class="about-card" aria-label="Experience snapshot">
+            <div class="about-card-row">
+              <span class="about-card-label">Primary stack</span>
+              <span class="about-card-pill">Java · Spring Boot · AWS</span>
+            </div>
+            <div class="about-card-list">
+              <span>• Designed and implemented REST APIs and microservices for business&#8209;critical workflows.</span>
+              <span>• Built event&#8209;driven components using Kafka and AWS messaging services.</span>
+              <span>• Integrated OCR/AI services into document processing pipelines.</span>
+              <span>• Developed responsive UIs with React and Angular, consuming backend APIs.</span>
+            </div>
+            <div class="about-card-row">
+              <span class="about-card-label">Strengths</span>
+              <span class="about-card-pill">Ownership · Reliability · Clarity</span>
+            </div>
+            <div class="about-card-list">
+              <span>• Turning vague requirements into concrete, testable designs.</span>
+              <span>• Keeping systems observable and debuggable from day one.</span>
+              <span>• Communicating trade&#8209;offs clearly with both technical and non&#8209;technical stakeholders.</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Skills</div>
+          <h2 class="section-title">Technologies I work with</h2>
+          <p class="section-subtitle">
+            A focused stack around Java, Spring Boot, microservices, and AWS—with enough frontend and DevOps to ship end&#8209;to&#8209;end.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <span class="skill-card-title">Backend &amp; Core</span>
+              <span class="skill-card-badge">Primary</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Spring Boot</span>
+              <span class="skill-tag">Spring MVC</span>
+              <span class="skill-tag">Spring Data JPA</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">Microservices</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <span class="skill-card-title">Cloud &amp; Messaging</span>
+              <span class="skill-card-badge">AWS&#8209;focused</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">AWS EC2</span>
+              <span class="skill-tag">AWS S3</span>
+              <span class="skill-tag">AWS Lambda</span>
+              <span class="skill-tag">AWS DynamoDB</span>
+              <span class="skill-tag">AWS SQS</span>
+              <span class="skill-tag">AWS SNS</span>
+              <span class="skill-tag">Kafka</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <span class="skill-card-title">Frontend</span>
+              <span class="skill-card-badge">Production&#8209;ready</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Angular</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">Responsive Design</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <span class="skill-card-title">Data &amp; Persistence</span>
+              <span class="skill-card-badge">Databases</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">DynamoDB</span>
+              <span class="skill-tag">Hibernate / JPA</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <span class="skill-card-title">DevOps &amp; Tooling</span>
+              <span class="skill-card-badge">Delivery</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">Maven</span>
+              <span class="skill-tag">Gradle</span>
+              <span class="skill-tag">CI/CD</span>
+              <span class="skill-tag">Docker</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-header">
+              <span class="skill-card-title">AI / Document Intelligence</span>
+              <span class="skill-card-badge">Interest</span>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-tag">OCR Pipelines</span>
+              <span class="skill-tag">AWS Textract</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">LLM&#8209;powered backends</span>
+            </div>
           </div>
         </div>
       </div>
-    </header>
+    </section>
 
-    <!-- HERO -->
-    <main>
-      <section class="hero">
-        <div class="container">
-          <div class="hero-grid">
-            <div>
-              <div class="hero-kicker">
-                <span class="dot"></span>
-                <span>Building reliable backend systems & clean UIs</span>
-              </div>
-              <h1 class="hero-title">
-                Java & Full Stack Developer crafting
-                <span class="accent">production‑ready microservices</span>
-                and modern web apps.
-              </h1>
-              <p class="hero-subtitle">
-                I specialize in Java, Spring Boot, Microservices, and AWS—backed by hands‑on experience with React/Angular
-                frontends and event‑driven architectures. I enjoy taking ideas from requirements to deployed, observable systems.
-              </p>
-
-              <div class="hero-tags">
-                <span class="tag tag-primary">Java · Spring Boot · Microservices</span>
-                <span class="tag">AWS (EC2, S3, Lambda, DynamoDB, SQS, SNS)</span>
-                <span class="tag">React · Angular</span>
-                <span class="tag">Kafka · Event‑Driven</span>
-              </div>
-
-              <div class="hero-actions">
-                <a href="#projects" class="btn-primary">
-                  <i class="fa-solid fa-diagram-project"></i>
-                  <span>View Selected Projects</span>
-                </a>
-                <a href="#contact" class="btn-ghost">
-                  <i class="fa-solid fa-paper-plane"></i>
-                  <span>Open to Java Developer roles</span>
-                </a>
-              </div>
-
-              <div class="hero-meta">
-                <span>
-                  <i class="fa-solid fa-location-dot"></i>
-                  Chicago Area · Open to relocation within US
-                </span>
-                <span>
-                  <i class="fa-solid fa-briefcase"></i>
-                  Focus: Backend‑heavy Full Stack · Microservices · Cloud‑native
-                </span>
-              </div>
-            </div>
-
-            <aside class="hero-card" aria-label="Snapshot of current stack">
-              <div class="hero-card-header">
-                <div>
-                  <div class="hero-card-title">Current Focus</div>
-                  <div class="hero-card-sub">Production‑grade backend & AI‑adjacent systems</div>
-                </div>
-                <span class="hero-card-badge">Actively interviewing</span>
-              </div>
-              <div class="hero-card-body">
-                <div class="hero-card-list">
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Java · Spring Boot · REST APIs · Microservices
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    AWS: EC2, S3, Lambda, DynamoDB, SQS, SNS
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    React / Angular frontends with reusable components
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Kafka & event‑driven architecture
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    AI/OCR pipelines & document intelligence
-                  </span>
-                </div>
-                <div class="hero-card-visual">
-                  <div class="hero-card-visual-row">
-                    <span class="hero-card-visual-label">Recent work</span>
-                    <span class="hero-card-visual-pill">AI Document Intelligence Platform</span>
-                  </div>
-                  <div class="hero-card-visual-row">
-                    <span class="hero-card-visual-label">Stack</span>
-                    <span class="hero-card-visual-pill">Spring Boot · AWS · React</span>
-                  </div>
-                  <div class="hero-card-visual-row">
-                    <span class="hero-card-visual-label">Focus</span>
-                    <span class="hero-card-visual-pill">Scalable APIs & clean UX</span>
-                  </div>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <!-- ABOUT -->
-      <section id="about">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">About</div>
-            <h2 class="section-title">Who I am as an engineer</h2>
-            <p class="section-subtitle">
-              I enjoy building systems that are reliable, observable, and pleasant to work with—both for users and other developers.
-            </p>
-          </div>
-
-          <div class="about-grid">
-            <div class="about-text">
-              <p>
-                I’m a Java‑focused Full Stack Developer with strong experience in Spring Boot, RESTful microservices, and AWS.
-                I’ve built event‑driven backends, integrated AI/OCR pipelines, and shipped frontends using React and Angular.
-              </p>
-              <p>
-                I care about clean abstractions, clear APIs, and making debugging easier through logging, metrics, and tracing.
-                I thrive in Agile environments and enjoy collaborating closely with product and QA to ship features that actually
-                solve user problems.
-              </p>
-              <div class="about-highlight">
-                <strong>What I’m looking for:</strong> Java Developer / Backend‑leaning Full Stack roles where I can own services
-                end‑to‑end—design, implementation, testing, deployment, and monitoring—ideally in a cloud‑native, microservices‑based
-                environment.
-              </div>
-              <div class="about-meta">
-                <span>
-                  <i class="fa-solid fa-location-dot"></i>
-                  Based in the Chicago area · Open to hybrid/remote roles across the US
-                </span>
-                <span>
-                  <i class="fa-solid fa-code-branch"></i>
-                  Comfortable with Git, CI/CD pipelines, and collaborative code reviews
-                </span>
-                <span>
-                  <i class="fa-solid fa-users"></i>
-                  Enjoy mentoring, pairing, and breaking down complex tasks into shippable pieces
-                </span>
-              </div>
-            </div>
-
-            <aside class="about-card" aria-label="Experience snapshot">
-              <div class="about-card-row">
-                <span class="about-card-label">Primary stack</span>
-                <span class="about-card-pill">Java · Spring Boot · AWS</span>
-              </div>
-              <div class="about-card-list">
-                <span>• Designed and implemented REST APIs and microservices for business‑critical workflows.</span>
-                <span>• Built event‑driven components using Kafka and AWS messaging services.</span>
-                <span>• Integrated OCR/AI services into document processing pipelines.</span>
-                <span>• Developed responsive UIs with React and Angular, consuming backend APIs.</span>
-              </div>
-              <div class="about-card-row">
-                <span class="about-card-label">Strengths</span>
-                <span class="about-card-pill">Ownership · Reliability · Clarity</span>
-              </div>
-              <div class="about-card-list">
-                <span>• Turning vague requirements into concrete, testable designs.</span>
-                <span>• Keeping systems observable and debuggable from day one.</span>
-                <span>• Communicating trade‑offs clearly with both technical and non‑technical stakeholders.</span>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <!-- SKILLS -->
-      <section id="skills">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Skills</div>
-            <h2 class="section-title">Technologies I work with</h2>
-            <p class="section-subtitle">
-              A focused stack around Java, Spring Boot, microservices, and AWS—with enough frontend and DevOps to ship end‑to‑end.
-            </p>
-          </div>
-
-          <div class="skills-grid">
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-card-title">Backend & Core</span>
-                <span class="skill-card-badge">Primary</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">Spring Boot</span>
-                <span class="skill-tag">Spring MVC</span>
-                <span class="skill-tag">Spring Data JPA</span>
-                <span class="skill-tag">REST APIs</span>
-                <span class="skill-tag">Microservices</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-card-title">Cloud & Messaging</span>
-                <span class="skill-card-badge">AWS‑focused</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-tag">AWS EC2</span>
-                <span class="skill-tag">AWS S3</span>
-                <span class="skill-tag">AWS Lambda</span>
-                <span class="skill-tag">AWS DynamoDB</span>
-                <span class="skill-tag">AWS SQS</span>
-                <span class="skill-tag">AWS SNS</span>
-                <span class="skill-tag">Kafka</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-card-title">Frontend</span>
-                <span class="skill-card-badge">Production‑ready</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Angular</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">HTML5</span>
-                <span class="skill-tag">CSS3</span>
-                <span class="skill-tag">Responsive Design</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-card-title">Data & Persistence</span>
-                <span class="skill-card-badge">Databases</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">DynamoDB</span>
-                <span class="skill-tag">Hibernate / JPA</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-card-title">DevOps & Tooling</span>
-                <span class="skill-card-badge">Delivery</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Maven</span>
-                <span class="skill-tag">Gradle</span>
-                <span class="skill-tag">CI/CD</span>
-                <span class="skill-tag">Docker</span>
-              </div>
-            </div>
-
-            <div class="skill-card">
-              <div class="skill-card-header">
-                <span class="skill-card-title">AI / Document Intelligence</span>
-                <span class="skill-card-badge">Interest</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-tag">OCR Pipelines</span>
-                <span class="skill-tag">AWS Textract</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">LLM‑powered backends</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROJECTS -->
-      <section id="projects">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Projects</div>
-            <h2 class="section-title">Selected work</h2>
-            <p class="section-subtitle">
-              A few representative projects that show how I design APIs, integrate cloud services, and build usable frontends.
-            </p>
-          </div>
-
-          <div class="projects-grid">
-            <!-- Project 1 -->
-            <article class="project-card">
-              <div class="project-header">
-                <div>
-                  <h3 class="project-title">AI Document Intelligence Platform</h3>
-                  <div class="project-meta">Spring Boot · AWS · React · OCR/LLM</div>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/rajeshdevandla" target="_blank" aria-label="GitHub repo">
-                    <i class="fa-brands fa-github"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="project-body">
-                <p>
-                  End‑to‑end platform to ingest documents, run OCR/AI extraction, and expose results via REST APIs and a React UI.
-                  Designed for extensibility so new extraction models and pipelines can be plugged in with minimal changes.
-                </p>
-                <div class="project-list">
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Built Spring Boot microservices for document ingestion, processing, and result retrieval.
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Integrated AWS Textract/OCR and orchestrated asynchronous processing using SQS/SNS.
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Developed a React dashboard to monitor pipeline status and inspect extracted fields.
-                  </span>
-                </div>
-                <div class="project-tags">
-                  <span class="project-tag">Java</span>
-                  <span class="project-tag">Spring Boot</span>
-                  <span class="project-tag">AWS Textract</span>
-                  <span class="project-tag">S3 · SQS · SNS</span>
-                  <span class="project-tag">React</span>
-                  <span class="project-tag">Microservices</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project-card">
-              <div class="project-header">
-                <div>
-                  <h3 class="project-title">Microservices‑based Order Management</h3>
-                  <div class="project-meta">Spring Boot · Kafka · Docker</div>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/rajeshdevandla" target="_blank" aria-label="GitHub repo">
-                    <i class="fa-brands fa-github"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="project-body">
-                <p>
-                  A microservices architecture for order placement, inventory, and notifications, demonstrating event‑driven design
-                  and resilience patterns.
-                </p>
-                <div class="project-list">
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Designed separate services for orders, inventory, and notifications with clear API contracts.
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Used Kafka topics for event propagation and eventual consistency between services.
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Containerized services with Docker and wired them via docker‑compose for local development.
-                  </span>
-                </div>
-                <div class="project-tags">
-                  <span class="project-tag">Java</span>
-                  <span class="project-tag">Spring Boot</span>
-                  <span class="project-tag">Kafka</span>
-                  <span class="project-tag">REST APIs</span>
-                  <span class="project-tag">Docker</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Project 3 -->
-            <article class="project-card">
-              <div class="project-header">
-                <div>
-                  <h3 class="project-title">Full Stack Task Management App</h3>
-                  <div class="project-meta">Spring Boot · React · JWT</div>
-                </div>
-                <div class="project-links">
-                  <a href="https://github.com/rajeshdevandla" target="_blank" aria-label="GitHub repo">
-                    <i class="fa-brands fa-github"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="project-body">
-                <p>
-                  A full stack application for managing tasks with authentication, role‑based access, and responsive UI.
-                </p>
-                <div class="project-list">
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Implemented REST APIs with Spring Boot, including JWT‑based authentication and authorization.
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Built a React frontend with reusable components and client‑side routing.
-                  </span>
-                  <span>
-                    <i class="fa-solid fa-circle-check"></i>
-                    Added validation, error handling, and user‑friendly feedback for common failure cases.
-                  </span>
-                </div>
-                <div class="project-tags">
-                  <span class="project-tag">Java</span>
-                  <span class="project-tag">Spring Boot</span>
-                  <span class="project-tag">React</span>
-                  <span class="project-tag">JWT</span>
-                  <span class="project-tag">REST</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Contact</div>
-            <h2 class="section-title">Let’s talk</h2>
-            <p class="section-subtitle">
-              I’m actively exploring Java / Backend‑leaning Full Stack roles. If my profile aligns with what you’re building,
-              I’d be happy to connect.
-            </p>
-          </div>
-
-          <div class="contact-card">
-            <div class="contact-row">
-              <div class="contact-info">
-                <span>
-                  <i class="fa-solid fa-envelope"></i>
-                  <a href="mailto:rajeshdevandla11@gmail.com">rajeshdevandla11@gmail.com</a>
-                </span>
-                <span>
-                  <i class="fa-solid fa-location-dot"></i>
-                  Chicago Area · Open to relocation within US
-                </span>
-              </div>
-              <div class="contact-actions">
-                <a href="mailto:rajeshdevandla11@gmail.com?subject=Java%20Developer%20Opportunity" class="btn-primary">
-                  <i class="fa-solid fa-paper-plane"></i>
-                  <span>Email me</span>
-                </a>
-                <a href="https://www.linkedin.com/in/rajesh-kumar-devandla" target="_blank" class="btn-ghost">
-                  <i class="fa-brands fa-linkedin-in"></i>
-                  <span>Connect on LinkedIn</span>
-                </a>
-              </div>
-            </div>
-            <p style="font-size: 0.8rem; color: #cbd5f5; margin-top: 0.4rem;">
-              I’m especially interested in roles involving microservices, event‑driven systems, and cloud‑native architectures,
-              with room to grow into designing and owning critical services.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
+    <!-- PROJECTS -->
+    <section id="projects">
       <div class="container">
-        <div class="footer-inner">
-          <div class="footer-meta">
-            <span>© 2026 Rajesh Kumar</span>
-            <span class="dot"></span>
-            <span>Built with Java, Spring Boot, and a bit of CSS.</span>
+        <div class="section-header">
+          <div class="section-kicker">Projects</div>
+          <h2 class="section-title">Selected work</h2>
+          <p class="section-subtitle">
+            A few representative projects that show how I design APIs, integrate cloud services, and build usable frontends.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">AI Document Intelligence Platform</h3>
+                <div class="project-meta">Spring Boot · AWS · React · OCR/LLM</div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Rajeshdevandla/ai-document-intelligence-platform" target="_blank" aria-label="GitHub repo">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <p>
+                End&#8209;to&#8209;end platform to ingest documents, run OCR/AI extraction, and expose results via REST APIs and a React UI.
+                Designed for extensibility so new extraction models and pipelines can be plugged in with minimal changes.
+              </p>
+              <div class="project-list">
+                <span><i class="fa-solid fa-circle-check"></i> Built Spring Boot microservices for document ingestion, processing, and result retrieval.</span>
+                <span><i class="fa-solid fa-circle-check"></i> Integrated AWS Textract/OCR and orchestrated asynchronous processing using SQS/SNS.</span>
+                <span><i class="fa-solid fa-circle-check"></i> Developed a React dashboard to monitor pipeline status and inspect extracted fields.</span>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Java</span>
+                <span class="project-tag">Spring Boot</span>
+                <span class="project-tag">AWS Textract</span>
+                <span class="project-tag">S3 · SQS · SNS</span>
+                <span class="project-tag">React</span>
+                <span class="project-tag">Microservices</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">Banking Transaction Microservices</h3>
+                <div class="project-meta">Spring Boot · Kafka · Docker</div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Rajeshdevandla/banking-transaction-microservices" target="_blank" aria-label="GitHub repo">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <p>
+                A microservices architecture for banking transactions — account management, fund transfers, and async notifications — demonstrating event&#8209;driven design and resilience patterns.
+              </p>
+              <div class="project-list">
+                <span><i class="fa-solid fa-circle-check"></i> Designed separate services for auth, transactions, and notifications with clear API contracts.</span>
+                <span><i class="fa-solid fa-circle-check"></i> Used Kafka topics for event propagation and eventual consistency between services.</span>
+                <span><i class="fa-solid fa-circle-check"></i> Containerized services with Docker and wired them via docker&#8209;compose for local development.</span>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Java</span>
+                <span class="project-tag">Spring Boot</span>
+                <span class="project-tag">Kafka</span>
+                <span class="project-tag">REST APIs</span>
+                <span class="project-tag">Docker</span>
+                <span class="project-tag">Kubernetes</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-header">
+              <div>
+                <h3 class="project-title">Insurance Customer Portal</h3>
+                <div class="project-meta">Spring Boot · Angular · PostgreSQL</div>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Rajeshdevandla/insurance-customer-portal" target="_blank" aria-label="GitHub repo">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-body">
+              <p>
+                A full stack web application for managing insurance policies, claims, and customer accounts — built with Angular, Spring Boot, and PostgreSQL.
+              </p>
+              <div class="project-list">
+                <span><i class="fa-solid fa-circle-check"></i> Implemented REST APIs with Spring Boot, including JWT&#8209;based authentication and authorization.</span>
+                <span><i class="fa-solid fa-circle-check"></i> Built an Angular frontend with reusable components and client&#8209;side routing for policy &amp; claims views.</span>
+                <span><i class="fa-solid fa-circle-check"></i> Added validation, error handling, and user&#8209;friendly feedback for common failure cases.</span>
+              </div>
+              <div class="project-tags">
+                <span class="project-tag">Java</span>
+                <span class="project-tag">Spring Boot</span>
+                <span class="project-tag">Angular</span>
+                <span class="project-tag">PostgreSQL</span>
+                <span class="project-tag">JWT</span>
+                <span class="project-tag">Docker</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Let's talk</h2>
+          <p class="section-subtitle">
+            I'm actively exploring Java / Backend&#8209;leaning Full Stack roles. If my profile aligns with what you're building,
+            I'd be happy to connect.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-row">
+            <div class="contact-info">
+              <span>
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:rajeshdevandla11@gmail.com">rajeshdevandla11@gmail.com</a>
+              </span>
+              <span>
+                <i class="fa-solid fa-location-dot"></i>
+                Chicago Area · Open to relocation within US
+              </span>
+            </div>
+            <div class="contact-actions">
+              <a href="mailto:rajeshdevandla11@gmail.com?subject=Java%20Developer%20Opportunity" class="btn-primary">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Email me</span>
+              </a>
+              <a href="https://www.linkedin.com/in/rajesh-kumar-devandla" target="_blank" class="btn-ghost">
+                <i class="fa-brands fa-linkedin-in"></i>
+                <span>Connect on LinkedIn</span>
+              </a>
+            </div>
           </div>
-          <div class="footer-links">
-            <a href="https://github.com/rajeshdevandla" target="_blank" aria-label="GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/rajesh-kumar-devandla" target="_blank" aria-label="LinkedIn">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a href="mailto:rajeshdevandla11@gmail.com" aria-label="Email">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
+          <p style="font-size: 0.8rem; color: #cbd5f5; margin-top: 0.4rem;">
+            I'm especially interested in roles involving microservices, event&#8209;driven systems, and cloud&#8209;native architectures,
+            with room to grow into designing and owning critical services.
+          </p>
+
+          <!-- Contact Form (Bug 5 fix) -->
+          <div class="contact-form">
+            <div class="contact-form-title">Or send a message directly:</div>
+            <form id="contactForm" action="https://formspree.io/f/xdkogwvw" method="POST">
+              <div style="display:grid;gap:0.75rem;">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="cf-name">Your name</label>
+                    <input type="text" id="cf-name" name="name" placeholder="Jane Smith" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="cf-email">Your email</label>
+                    <input type="email" id="cf-email" name="email" placeholder="jane@company.com" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cf-message">Message</label>
+                  <textarea id="cf-message" name="message" rows="4" placeholder="Hi Rajesh, we have a Java Developer role that might be a great fit..." required></textarea>
+                </div>
+                <div class="form-submit">
+                  <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Send message</span>
+                  </button>
+                  <span class="form-status" id="formStatus">Message sent! I'll get back to you soon.</span>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-meta">
+          <span>&copy; 2026 Rajesh Kumar</span>
+          <span class="dot"></span>
+          <span>Built with HTML, CSS, and a bit of JavaScript.</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/Rajeshdevandla" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/rajesh-kumar-devandla" target="_blank" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="mailto:rajeshdevandla11@gmail.com" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Mobile hamburger menu toggle
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  const hamburgerIcon = document.getElementById('hamburgerIcon');
+
+  hamburgerBtn.addEventListener('click', function () {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    hamburgerIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+  });
+
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    hamburgerIcon.className = 'fa-solid fa-bars';
+  }
+
+  // Close mobile nav when clicking outside
+  document.addEventListener('click', function (e) {
+    if (!hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) {
+      closeMobileNav();
+    }
+  });
+
+  // Contact form AJAX submission
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      try {
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' }
+        });
+        if (res.ok) {
+          formStatus.textContent = 'Message sent! I'll get back to you soon.';
+          formStatus.style.color = '#22d3ee';
+          formStatus.classList.add('visible');
+          contactForm.reset();
+        } else {
+          formStatus.textContent = 'Something went wrong. Please email me directly.';
+          formStatus.style.color = '#f87171';
+          formStatus.classList.add('visible');
+        }
+      } catch {
+        formStatus.textContent = 'Network error. Please try emailing me directly.';
+        formStatus.style.color = '#f87171';
+        formStatus.classList.add('visible');
+      }
+    });
+  }
+</script>
 </body>
 </html>
-```
