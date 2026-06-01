@@ -2,1526 +2,1021 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Rajesh Kumar | Java & Full Stack Developer Portfolio</title>
+<title>Rajesh Kumar | Java &amp; Full Stack Developer Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Rajesh Kumar — Java & Full Stack Developer specializing in Spring Boot, Microservices, AWS, and React/Angular." />
-
-<!-- Font & Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous" />
-
-<!-- Basic Styling (you can move this to styles.css) -->
+<meta name="description" content="Rajesh Kumar - Java &amp; Full Stack Developer specializing in Spring Boot, Microservices, AWS, and GenAI." />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 <style>
 :root {
   --bg: #050816;
   --bg-alt: #0b1020;
   --accent: #915eff;
-  --accent-soft: rgba(145, 94, 255, 0.15);
+  --accent-soft: rgba(145,94,255,0.15);
   --text: #f5f5f5;
   --muted: #a0a0b8;
   --border: #26263a;
   --card-bg: #0f172a;
-  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 18px 40px rgba(0,0,0,0.45);
   --radius-lg: 18px;
   --radius-md: 12px;
   --radius-pill: 999px;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-  background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;
+  background: radial-gradient(circle at top,#1f2937 0,#020617 45%,#000 100%);
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* Layout */
-.page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-}
-
-/* Navbar */
+/* NAVBAR */
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+  position: sticky; top: 0; z-index: 50;
   backdrop-filter: blur(18px);
-  background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.75), transparent);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  background: linear-gradient(to bottom,rgba(2,6,23,0.92),rgba(2,6,23,0.75),transparent);
+  border-bottom: 1px solid rgba(148,163,184,0.12);
 }
-
-.navbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.9rem 0;
-  position: relative;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
+.navbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 0; position: relative; }
+.brand { display: flex; align-items: center; gap: 0.6rem; }
 .brand-avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 0, #22d3ee, #6366f1 40%, #0f172a 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: #e5e7eb;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.7);
+  width: 34px; height: 34px; border-radius: 999px;
+  background: radial-gradient(circle at 30% 0,#22d3ee,#6366f1 40%,#0f172a 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.95rem; color: #e5e7eb;
+  box-shadow: 0 10px 25px rgba(15,23,42,0.7);
+}
+.brand-text { display: flex; flex-direction: column; }
+.brand-name { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #e5e7eb; }
+.brand-role { font-size: 0.8rem; color: var(--muted); }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; font-size: 0.9rem; }
+.nav-links a { color: #cbd5f5; padding: 0.25rem 0; position: relative; }
+.nav-links a::after { content: ""; position: absolute; left: 0; bottom: -0.2rem; width: 0; height: 2px; border-radius: 999px; background: linear-gradient(to right,#22d3ee,#a855f7,#f97316); transition: width 0.2s ease-out; }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { display: flex; align-items: center; gap: 0.75rem; }
+.nav-cta a.btn-outline { border-radius: var(--radius-pill); border: 1px solid rgba(148,163,184,0.5); padding: 0.35rem 0.9rem; font-size: 0.8rem; color: #e5e7eb; display: inline-flex; align-items: center; gap: 0.4rem; background: radial-gradient(circle at top left,rgba(148,163,184,0.18),transparent 55%); }
+.nav-cta a.btn-outline:hover { border-color: #e5e7eb; }
+.nav-cta a.icon-link { width: 30px; height: 30px; border-radius: 999px; border: 1px solid rgba(148,163,184,0.5); display: inline-flex; align-items: center; justify-content: center; color: #e5e7eb; font-size: 0.8rem; background: radial-gradient(circle at top,rgba(148,163,184,0.25),transparent 60%); }
+.nav-cta a.icon-link:hover { border-color: #e5e7eb; transform: translateY(-1px); }
+.nav-hamburger { display: none; background: none; border: 1px solid rgba(148,163,184,0.5); border-radius: var(--radius-md); color: #e5e7eb; cursor: pointer; padding: 0.4rem 0.55rem; font-size: 1rem; line-height: 1; }
+.mobile-nav { display: none; flex-direction: column; gap: 0; background: rgba(2,6,23,0.97); border-top: 1px solid rgba(148,163,184,0.15); padding: 1rem 1.25rem 1.25rem; position: absolute; top: 100%; left: -1.25rem; right: -1.25rem; z-index: 100; backdrop-filter: blur(20px); }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { color: #cbd5f5; padding: 0.75rem 0; font-size: 1rem; border-bottom: 1px solid rgba(148,163,184,0.1); display: flex; align-items: center; gap: 0.5rem; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav-divider { height: 1px; background: rgba(148,163,184,0.15); margin: 0.5rem 0; }
+
+/* HERO */
+.hero { padding: 3.5rem 0 2.5rem; }
+.hero-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr); gap: 2.5rem; align-items: center; }
+.hero-kicker { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.16em; color: #a5b4fc; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.9rem; }
+.hero-kicker span.dot { width: 6px; height: 6px; border-radius: 999px; background: radial-gradient(circle at center,#22d3ee,#0ea5e9); box-shadow: 0 0 12px rgba(56,189,248,0.8); }
+.hero-title { font-size: clamp(2.1rem,3vw,2.7rem); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 0.7rem; }
+.hero-title span.accent { background: linear-gradient(to right,#22d3ee,#a855f7,#f97316); -webkit-background-clip: text; color: transparent; }
+.hero-subtitle { font-size: 0.95rem; color: var(--muted); max-width: 34rem; margin-bottom: 1.4rem; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+.tag { font-size: 0.75rem; padding: 0.25rem 0.7rem; border-radius: 999px; border: 1px solid rgba(148,163,184,0.4); color: #e5e7eb; background: radial-gradient(circle at top left,rgba(148,163,184,0.18),transparent 60%); }
+.tag-primary { border-color: rgba(129,140,248,0.9); background: radial-gradient(circle at top left,rgba(129,140,248,0.35),transparent 60%); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; margin-bottom: 1.4rem; }
+.btn-primary { border-radius: var(--radius-pill); padding: 0.55rem 1.3rem; font-size: 0.85rem; font-weight: 500; border: none; color: #0b1020; background: linear-gradient(135deg,#22d3ee,#a855f7,#f97316); box-shadow: 0 14px 30px rgba(15,23,42,0.7); display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer; }
+.btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.btn-ghost { border-radius: var(--radius-pill); padding: 0.55rem 1.1rem; font-size: 0.85rem; border: 1px solid rgba(148,163,184,0.5); color: #e5e7eb; background: radial-gradient(circle at top left,rgba(148,163,184,0.18),transparent 60%); display: inline-flex; align-items: center; gap: 0.45rem; }
+.btn-ghost:hover { border-color: #e5e7eb; }
+.hero-meta { font-size: 0.8rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.hero-meta span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.hero-meta i { color: #a5b4fc; }
+.hero-card { border-radius: 24px; background: radial-gradient(circle at top,#1e293b 0,#020617 55%,#000 100%); border: 1px solid rgba(148,163,184,0.25); box-shadow: var(--shadow-soft); padding: 1.4rem 1.3rem; position: relative; overflow: hidden; }
+.hero-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.hero-card-title { font-size: 0.9rem; font-weight: 500; color: #e5e7eb; }
+.hero-card-sub { font-size: 0.8rem; color: var(--muted); }
+.hero-card-badge { font-size: 0.7rem; padding: 0.25rem 0.6rem; border-radius: 999px; border: 1px solid rgba(52,211,153,0.7); color: #bbf7d0; background: radial-gradient(circle at top left,rgba(34,197,94,0.25),transparent 60%); }
+.hero-card-body { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 1.1rem; align-items: center; }
+.hero-card-list { font-size: 0.8rem; color: #cbd5f5; display: grid; gap: 0.4rem; }
+.hero-card-list span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.hero-card-list i { color: #22d3ee; font-size: 0.75rem; }
+.hero-card-visual { border-radius: 18px; border: 1px solid rgba(148,163,184,0.35); background: radial-gradient(circle at top,rgba(59,130,246,0.35),rgba(15,23,42,0.95)); padding: 0.7rem 0.8rem; font-size: 0.75rem; color: #e5e7eb; display: grid; gap: 0.35rem; }
+.hero-card-visual-row { display: flex; justify-content: space-between; align-items: center; }
+.hero-card-visual-label { color: #a5b4fc; }
+.hero-card-visual-pill { font-size: 0.7rem; padding: 0.15rem 0.55rem; border-radius: 999px; background: rgba(15,23,42,0.7); border: 1px solid rgba(148,163,184,0.4); }
+
+/* SECTIONS */
+section { padding: 2.5rem 0; }
+.section-header { margin-bottom: 1.5rem; }
+.section-kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: #a5b4fc; margin-bottom: 0.4rem; }
+.section-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.3rem; }
+.section-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 32rem; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1.1fr); gap: 2rem; align-items: flex-start; }
+.about-text { font-size: 0.9rem; color: #e5e7eb; display: grid; gap: 0.7rem; }
+.about-highlight { border-radius: var(--radius-md); border: 1px solid rgba(148,163,184,0.35); background: radial-gradient(circle at top left,rgba(148,163,184,0.18),transparent 60%); padding: 0.8rem 0.9rem; font-size: 0.8rem; color: #cbd5f5; }
+.about-highlight strong { color: #e5e7eb; }
+.about-meta { display: grid; gap: 0.4rem; font-size: 0.8rem; color: var(--muted); }
+.about-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.about-meta i { color: #a5b4fc; }
+.about-card { border-radius: 20px; border: 1px solid rgba(148,163,184,0.35); background: radial-gradient(circle at top,rgba(30,64,175,0.4),rgba(15,23,42,0.98)); padding: 1rem 1rem 1.1rem; box-shadow: var(--shadow-soft); font-size: 0.8rem; color: #e5e7eb; display: grid; gap: 0.7rem; }
+.about-card-row { display: flex; justify-content: space-between; align-items: center; }
+.about-card-label { color: #a5b4fc; }
+.about-card-pill { font-size: 0.7rem; padding: 0.15rem 0.55rem; border-radius: 999px; border: 1px solid rgba(148,163,184,0.5); background: rgba(15,23,42,0.7); }
+.about-card-list { display: grid; gap: 0.25rem; }
+
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); gap: 1rem; }
+.skill-card { border-radius: var(--radius-md); border: 1px solid rgba(148,163,184,0.35); background: radial-gradient(circle at top left,rgba(15,23,42,0.9),rgba(15,23,42,1)); padding: 0.9rem 0.9rem 0.95rem; font-size: 0.8rem; color: #e5e7eb; display: grid; gap: 0.45rem; }
+.skill-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.2rem; }
+.skill-card-title { font-size: 0.8rem; font-weight: 500; }
+.skill-card-badge { font-size: 0.7rem; padding: 0.15rem 0.55rem; border-radius: 999px; border: 1px solid rgba(148,163,184,0.5); color: #cbd5f5; background: rgba(15,23,42,0.7); }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.skill-tag { font-size: 0.7rem; padding: 0.15rem 0.55rem; border-radius: 999px; border: 1px solid rgba(148,163,184,0.4); color: #e5e7eb; background: rgba(15,23,42,0.9); }
+/* ===== PROJECTS - NEW 2025 DESIGN ===== */
+#projects { padding: 3rem 0 4rem; }
+.projects-header { margin-bottom: 2.5rem; }
+.projects-kicker { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: #a5b4fc; margin-bottom: 0.5rem; }
+.projects-title { font-size: clamp(1.4rem,2.5vw,1.8rem); font-weight: 700; margin-bottom: 0.4rem; }
+.projects-subtitle { font-size: 0.9rem; color: var(--muted); max-width: 36rem; }
+
+.projects-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.filter-btn { font-size: 0.75rem; padding: 0.3rem 0.85rem; border-radius: 999px; border: 1px solid rgba(148,163,184,0.35); color: #a0a0b8; background: rgba(15,23,42,0.6); cursor: pointer; transition: all 0.2s; }
+.filter-btn:hover, .filter-btn.active { border-color: #a855f7; color: #e5e7eb; background: rgba(168,85,247,0.15); }
+
+.projects-grid-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.6rem;
 }
 
-.brand-text {
+.pcard {
+  border-radius: 20px;
+  border: 1px solid rgba(148,163,184,0.2);
+  background: rgba(11,16,32,0.85);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   display: flex;
   flex-direction: column;
-}
-
-.brand-name {
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #e5e7eb;
-}
-
-.brand-role {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  font-size: 0.9rem;
-}
-
-.nav-links a {
-  color: #cbd5f5;
-  padding: 0.25rem 0;
   position: relative;
 }
-
-.nav-links a::after {
+.pcard::before {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -0.2rem;
-  width: 0;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(to right, #22d3ee, #a855f7, #f97316);
-  transition: width 0.2s ease-out;
+  inset: 0;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
 }
-
-.nav-links a:hover::after {
-  width: 100%;
+.pcard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168,85,247,0.45);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(168,85,247,0.15), 0 0 40px rgba(168,85,247,0.08);
 }
+.pcard:hover::before { opacity: 1; }
 
-.nav-cta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+/* Browser mockup frame */
+.pcard-mockup {
+  position: relative;
+  background: #0a0f1e;
+  border-bottom: 1px solid rgba(148,163,184,0.15);
+  overflow: hidden;
+  flex-shrink: 0;
 }
-
-.nav-cta a.btn-outline {
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  padding: 0.35rem 0.9rem;
-  font-size: 0.8rem;
-  color: #e5e7eb;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 55%);
-}
-
-.nav-cta a.btn-outline:hover {
-  border-color: #e5e7eb;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.3), transparent 60%);
-}
-
-.nav-cta a.icon-link {
-  width: 30px;
-  height: 30px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #e5e7eb;
-  font-size: 0.8rem;
-  background: radial-gradient(circle at top, rgba(148, 163, 184, 0.25), transparent 60%);
-}
-
-.nav-cta a.icon-link:hover {
-  border-color: #e5e7eb;
-  transform: translateY(-1px);
-}
-
-/* Hamburger menu button */
-.nav-hamburger {
-  display: none;
-  background: none;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  border-radius: var(--radius-md);
-  color: #e5e7eb;
-  cursor: pointer;
-  padding: 0.4rem 0.55rem;
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.nav-hamburger:hover {
-  border-color: #e5e7eb;
-  background: rgba(148, 163, 184, 0.1);
-}
-
-/* Mobile nav overlay */
-.mobile-nav {
-  display: none;
-  flex-direction: column;
-  gap: 0;
-  background: rgba(2, 6, 23, 0.97);
-  border-top: 1px solid rgba(148, 163, 184, 0.15);
-  padding: 1rem 1.25rem 1.25rem;
-  position: absolute;
-  top: 100%;
-  left: -1.25rem;
-  right: -1.25rem;
-  z-index: 100;
-  backdrop-filter: blur(20px);
-}
-
-.mobile-nav.open {
-  display: flex;
-}
-
-.mobile-nav a {
-  color: #cbd5f5;
-  padding: 0.75rem 0;
-  font-size: 1rem;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+.browser-bar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  background: rgba(15,23,42,0.95);
+  border-bottom: 1px solid rgba(148,163,184,0.12);
 }
-
-.mobile-nav a:last-child {
-  border-bottom: none;
+.browser-dots { display: flex; gap: 5px; }
+.browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green { background: #28c840; }
+.browser-url {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(148,163,184,0.18);
+  border-radius: 6px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  color: #64748b;
+  font-family: "SF Mono", "Fira Code", monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
-.mobile-nav a:hover {
-  color: #e5e7eb;
-}
-
-.mobile-nav-divider {
-  height: 1px;
-  background: rgba(148, 163, 184, 0.15);
-  margin: 0.5rem 0;
-}
-
-/* Hero */
-.hero {
-  padding: 3.5rem 0 2.5rem;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.hero-kicker {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #a5b4fc;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.9rem;
-}
-
-.hero-kicker span.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: radial-gradient(circle at center, #22d3ee, #0ea5e9);
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
-}
-
-.hero-title {
-  font-size: clamp(2.1rem, 3vw, 2.7rem);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.7rem;
-}
-
-.hero-title span.accent {
-  background: linear-gradient(to right, #22d3ee, #a855f7, #f97316);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-.hero-subtitle {
-  font-size: 0.95rem;
-  color: var(--muted);
-  max-width: 34rem;
-  margin-bottom: 1.4rem;
-}
-
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.6rem;
-}
-
-.tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  color: #e5e7eb;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
-}
-
-.tag-primary {
-  border-color: rgba(129, 140, 248, 0.9);
-  background: radial-gradient(circle at top left, rgba(129, 140, 248, 0.35), transparent 60%);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  align-items: center;
-  margin-bottom: 1.4rem;
-}
-
-.btn-primary {
-  border-radius: var(--radius-pill);
-  padding: 0.55rem 1.3rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border: none;
-  color: #0b1020;
-  background: linear-gradient(135deg, #22d3ee, #a855f7, #f97316);
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.btn-primary:hover {
-  filter: brightness(1.05);
-  transform: translateY(-1px);
-}
-
-.btn-ghost {
-  border-radius: var(--radius-pill);
-  padding: 0.55rem 1.1rem;
-  font-size: 0.85rem;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  color: #e5e7eb;
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.btn-ghost:hover {
-  border-color: #e5e7eb;
-}
-
-.hero-meta {
-  font-size: 0.8rem;
-  color: var(--muted);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-}
-
-.hero-meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.hero-meta i {
-  color: #a5b4fc;
-}
-
-.hero-card {
-  border-radius: 24px;
-  background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: var(--shadow-soft);
-  padding: 1.4rem 1.3rem;
+.browser-screen {
+  padding: 0;
+  min-height: 200px;
   position: relative;
   overflow: hidden;
 }
 
-.hero-card-header {
+/* App UI mockups per project */
+.mock-rag {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+  padding: 1rem;
+  min-height: 200px;
+}
+.mock-rag-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.8rem; }
+.mock-rag-icon { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg,#7c3aed,#4f46e5); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #fff; }
+.mock-rag-title { font-size: 0.75rem; font-weight: 600; color: #e2e8f0; }
+.mock-rag-sub { font-size: 0.65rem; color: #94a3b8; }
+.mock-drop-zone { border: 1.5px dashed rgba(139,92,246,0.5); border-radius: 10px; padding: 0.8rem; text-align: center; margin-bottom: 0.7rem; background: rgba(139,92,246,0.05); }
+.mock-drop-icon { font-size: 1.2rem; color: #7c3aed; margin-bottom: 0.2rem; }
+.mock-drop-text { font-size: 0.65rem; color: #94a3b8; }
+.mock-drop-badge { display: inline-block; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 999px; background: rgba(139,92,246,0.2); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); margin-top: 0.3rem; }
+.mock-chat-bubble { border-radius: 8px; padding: 0.5rem 0.65rem; margin-bottom: 0.4rem; font-size: 0.67rem; line-height: 1.4; }
+.mock-chat-user { background: rgba(139,92,246,0.2); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.25); align-self: flex-end; margin-left: 1.5rem; }
+.mock-chat-ai { background: rgba(15,23,42,0.8); color: #cbd5e1; border: 1px solid rgba(148,163,184,0.15); margin-right: 1.5rem; }
+.mock-chat-source { font-size: 0.6rem; color: #7c3aed; margin-top: 0.2rem; }
+.mock-chat-list { display: flex; flex-direction: column; gap: 0; }
+
+.mock-support {
+  background: linear-gradient(135deg,#0f172a 0%,#042f2e 60%,#0f172a 100%);
+  padding: 1rem;
+  min-height: 200px;
+}
+.mock-support-header { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.6rem; background: rgba(20,83,45,0.35); border-radius: 8px; margin-bottom: 0.7rem; border: 1px solid rgba(34,197,94,0.2); }
+.mock-support-status { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 6px #22c55e; flex-shrink: 0; }
+.mock-support-name { font-size: 0.72rem; color: #bbf7d0; font-weight: 500; }
+.mock-support-online { font-size: 0.6rem; color: #4ade80; }
+.mock-ticket { border-radius: 8px; padding: 0.55rem 0.65rem; margin-bottom: 0.5rem; border: 1px solid rgba(148,163,184,0.12); }
+.mock-ticket-meta { font-size: 0.6rem; color: #64748b; margin-bottom: 0.2rem; display: flex; justify-content: space-between; }
+.mock-ticket-badge { font-size: 0.58rem; padding: 0.1rem 0.4rem; border-radius: 999px; }
+.mock-ticket-badge.faq { background: rgba(59,130,246,0.2); color: #93c5fd; border: 1px solid rgba(59,130,246,0.3); }
+.mock-ticket-badge.llm { background: rgba(168,85,247,0.2); color: #c4b5fd; border: 1px solid rgba(168,85,247,0.3); }
+.mock-ticket-badge.esc { background: rgba(249,115,22,0.2); color: #fdba74; border: 1px solid rgba(249,115,22,0.3); }
+.mock-ticket-text { font-size: 0.67rem; color: #cbd5e1; }
+.mock-sentiment-bar { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.4rem; }
+.mock-sentiment-label { font-size: 0.6rem; color: #64748b; flex-shrink: 0; }
+.mock-sentiment-track { flex: 1; height: 4px; border-radius: 999px; background: rgba(148,163,184,0.15); overflow: hidden; }
+.mock-sentiment-fill { height: 100%; border-radius: 999px; }
+
+.mock-sql {
+  background: linear-gradient(135deg,#0f172a 0%,#0c1a2e 60%,#0f172a 100%);
+  padding: 1rem;
+  min-height: 200px;
+}
+.mock-sql-input { background: rgba(15,23,42,0.9); border: 1px solid rgba(148,163,184,0.2); border-radius: 8px; padding: 0.5rem 0.65rem; margin-bottom: 0.6rem; }
+.mock-sql-label { font-size: 0.6rem; color: #64748b; margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.mock-sql-query { font-size: 0.67rem; color: #e2e8f0; font-style: italic; }
+.mock-sql-generate-btn { width: 100%; padding: 0.35rem; border-radius: 6px; background: linear-gradient(135deg,#1d4ed8,#4f46e5); font-size: 0.67rem; color: #fff; text-align: center; margin-bottom: 0.65rem; }
+.mock-sql-output { background: rgba(15,23,42,0.95); border: 1px solid rgba(34,197,94,0.25); border-radius: 8px; padding: 0.5rem 0.65rem; }
+.mock-sql-output-label { font-size: 0.6rem; color: #4ade80; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+.mock-sql-code { font-size: 0.65rem; color: #93c5fd; font-family: "SF Mono","Fira Code",monospace; line-height: 1.5; }
+.mock-sql-keyword { color: #c084fc; }
+.mock-sql-table { color: #fdba74; }
+.mock-sql-safe { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.6rem; color: #4ade80; margin-top: 0.35rem; }
+
+.mock-agent {
+  background: linear-gradient(135deg,#0f172a 0%,#1a0533 60%,#0f172a 100%);
+  padding: 1rem;
+  min-height: 200px;
+}
+.mock-agent-title { font-size: 0.72rem; font-weight: 600; color: #e2e8f0; margin-bottom: 0.65rem; }
+.mock-agent-flow { display: flex; flex-direction: column; gap: 0; }
+.mock-agent-step { display: flex; align-items: stretch; gap: 0.5rem; }
+.mock-agent-line-wrap { display: flex; flex-direction: column; align-items: center; }
+.mock-agent-node { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 600; flex-shrink: 0; }
+.mock-agent-connector { width: 2px; background: rgba(168,85,247,0.3); flex: 1; min-height: 12px; margin: 0 auto; }
+.mock-agent-info { padding: 0.35rem 0; }
+.mock-agent-name { font-size: 0.68rem; font-weight: 600; }
+.mock-agent-out { font-size: 0.62rem; color: #94a3b8; margin-top: 0.1rem; }
+.node-planner { background: rgba(59,130,246,0.25); color: #93c5fd; border: 1px solid rgba(59,130,246,0.4); }
+.node-researcher { background: rgba(168,85,247,0.25); color: #c4b5fd; border: 1px solid rgba(168,85,247,0.4); }
+.node-summarizer { background: rgba(34,197,94,0.25); color: #86efac; border: 1px solid rgba(34,197,94,0.4); }
+.mock-agent-result { margin-top: 0.5rem; background: rgba(15,23,42,0.85); border: 1px solid rgba(148,163,184,0.12); border-radius: 8px; padding: 0.45rem 0.6rem; font-size: 0.65rem; color: #cbd5e1; }
+.mock-agent-result-label { font-size: 0.6rem; color: #a5b4fc; margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.mock-doc {
+  background: linear-gradient(135deg,#0f172a 0%,#0d2137 60%,#0f172a 100%);
+  padding: 1rem;
+  min-height: 200px;
+}
+.mock-pipeline { display: flex; align-items: center; justify-content: center; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+.mock-pipe-node { font-size: 0.62rem; padding: 0.3rem 0.55rem; border-radius: 6px; border: 1px solid rgba(148,163,184,0.2); background: rgba(15,23,42,0.8); color: #e2e8f0; white-space: nowrap; }
+.mock-pipe-arrow { font-size: 0.65rem; color: #475569; }
+.mock-doc-result { background: rgba(15,23,42,0.85); border: 1px solid rgba(34,197,94,0.2); border-radius: 8px; padding: 0.6rem; }
+.mock-doc-result-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem; font-size: 0.65rem; }
+.mock-doc-result-key { color: #64748b; }
+.mock-doc-result-val { color: #e2e8f0; font-weight: 500; max-width: 60%; text-align: right; font-size: 0.63rem; }
+.mock-confidence { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.3rem; }
+.mock-confidence-label { font-size: 0.6rem; color: #64748b; }
+.mock-confidence-bar { flex: 1; height: 4px; border-radius: 999px; background: rgba(148,163,184,0.15); overflow: hidden; }
+.mock-confidence-fill { height: 100%; border-radius: 999px; background: linear-gradient(to right,#22d3ee,#a855f7); }
+
+.mock-banking {
+  background: linear-gradient(135deg,#0f172a 0%,#0c1f0e 60%,#0f172a 100%);
+  padding: 1rem;
+  min-height: 200px;
+}
+.mock-banking-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.7rem; }
+.mock-banking-title { font-size: 0.72rem; font-weight: 600; color: #e2e8f0; }
+.mock-banking-badge { font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 999px; background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+.mock-balance { background: rgba(15,23,42,0.85); border: 1px solid rgba(34,197,94,0.2); border-radius: 10px; padding: 0.6rem 0.7rem; margin-bottom: 0.6rem; }
+.mock-balance-label { font-size: 0.6rem; color: #4ade80; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.15rem; }
+.mock-balance-amount { font-size: 1.1rem; font-weight: 700; color: #e2e8f0; }
+.mock-txn { display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 0; border-bottom: 1px solid rgba(148,163,184,0.08); font-size: 0.65rem; }
+.mock-txn:last-child { border-bottom: none; }
+.mock-txn-name { color: #cbd5e1; }
+.mock-txn-type { font-size: 0.58rem; color: #64748b; }
+.mock-txn-amount-credit { color: #4ade80; font-weight: 500; }
+.mock-txn-amount-debit { color: #f87171; font-weight: 500; }
+
+.mock-insurance {
+  background: linear-gradient(135deg,#0f172a 0%,#1c1008 60%,#0f172a 100%);
+  padding: 1rem;
+  min-height: 200px;
+}
+.mock-ins-tabs { display: flex; gap: 0.3rem; margin-bottom: 0.7rem; }
+.mock-ins-tab { font-size: 0.65rem; padding: 0.25rem 0.65rem; border-radius: 6px; cursor: pointer; }
+.mock-ins-tab.active { background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.35); }
+.mock-ins-tab.inactive { background: rgba(15,23,42,0.6); color: #64748b; border: 1px solid rgba(148,163,184,0.15); }
+.mock-policy { background: rgba(15,23,42,0.85); border: 1px solid rgba(245,158,11,0.2); border-radius: 8px; padding: 0.55rem 0.65rem; margin-bottom: 0.5rem; }
+.mock-policy-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem; }
+.mock-policy-name { font-size: 0.7rem; font-weight: 600; color: #e2e8f0; }
+.mock-policy-status { font-size: 0.58rem; padding: 0.1rem 0.4rem; border-radius: 999px; background: rgba(34,197,94,0.2); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+.mock-policy-row { display: flex; justify-content: space-between; font-size: 0.63rem; color: #94a3b8; }
+.mock-claim { background: rgba(15,23,42,0.7); border: 1px solid rgba(148,163,184,0.12); border-radius: 8px; padding: 0.5rem 0.65rem; }
+.mock-claim-header { font-size: 0.68rem; font-weight: 500; color: #e2e8f0; margin-bottom: 0.25rem; }
+.mock-claim-meta { font-size: 0.62rem; color: #64748b; display: flex; gap: 0.6rem; }
+
+/* Project card body */
+.pcard-body {
+  padding: 1.1rem 1.1rem 1.2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.hero-card-title {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #e5e7eb;
-}
-
-.hero-card-sub {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-.hero-card-badge {
-  font-size: 0.7rem;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  border: 1px solid rgba(52, 211, 153, 0.7);
-  color: #bbf7d0;
-  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.25), transparent 60%);
-}
-
-.hero-card-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: 1.1rem;
-  align-items: center;
-}
-
-.hero-card-list {
-  font-size: 0.8rem;
-  color: #cbd5f5;
-  display: grid;
-  gap: 0.4rem;
-}
-
-.hero-card-list span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.hero-card-list i {
-  color: #22d3ee;
-  font-size: 0.75rem;
-}
-
-.hero-card-visual {
-  border-radius: 18px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.35), rgba(15, 23, 42, 0.95));
-  padding: 0.7rem 0.8rem;
-  font-size: 0.75rem;
-  color: #e5e7eb;
-  display: grid;
-  gap: 0.35rem;
-}
-
-.hero-card-visual-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.hero-card-visual-label {
-  color: #a5b4fc;
-}
-
-.hero-card-visual-pill {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.4);
-}
-
-/* Sections */
-section {
-  padding: 2.5rem 0;
-}
-
-.section-header {
-  margin-bottom: 1.5rem;
-}
-
-.section-kicker {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #a5b4fc;
-  margin-bottom: 0.4rem;
-}
-
-.section-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-}
-
-.section-subtitle {
-  font-size: 0.9rem;
-  color: var(--muted);
-  max-width: 32rem;
-}
-
-/* About */
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-  gap: 2rem;
-  align-items: flex-start;
-}
-
-.about-text {
-  font-size: 0.9rem;
-  color: #e5e7eb;
-  display: grid;
-  gap: 0.7rem;
-}
-
-.about-highlight {
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), transparent 60%);
-  padding: 0.8rem 0.9rem;
-  font-size: 0.8rem;
-  color: #cbd5f5;
-}
-
-.about-highlight strong {
-  color: #e5e7eb;
-}
-
-.about-meta {
-  display: grid;
-  gap: 0.4rem;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-.about-meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.about-meta i {
-  color: #a5b4fc;
-}
-
-.about-card {
-  border-radius: 20px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
-  padding: 1rem 1rem 1.1rem;
-  box-shadow: var(--shadow-soft);
-  font-size: 0.8rem;
-  color: #e5e7eb;
-  display: grid;
-  gap: 0.7rem;
-}
-
-.about-card-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.about-card-label {
-  color: #a5b4fc;
-}
-
-.about-card-pill {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  background: rgba(15, 23, 42, 0.7);
-}
-
-.about-card-list {
-  display: grid;
-  gap: 0.25rem;
-}
-
-/* Skills */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 1rem;
-}
-
-.skill-card {
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 1));
-  padding: 0.9rem 0.9rem 0.95rem;
-  font-size: 0.8rem;
-  color: #e5e7eb;
-  display: grid;
-  gap: 0.45rem;
-}
-
-.skill-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.2rem;
-}
-
-.skill-card-title {
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.skill-card-badge {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  color: #cbd5f5;
-  background: rgba(15, 23, 42, 0.7);
-}
-
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.skill-tag {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  color: #e5e7eb;
-  background: rgba(15, 23, 42, 0.9);
-}
-
-/* Projects */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.2rem;
-}
-
-.project-card {
-  border-radius: 18px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
-  padding: 0.95rem 0.95rem 1rem;
-  box-shadow: var(--shadow-soft);
-  font-size: 0.8rem;
-  color: #e5e7eb;
-  display: grid;
-  gap: 0.55rem;
-}
-
-.project-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.project-title {
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.project-links {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.project-links a {
-  width: 26px;
-  height: 26px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  color: #e5e7eb;
-  background: rgba(15, 23, 42, 0.9);
-}
-
-.project-links a:hover {
-  border-color: #e5e7eb;
-}
-
-.project-meta {
-  font-size: 0.75rem;
-  color: #a5b4fc;
-}
-
-.project-body {
-  font-size: 0.8rem;
-  color: #cbd5f5;
-}
-
-.project-list {
-  margin-top: 0.35rem;
-  display: grid;
-  gap: 0.25rem;
-}
-
-.project-list span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.project-list i {
-  color: #22d3ee;
-  font-size: 0.7rem;
-}
-
-.project-tags {
-  margin-top: 0.4rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.project-tag {
-  font-size: 0.7rem;
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  background: rgba(15, 23, 42, 0.9);
-  color: #e5e7eb;
-}
-
-/* Contact */
-.contact-card {
-  border-radius: 18px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: radial-gradient(circle at top, rgba(30, 64, 175, 0.4), rgba(15, 23, 42, 0.98));
-  padding: 1rem 1rem 1.1rem;
-  box-shadow: var(--shadow-soft);
-  font-size: 0.85rem;
-  color: #e5e7eb;
-  display: grid;
-  gap: 0.7rem;
-}
-
-.contact-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.contact-info {
-  display: grid;
-  gap: 0.3rem;
-  font-size: 0.8rem;
-  color: #cbd5f5;
-}
-
-.contact-info span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.contact-info i {
-  color: #a5b4fc;
-}
-
-.contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  align-items: center;
-}
-
-.contact-actions a {
-  font-size: 0.8rem;
-}
-
-/* Contact Form */
-.contact-form {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-  border-top: 1px solid rgba(148, 163, 184, 0.15);
-  padding-top: 1rem;
-}
-
-.contact-form-title {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #e5e7eb;
-  margin-bottom: 0.15rem;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-.form-group {
-  display: grid;
-  gap: 0.3rem;
-}
-
-.form-group label {
-  font-size: 0.75rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.form-group input,
-.form-group textarea {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  border-radius: var(--radius-md);
-  color: #e5e7eb;
-  font-family: inherit;
-  font-size: 0.85rem;
-  padding: 0.55rem 0.75rem;
-  outline: none;
-  transition: border-color 0.15s;
-  resize: vertical;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #4b5563;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: rgba(129, 140, 248, 0.7);
-}
-
-.form-submit {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.form-status {
-  font-size: 0.8rem;
-  color: #22d3ee;
-  display: none;
-}
-
-.form-status.visible {
-  display: block;
-}
-
-/* Footer */
-.footer {
-  border-top: 1px solid rgba(148, 163, 184, 0.18);
-  padding: 1.2rem 0 1.4rem;
-  margin-top: 1.5rem;
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
-.footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.7rem;
-}
-
-.footer-meta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.footer-meta span.dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 999px;
-  background: #64748b;
-}
-
-.footer-links {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.footer-links a {
-  width: 26px;
-  height: 26px;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  color: #e5e7eb;
-  background: rgba(15, 23, 42, 0.9);
-}
-
-.footer-links a:hover {
-  border-color: #e5e7eb;
-}
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+.pcard-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+.pcard-title { font-size: 0.92rem; font-weight: 600; color: #e5e7eb; }
+.pcard-links { display: flex; gap: 0.4rem; flex-shrink: 0; }
+.pcard-link { width: 28px; height: 28px; border-radius: 999px; border: 1px solid rgba(148,163,184,0.4); display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; color: #e5e7eb; background: rgba(15,23,42,0.9); transition: all 0.2s; }
+.pcard-link:hover { border-color: #a855f7; color: #c4b5fd; transform: translateY(-1px); }
+.pcard-type { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.68rem; color: #a5b4fc; }
+.pcard-type-dot { width: 5px; height: 5px; border-radius: 50%; }
+.pcard-desc { font-size: 0.8rem; color: #94a3b8; line-height: 1.55; }
+.pcard-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; padding-top: 0.3rem; }
+.pcard-tag { font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 999px; border: 1px solid rgba(148,163,184,0.25); background: rgba(15,23,42,0.8); color: #cbd5e1; }
+.pcard-tag.ai { border-color: rgba(168,85,247,0.4); color: #c4b5fd; background: rgba(168,85,247,0.08); }
+.pcard-tag.aws { border-color: rgba(251,146,60,0.4); color: #fdba74; background: rgba(251,146,60,0.08); }
+.pcard-tag.java { border-color: rgba(239,68,68,0.4); color: #fca5a5; background: rgba(239,68,68,0.08); }
+.pcard-tag.python { border-color: rgba(59,130,246,0.4); color: #93c5fd; background: rgba(59,130,246,0.08); }
+
+/* CONTACT */
+.contact-card { border-radius: 18px; border: 1px solid rgba(148,163,184,0.35); background: radial-gradient(circle at top,rgba(30,64,175,0.4),rgba(15,23,42,0.98)); padding: 1rem 1rem 1.1rem; box-shadow: var(--shadow-soft); font-size: 0.85rem; color: #e5e7eb; display: grid; gap: 0.7rem; }
+.contact-row { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; justify-content: space-between; }
+.contact-info { display: grid; gap: 0.3rem; font-size: 0.8rem; color: #cbd5f5; }
+.contact-info span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.contact-info i { color: #a5b4fc; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+.contact-form { display: grid; gap: 0.75rem; margin-top: 0.5rem; border-top: 1px solid rgba(148,163,184,0.15); padding-top: 1rem; }
+.contact-form-title { font-size: 0.85rem; font-weight: 500; color: #e5e7eb; margin-bottom: 0.15rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.form-group { display: grid; gap: 0.3rem; }
+.form-group label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.form-group input, .form-group textarea { background: rgba(15,23,42,0.8); border: 1px solid rgba(148,163,184,0.3); border-radius: var(--radius-md); color: #e5e7eb; font-family: inherit; font-size: 0.85rem; padding: 0.55rem 0.75rem; outline: none; transition: border-color 0.15s; resize: vertical; }
+.form-group input::placeholder, .form-group textarea::placeholder { color: #4b5563; }
+.form-group input:focus, .form-group textarea:focus { border-color: rgba(129,140,248,0.7); }
+.form-submit { display: flex; align-items: center; gap: 0.75rem; }
+.form-status { font-size: 0.8rem; color: #22d3ee; display: none; }
+.form-status.visible { display: block; }
+
+/* FOOTER */
+.footer { border-top: 1px solid rgba(148,163,184,0.18); padding: 1.2rem 0 1.4rem; margin-top: 1.5rem; font-size: 0.75rem; color: var(--muted); }
+.footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.7rem; }
+.footer-meta { display: inline-flex; align-items: center; gap: 0.4rem; }
+.footer-meta span.dot { width: 4px; height: 4px; border-radius: 999px; background: #64748b; }
+.footer-links { display: inline-flex; align-items: center; gap: 0.6rem; }
+.footer-links a { width: 26px; height: 26px; border-radius: 999px; border: 1px solid rgba(148,163,184,0.5); display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; color: #e5e7eb; background: rgba(15,23,42,0.9); }
+.footer-links a:hover { border-color: #e5e7eb; }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .hero-grid,
-  .about-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero {
-    padding-top: 2.5rem;
-  }
+  .hero-grid, .about-grid { grid-template-columns: minmax(0,1fr); }
+  .hero { padding-top: 2.5rem; }
 }
-
 @media (max-width: 720px) {
-  .nav-links,
-  .nav-cta {
-    display: none;
-  }
-
-  .nav-hamburger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-  }
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; align-items: center; justify-content: center; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .form-row { grid-template-columns: 1fr; }
+  .projects-grid-new { grid-template-columns: 1fr; }
 }
 </style>
-</head>
-<body>
+</head><body>
 <div class="page">
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="container">
-      <div class="navbar-inner">
-        <div class="brand">
-          <div class="brand-avatar">RK</div>
-          <div class="brand-text">
-            <span class="brand-name">Rajesh Kumar</span>
-            <span class="brand-role">Java &amp; Full Stack Developer</span>
-          </div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="container">
+    <div class="navbar-inner">
+      <div class="brand">
+        <div class="brand-avatar">RK</div>
+        <div class="brand-text">
+          <span class="brand-name">Rajesh Kumar</span>
+          <span class="brand-role">Java &amp; Full Stack Developer</span>
         </div>
-        <nav class="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <div class="nav-cta">
-          <a class="btn-outline" href="/Rajesh_Kumar_Resume.pdf" target="_blank"href="/Rajesh_Kumar_Resume.pdf" target="_blank">
-            <i class="fa-solid fa-file-arrow-down"></i>
-            <span>Download Resume</span>
-          </a>
-          <a class="icon-link" href="https://github.com/Rajeshdevandla" target="_blank" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a class="icon-link" href="https://www.linkedin.com/in/rajeshdevandla" target="_blank" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-        </div>
-        <!-- Hamburger button (mobile only) -->
-        <button class="nav-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
-          <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
-        </button>
       </div>
-      <!-- Mobile dropdown nav -->
-      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-        <a href="#about" onclick="closeMobileNav()"><i class="fa-solid fa-user"></i> About</a>
-        <a href="#skills" onclick="closeMobileNav()"><i class="fa-solid fa-code"></i> Skills</a>
-        <a href="#projects" onclick="closeMobileNav()"><i class="fa-solid fa-diagram-project"></i> Projects</a>
-        <a href="#contact" onclick="closeMobileNav()"><i class="fa-solid fa-paper-plane"></i> Contact</a>
-        <div class="mobile-nav-divider"></div>
-        <a href="/Rajesh_Kumar_Resume.pdf" target="_blank"href="/Rajesh_Kumar_Resume.pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
-        <a href="https://github.com/Rajeshdevandla" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-        <a href="https://www.linkedin.com/in/rajeshdevandla" target="_blank"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </nav>
+      <div class="nav-cta">
+        <a class="btn-outline" href="/Rajesh_Kumar_Resume.pdf" target="_blank">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Download Resume</span>
+        </a>
+        <a class="icon-link" href="https://github.com/Rajeshdevandla" target="_blank" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a class="icon-link" href="https://www.linkedin.com/in/rajeshdevandla" target="_blank" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+      </div>
+      <button class="nav-hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
+      </button>
     </div>
-  </header>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#about" onclick="closeMobileNav()"><i class="fa-solid fa-user"></i> About</a>
+      <a href="#skills" onclick="closeMobileNav()"><i class="fa-solid fa-code"></i> Skills</a>
+      <a href="#projects" onclick="closeMobileNav()"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+      <a href="#contact" onclick="closeMobileNav()"><i class="fa-solid fa-paper-plane"></i> Contact</a>
+      <div class="mobile-nav-divider"></div>
+      <a href="/Rajesh_Kumar_Resume.pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+      <a href="https://github.com/Rajeshdevandla" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/rajeshdevandla" target="_blank"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-grid">
-          <div>
-            <div class="hero-kicker">
-              <span class="dot"></span>
-              <span>Building reliable backend systems &amp; clean UIs</span>
-            </div>
-            <h1 class="hero-title">
-              Java &amp; Full Stack Developer crafting
-              <span class="accent">production&#8209;ready microservices</span>
-              and modern web apps.
-            </h1>
-            <p class="hero-subtitle">
-              I specialize in Java, Spring Boot, Microservices, and AWS—backed by hands&#8209;on experience with React/Angular
-              frontends and event&#8209;driven architectures. I enjoy taking ideas from requirements to deployed, observable systems.
-            </p>
-
-            <div class="hero-tags">
-              <span class="tag tag-primary">Java · Spring Boot · Microservices</span>
-              <span class="tag">AWS (EC2, S3, Lambda, DynamoDB, SQS, SNS)</span>
-              <span class="tag">React · Angular</span>
-              <span class="tag">Kafka · Event&#8209;Driven</span>
-            </div>
-
-            <div class="hero-actions">
-              <a href="#projects" class="btn-primary">
-                <i class="fa-solid fa-diagram-project"></i>
-                <span>View Selected Projects</span>
-              </a>
-              <a href="#contact" class="btn-ghost">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span>Open to Java Developer roles</span>
-              </a>
-            </div>
-
-            <div class="hero-meta">
-              <span>
-                <i class="fa-solid fa-location-dot"></i>
-                Chicago Area · Open to relocation within US
-              </span>
-              <span>
-                <i class="fa-solid fa-briefcase"></i>
-                Focus: Backend&#8209;heavy Full Stack · Microservices · Cloud&#8209;native
-              </span>
-            </div>
-          </div>
-
-          <aside class="hero-card" aria-label="Snapshot of current stack">
-            <div class="hero-card-header">
-              <div>
-                <div class="hero-card-title">Current Focus</div>
-                <div class="hero-card-sub">Production&#8209;grade backend &amp; AI&#8209;adjacent systems</div>
-              </div>
-              <span class="hero-card-badge">Actively interviewing</span>
-            </div>
-            <div class="hero-card-body">
-              <div class="hero-card-list">
-                <span><i class="fa-solid fa-circle-check"></i> Java · Spring Boot · REST APIs · Microservices</span>
-                <span><i class="fa-solid fa-circle-check"></i> AWS: EC2, S3, Lambda, DynamoDB, SQS, SNS</span>
-                <span><i class="fa-solid fa-circle-check"></i> React / Angular frontends with reusable components</span>
-                <span><i class="fa-solid fa-circle-check"></i> Kafka &amp; event&#8209;driven architecture</span>
-                <span><i class="fa-solid fa-circle-check"></i> AI/OCR pipelines &amp; document intelligence</span>
-              </div>
-              <div class="hero-card-visual">
-                <div class="hero-card-visual-row">
-                  <span class="hero-card-visual-label">Recent work</span>
-                  <span class="hero-card-visual-pill">AI Document Intelligence</span>
-                </div>
-                <div class="hero-card-visual-row">
-                  <span class="hero-card-visual-label">Stack</span>
-                  <span class="hero-card-visual-pill">Spring Boot · AWS · React</span>
-                </div>
-                <div class="hero-card-visual-row">
-                  <span class="hero-card-visual-label">Focus</span>
-                  <span class="hero-card-visual-pill">Scalable APIs &amp; clean UX</span>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">About</div>
-          <h2 class="section-title">Who I am as an engineer</h2>
-          <p class="section-subtitle">
-            I enjoy building systems that are reliable, observable, and pleasant to work with—both for users and other developers.
-          </p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              I'm a Java&#8209;focused Full Stack Developer with strong experience in Spring Boot, RESTful microservices, and AWS.
-              I've built event&#8209;driven backends, integrated AI/OCR pipelines, and shipped frontends using React and Angular.
-            </p>
-            <p>
-              I care about clean abstractions, clear APIs, and making debugging easier through logging, metrics, and tracing.
-              I thrive in Agile environments and enjoy collaborating closely with product and QA to ship features that actually
-              solve user problems.
-            </p>
-            <div class="about-highlight">
-              <strong>What I'm looking for:</strong> Java Developer / Backend&#8209;leaning Full Stack roles where I can own services
-              end&#8209;to&#8209;end—design, implementation, testing, deployment, and monitoring—ideally in a cloud&#8209;native, microservices&#8209;based
-              environment.
-            </div>
-            <div class="about-meta">
-              <span>
-                <i class="fa-solid fa-location-dot"></i>
-                Based in the Chicago area · Open to hybrid/remote roles across the US
-              </span>
-              <span>
-                <i class="fa-solid fa-code-branch"></i>
-                Comfortable with Git, CI/CD pipelines, and collaborative code reviews
-              </span>
-              <span>
-                <i class="fa-solid fa-users"></i>
-                Enjoy mentoring, pairing, and breaking down complex tasks into shippable pieces
-              </span>
-            </div>
-          </div>
-
-          <aside class="about-card" aria-label="Experience snapshot">
-            <div class="about-card-row">
-              <span class="about-card-label">Primary stack</span>
-              <span class="about-card-pill">Java · Spring Boot · AWS</span>
-            </div>
-            <div class="about-card-list">
-              <span>• Designed and implemented REST APIs and microservices for business&#8209;critical workflows.</span>
-              <span>• Built event&#8209;driven components using Kafka and AWS messaging services.</span>
-              <span>• Integrated OCR/AI services into document processing pipelines.</span>
-              <span>• Developed responsive UIs with React and Angular, consuming backend APIs.</span>
-            </div>
-            <div class="about-card-row">
-              <span class="about-card-label">Strengths</span>
-              <span class="about-card-pill">Ownership · Reliability · Clarity</span>
-            </div>
-            <div class="about-card-list">
-              <span>• Turning vague requirements into concrete, testable designs.</span>
-              <span>• Keeping systems observable and debuggable from day one.</span>
-              <span>• Communicating trade&#8209;offs clearly with both technical and non&#8209;technical stakeholders.</span>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Skills</div>
-          <h2 class="section-title">Technologies I work with</h2>
-          <p class="section-subtitle">
-            A focused stack around Java, Spring Boot, microservices, and AWS—with enough frontend and DevOps to ship end&#8209;to&#8209;end.
-          </p>
-        </div>
-
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-card-header">
-              <span class="skill-card-title">Backend &amp; Core</span>
-              <span class="skill-card-badge">Primary</span>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">Spring Boot</span>
-              <span class="skill-tag">Spring MVC</span>
-              <span class="skill-tag">Spring Data JPA</span>
-              <span class="skill-tag">REST APIs</span>
-              <span class="skill-tag">Microservices</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-card-header">
-              <span class="skill-card-title">Cloud &amp; Messaging</span>
-              <span class="skill-card-badge">AWS&#8209;focused</span>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">AWS EC2</span>
-              <span class="skill-tag">AWS S3</span>
-              <span class="skill-tag">AWS Lambda</span>
-              <span class="skill-tag">AWS DynamoDB</span>
-              <span class="skill-tag">AWS SQS</span>
-              <span class="skill-tag">AWS SNS</span>
-              <span class="skill-tag">Kafka</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-card-header">
-              <span class="skill-card-title">Frontend</span>
-              <span class="skill-card-badge">Production&#8209;ready</span>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">React</span>
-              <span class="skill-tag">Angular</span>
-              <span class="skill-tag">TypeScript</span>
-              <span class="skill-tag">HTML5</span>
-              <span class="skill-tag">CSS3</span>
-              <span class="skill-tag">Responsive Design</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-card-header">
-              <span class="skill-card-title">Data &amp; Persistence</span>
-              <span class="skill-card-badge">Databases</span>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">MySQL</span>
-              <span class="skill-tag">PostgreSQL</span>
-              <span class="skill-tag">DynamoDB</span>
-              <span class="skill-tag">Hibernate / JPA</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-card-header">
-              <span class="skill-card-title">DevOps &amp; Tooling</span>
-              <span class="skill-card-badge">Delivery</span>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">Maven</span>
-              <span class="skill-tag">Gradle</span>
-              <span class="skill-tag">CI/CD</span>
-              <span class="skill-tag">Docker</span>
-            </div>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-card-header">
-              <span class="skill-card-title">AI / Document Intelligence</span>
-              <span class="skill-card-badge">Interest</span>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-tag">OCR Pipelines</span>
-              <span class="skill-tag">AWS Textract</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">LLM&#8209;powered backends</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Projects</div>
-          <h2 class="section-title">Selected work</h2>
-          <p class="section-subtitle">
-            A few representative projects that show how I design APIs, integrate cloud services, and build usable frontends.
-          </p>
-        </div>
-
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <article class="project-card">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">AI Document Intelligence Platform</h3>
-                <div class="project-meta">Spring Boot · AWS · React · OCR/LLM</div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Rajeshdevandla/ai-document-intelligence-platform" target="_blank" aria-label="GitHub repo">
-                  <i class="fa-brands fa-github"></i>
-                </a>
-              </div>
-            </div>
-            <div class="project-body">
-              <p>
-                End&#8209;to&#8209;end platform to ingest documents, run OCR/AI extraction, and expose results via REST APIs and a React UI.
-                Designed for extensibility so new extraction models and pipelines can be plugged in with minimal changes.
-              </p>
-              <div class="project-list">
-                <span><i class="fa-solid fa-circle-check"></i> Built Spring Boot microservices for document ingestion, processing, and result retrieval.</span>
-                <span><i class="fa-solid fa-circle-check"></i> Integrated AWS Textract/OCR and orchestrated asynchronous processing using SQS/SNS.</span>
-                <span><i class="fa-solid fa-circle-check"></i> Developed a React dashboard to monitor pipeline status and inspect extracted fields.</span>
-              </div>
-              <div class="project-tags">
-                <span class="project-tag">Java</span>
-                <span class="project-tag">Spring Boot</span>
-                <span class="project-tag">AWS Textract</span>
-                <span class="project-tag">S3 · SQS · SNS</span>
-                <span class="project-tag">React</span>
-                <span class="project-tag">Microservices</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article class="project-card">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">Banking Transaction Microservices</h3>
-                <div class="project-meta">Spring Boot · Kafka · Docker</div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Rajeshdevandla/banking-transaction-microservices" target="_blank" aria-label="GitHub repo">
-                  <i class="fa-brands fa-github"></i>
-                </a>
-              </div>
-            </div>
-            <div class="project-body">
-              <p>
-                A microservices architecture for banking transactions — account management, fund transfers, and async notifications — demonstrating event&#8209;driven design and resilience patterns.
-              </p>
-              <div class="project-list">
-                <span><i class="fa-solid fa-circle-check"></i> Designed separate services for auth, transactions, and notifications with clear API contracts.</span>
-                <span><i class="fa-solid fa-circle-check"></i> Used Kafka topics for event propagation and eventual consistency between services.</span>
-                <span><i class="fa-solid fa-circle-check"></i> Containerized services with Docker and wired them via docker&#8209;compose for local development.</span>
-              </div>
-              <div class="project-tags">
-                <span class="project-tag">Java</span>
-                <span class="project-tag">Spring Boot</span>
-                <span class="project-tag">Kafka</span>
-                <span class="project-tag">REST APIs</span>
-                <span class="project-tag">Docker</span>
-                <span class="project-tag">Kubernetes</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="project-card">
-            <div class="project-header">
-              <div>
-                <h3 class="project-title">Insurance Customer Portal</h3>
-                <div class="project-meta">Spring Boot · Angular · PostgreSQL</div>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Rajeshdevandla/insurance-customer-portal" target="_blank" aria-label="GitHub repo">
-                  <i class="fa-brands fa-github"></i>
-                </a>
-              </div>
-            </div>
-            <div class="project-body">
-              <p>
-                A full stack web application for managing insurance policies, claims, and customer accounts — built with Angular, Spring Boot, and PostgreSQL.
-              </p>
-              <div class="project-list">
-                <span><i class="fa-solid fa-circle-check"></i> Implemented REST APIs with Spring Boot, including JWT&#8209;based authentication and authorization.</span>
-                <span><i class="fa-solid fa-circle-check"></i> Built an Angular frontend with reusable components and client&#8209;side routing for policy &amp; claims views.</span>
-                <span><i class="fa-solid fa-circle-check"></i> Added validation, error handling, and user&#8209;friendly feedback for common failure cases.</span>
-              </div>
-              <div class="project-tags">
-                <span class="project-tag">Java</span>
-                <span class="project-tag">Spring Boot</span>
-                <span class="project-tag">Angular</span>
-                <span class="project-tag">PostgreSQL</span>
-                <span class="project-tag">JWT</span>
-                <span class="project-tag">Docker</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">Contact</div>
-          <h2 class="section-title">Let's talk</h2>
-          <p class="section-subtitle">
-            I'm actively exploring Java / Backend&#8209;leaning Full Stack roles. If my profile aligns with what you're building,
-            I'd be happy to connect.
-          </p>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-row">
-            <div class="contact-info">
-              <span>
-                <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:rajeshdevandla11@gmail.com">rajeshdevandla11@gmail.com</a>
-              </span>
-              <span>
-                <i class="fa-solid fa-location-dot"></i>
-                Chicago Area · Open to relocation within US
-              </span>
-            </div>
-            <div class="contact-actions">
-              <a href="mailto:rajeshdevandla11@gmail.com?subject=Java%20Developer%20Opportunity" class="btn-primary">
-                <i class="fa-solid fa-paper-plane"></i>
-                <span>Email me</span>
-              </a>
-              <a href="https://www.linkedin.com/in/rajeshdevandla" target="_blank" class="btn-ghost">
-                <i class="fa-brands fa-linkedin-in"></i>
-                <span>Connect on LinkedIn</span>
-              </a>
-            </div>
-          </div>
-          <p style="font-size: 0.8rem; color: #cbd5f5; margin-top: 0.4rem;">
-            I'm especially interested in roles involving microservices, event&#8209;driven systems, and cloud&#8209;native architectures,
-            with room to grow into designing and owning critical services.
-          </p>
-
-          <!-- Contact Form (Bug 5 fix) -->
-          <div class="contact-form">
-            <div class="contact-form-title">Or send a message directly:</div>
-            <form id="contactForm" action="https://formspree.io/f/xdkogwvw" method="POST">
-              <div style="display:grid;gap:0.75rem;">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="cf-name">Your name</label>
-                    <input type="text" id="cf-name" name="name" placeholder="Jane Smith" required />
-                  </div>
-                  <div class="form-group">
-                    <label for="cf-email">Your email</label>
-                    <input type="email" id="cf-email" name="email" placeholder="jane@company.com" required />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="cf-message">Message</label>
-                  <textarea id="cf-message" name="message" rows="4" placeholder="Hi Rajesh, we have a Java Developer role that might be a great fit..." required></textarea>
-                </div>
-                <div class="form-submit">
-                  <button type="submit" class="btn-primary">
-                    <i class="fa-solid fa-paper-plane"></i>
-                    <span>Send message</span>
-                  </button>
-                  <span class="form-status" id="formStatus">Message sent! I'll get back to you soon.</span>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-meta">
-          <span>&copy; 2026 Rajesh Kumar</span>
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">
           <span class="dot"></span>
-          <span>Built with HTML, CSS, and a bit of JavaScript.</span>
+          <span>Building reliable backend systems &amp; clean UIs</span>
         </div>
-        <div class="footer-links">
-          <a href="https://github.com/Rajeshdevandla" target="_blank" aria-label="GitHub">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/rajeshdevandla" target="_blank" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-          <a href="mailto:rajeshdevandla11@gmail.com" aria-label="Email">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
+        <h1 class="hero-title">
+          Java &amp; Full Stack Developer crafting
+          <span class="accent">production&#8209;ready microservices</span>
+          and modern web apps.
+        </h1>
+        <p class="hero-subtitle">I specialize in Java, Spring Boot, Microservices, and AWS backed by hands-on experience with React/Angular frontends, event-driven architectures, and GenAI integrations.</p>
+        <div class="hero-tags">
+          <span class="tag tag-primary">Java &middot; Spring Boot &middot; Microservices</span>
+          <span class="tag">AWS (EC2, S3, Lambda, DynamoDB, SQS, SNS)</span>
+          <span class="tag">React &middot; Angular</span>
+          <span class="tag">GenAI &middot; Amazon Bedrock</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary"><i class="fa-solid fa-diagram-project"></i><span>View Projects</span></a>
+          <a href="#contact" class="btn-ghost"><i class="fa-solid fa-paper-plane"></i><span>Open to Java Developer roles</span></a>
+        </div>
+        <div class="hero-meta">
+          <span><i class="fa-solid fa-location-dot"></i>Chicago Area &middot; Open to relocation within US</span>
+          <span><i class="fa-solid fa-briefcase"></i>Focus: Backend Full Stack &middot; Microservices &middot; Cloud-native</span>
         </div>
       </div>
+      <aside class="hero-card">
+        <div class="hero-card-header">
+          <div><div class="hero-card-title">Current Focus</div><div class="hero-card-sub">Production-grade backend &amp; AI-adjacent systems</div></div>
+          <span class="hero-card-badge">Actively interviewing</span>
+        </div>
+        <div class="hero-card-body">
+          <div class="hero-card-list">
+            <span><i class="fa-solid fa-circle-check"></i> Java &middot; Spring Boot &middot; REST APIs &middot; Microservices</span>
+            <span><i class="fa-solid fa-circle-check"></i> AWS: EC2, S3, Lambda, DynamoDB, SQS, SNS</span>
+            <span><i class="fa-solid fa-circle-check"></i> React / Angular frontends with reusable components</span>
+            <span><i class="fa-solid fa-circle-check"></i> Kafka &amp; event-driven architecture</span>
+            <span><i class="fa-solid fa-circle-check"></i> GenAI pipelines with Amazon Bedrock</span>
+          </div>
+          <div class="hero-card-visual">
+            <div class="hero-card-visual-row"><span class="hero-card-visual-label">Recent work</span><span class="hero-card-visual-pill">GenAI + Java</span></div>
+            <div class="hero-card-visual-row"><span class="hero-card-visual-label">Stack</span><span class="hero-card-visual-pill">Spring Boot &middot; AWS &middot; React</span></div>
+            <div class="hero-card-visual-row"><span class="hero-card-visual-label">Focus</span><span class="hero-card-visual-pill">Scalable APIs &amp; clean UX</span></div>
+          </div>
+        </div>
+      </aside>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">About</div>
+      <h2 class="section-title">Who I am as an engineer</h2>
+      <p class="section-subtitle">I enjoy building systems that are reliable, observable, and pleasant to work with.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Java-focused Full Stack Developer with strong experience in Spring Boot, RESTful microservices, and AWS. I've built event-driven backends, integrated AI/OCR pipelines, and shipped frontends using React and Angular.</p>
+        <p>I care about clean abstractions, clear APIs, and making debugging easier through logging, metrics, and tracing. I thrive in Agile environments and enjoy collaborating closely with product and QA.</p>
+        <div class="about-highlight"><strong>What I'm looking for:</strong> Java Developer / Backend-leaning Full Stack roles where I can own services end-to-end in a cloud-native, microservices-based environment.</div>
+        <div class="about-meta">
+          <span><i class="fa-solid fa-location-dot"></i>Based in Chicago area &middot; Open to hybrid/remote roles across the US</span>
+          <span><i class="fa-solid fa-code-branch"></i>Comfortable with Git, CI/CD pipelines, and collaborative code reviews</span>
+          <span><i class="fa-solid fa-users"></i>Enjoy mentoring, pairing, and breaking down complex tasks</span>
+        </div>
+      </div>
+      <aside class="about-card">
+        <div class="about-card-row"><span class="about-card-label">Primary stack</span><span class="about-card-pill">Java &middot; Spring Boot &middot; AWS</span></div>
+        <div class="about-card-list">
+          <span>&bull; Designed and implemented REST APIs and microservices for business-critical workflows.</span>
+          <span>&bull; Built event-driven components using Kafka and AWS messaging services.</span>
+          <span>&bull; Integrated OCR/AI services into document processing pipelines.</span>
+          <span>&bull; Built GenAI applications using Amazon Bedrock (Claude) and Python.</span>
+        </div>
+        <div class="about-card-row"><span class="about-card-label">Strengths</span><span class="about-card-pill">Ownership &middot; Reliability &middot; Clarity</span></div>
+        <div class="about-card-list">
+          <span>&bull; Turning vague requirements into concrete, testable designs.</span>
+          <span>&bull; Keeping systems observable and debuggable from day one.</span>
+          <span>&bull; Communicating trade-offs clearly with technical and non-technical stakeholders.</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Skills</div>
+      <h2 class="section-title">Technologies I work with</h2>
+      <p class="section-subtitle">A focused stack around Java, Spring Boot, microservices, AWS, and GenAI.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-header"><span class="skill-card-title">Backend &amp; Core</span><span class="skill-card-badge">Primary</span></div>
+        <div class="skill-tags"><span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">Spring MVC</span><span class="skill-tag">Spring Data JPA</span><span class="skill-tag">REST APIs</span><span class="skill-tag">Microservices</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><span class="skill-card-title">Cloud &amp; Messaging</span><span class="skill-card-badge">AWS-focused</span></div>
+        <div class="skill-tags"><span class="skill-tag">AWS EC2</span><span class="skill-tag">AWS S3</span><span class="skill-tag">AWS Lambda</span><span class="skill-tag">DynamoDB</span><span class="skill-tag">SQS</span><span class="skill-tag">SNS</span><span class="skill-tag">Kafka</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><span class="skill-card-title">Frontend</span><span class="skill-card-badge">Production-ready</span></div>
+        <div class="skill-tags"><span class="skill-tag">React</span><span class="skill-tag">Angular</span><span class="skill-tag">TypeScript</span><span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><span class="skill-card-title">Data &amp; Persistence</span><span class="skill-card-badge">Databases</span></div>
+        <div class="skill-tags"><span class="skill-tag">MySQL</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">DynamoDB</span><span class="skill-tag">Hibernate / JPA</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><span class="skill-card-title">DevOps &amp; Tooling</span><span class="skill-card-badge">Delivery</span></div>
+        <div class="skill-tags"><span class="skill-tag">Git</span><span class="skill-tag">Maven</span><span class="skill-tag">Gradle</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-header"><span class="skill-card-title">GenAI &amp; AI</span><span class="skill-card-badge">Growing</span></div>
+        <div class="skill-tags"><span class="skill-tag">Amazon Bedrock</span><span class="skill-tag">RAG</span><span class="skill-tag">FAISS</span><span class="skill-tag">Python</span><span class="skill-tag">FastAPI</span><span class="skill-tag">LLM Apps</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="projects-header">
+      <div class="projects-kicker">Projects</div>
+      <h2 class="projects-title">Things I have built</h2>
+      <p class="projects-subtitle">Real applications with working APIs, clean architecture, and production-ready code. Click any GitHub link to see the source.</p>
+    </div>
+
+    <div class="projects-grid-new">
+
+      <!-- 1: AskDocs AI - RAG PDF Assistant -->
+      <article class="pcard">
+        <div class="pcard-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="browser-dot dot-red"></div><div class="browser-dot dot-yellow"></div><div class="browser-dot dot-green"></div></div>
+            <div class="browser-url">localhost:8501 &mdash; AskDocs AI</div>
+          </div>
+          <div class="browser-screen">
+            <div class="mock-rag">
+              <div class="mock-rag-header">
+                <div class="mock-rag-icon"><i class="fa-solid fa-file-lines"></i></div>
+                <div><div class="mock-rag-title">AskDocs AI</div><div class="mock-rag-sub">RAG-powered PDF assistant</div></div>
+              </div>
+              <div class="mock-drop-zone">
+                <div class="mock-drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                <div class="mock-drop-text">Drop your PDF here or click to upload</div>
+                <div class="mock-drop-badge">annual-report-2024.pdf &bull; uploaded</div>
+              </div>
+              <div class="mock-chat-list">
+                <div class="mock-chat-bubble mock-chat-user">What were the total revenues in Q3?</div>
+                <div class="mock-chat-bubble mock-chat-ai">
+                  Total revenues in Q3 were $4.2B, a 12% increase YoY...
+                  <div class="mock-chat-source"><i class="fa-solid fa-bookmark"></i> Source: Page 14, Section 3.2</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <h3 class="pcard-title">AskDocs AI</h3>
+            <div class="pcard-links">
+              <a class="pcard-link" href="https://github.com/Rajeshdevandla/askdocs-ai" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pcard-type"><div class="pcard-type-dot" style="background:#a855f7"></div>GenAI &bull; RAG &bull; Python</div>
+          <p class="pcard-desc">Upload any PDF and chat with it. Uses FAISS for vector search and Amazon Bedrock (Claude) to generate grounded answers with page citations.</p>
+          <div class="pcard-tags">
+            <span class="pcard-tag python">Python</span>
+            <span class="pcard-tag ai">Amazon Bedrock</span>
+            <span class="pcard-tag ai">RAG / FAISS</span>
+            <span class="pcard-tag">FastAPI</span>
+            <span class="pcard-tag">Streamlit</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2: SupportGPT -->
+      <article class="pcard">
+        <div class="pcard-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="browser-dot dot-red"></div><div class="browser-dot dot-yellow"></div><div class="browser-dot dot-green"></div></div>
+            <div class="browser-url">localhost:8000 &mdash; SupportGPT</div>
+          </div>
+          <div class="browser-screen">
+            <div class="mock-support">
+              <div class="mock-support-header">
+                <div class="mock-support-status"></div>
+                <div><div class="mock-support-name">SupportGPT Assistant</div><div class="mock-support-online">Online &bull; AI-powered</div></div>
+              </div>
+              <div class="mock-ticket" style="background:rgba(59,130,246,0.08)">
+                <div class="mock-ticket-meta"><span>Session #4821 &bull; 2 min ago</span><span class="mock-ticket-badge faq">FAQ match</span></div>
+                <div class="mock-ticket-text">Q: How do I track my order?<br/>A: You can track via the Orders tab or by clicking the link in your confirmation email.</div>
+                <div class="mock-sentiment-bar"><span class="mock-sentiment-label">Sentiment</span><div class="mock-sentiment-track"><div class="mock-sentiment-fill" style="width:78%;background:linear-gradient(to right,#22c55e,#4ade80)"></div></div><span style="font-size:0.6rem;color:#4ade80">0.78</span></div>
+              </div>
+              <div class="mock-ticket" style="background:rgba(249,115,22,0.08)">
+                <div class="mock-ticket-meta"><span>Session #4822 &bull; just now</span><span class="mock-ticket-badge esc">Escalated</span></div>
+                <div class="mock-ticket-text">Customer expressed high frustration. Routed to human agent.</div>
+                <div class="mock-sentiment-bar"><span class="mock-sentiment-label">Sentiment</span><div class="mock-sentiment-track"><div class="mock-sentiment-fill" style="width:18%;background:linear-gradient(to right,#ef4444,#f87171)"></div></div><span style="font-size:0.6rem;color:#f87171">0.18</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <h3 class="pcard-title">SupportGPT</h3>
+            <div class="pcard-links">
+              <a class="pcard-link" href="https://github.com/Rajeshdevandla/support-gpt" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pcard-type"><div class="pcard-type-dot" style="background:#22c55e"></div>GenAI &bull; Customer Support &bull; Python</div>
+          <p class="pcard-desc">AI support chatbot that auto-handles FAQ questions, detects frustrated customers via sentiment analysis, and escalates to human agents when needed.</p>
+          <div class="pcard-tags">
+            <span class="pcard-tag python">Python</span>
+            <span class="pcard-tag ai">Amazon Bedrock</span>
+            <span class="pcard-tag">Sentiment Analysis</span>
+            <span class="pcard-tag">FastAPI</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3: SQLGenie -->
+      <article class="pcard">
+        <div class="pcard-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="browser-dot dot-red"></div><div class="browser-dot dot-yellow"></div><div class="browser-dot dot-green"></div></div>
+            <div class="browser-url">localhost:8000 &mdash; SQLGenie</div>
+          </div>
+          <div class="browser-screen">
+            <div class="mock-sql">
+              <div class="mock-sql-input">
+                <div class="mock-sql-label">Natural language query</div>
+                <div class="mock-sql-query">"Show top 5 customers by total order amount this year"</div>
+              </div>
+              <div class="mock-sql-generate-btn"><i class="fa-solid fa-bolt"></i> Generate SQL</div>
+              <div class="mock-sql-output">
+                <div class="mock-sql-output-label"><i class="fa-solid fa-check-circle"></i> Generated &bull; Safe to run</div>
+                <div class="mock-sql-code"><span class="mock-sql-keyword">SELECT</span> c.name, <span class="mock-sql-keyword">SUM</span>(o.amount) <span class="mock-sql-keyword">AS</span> total<br/><span class="mock-sql-keyword">FROM</span> <span class="mock-sql-table">customers</span> c<br/><span class="mock-sql-keyword">JOIN</span> <span class="mock-sql-table">orders</span> o <span class="mock-sql-keyword">ON</span> c.id = o.cust_id<br/><span class="mock-sql-keyword">ORDER BY</span> total <span class="mock-sql-keyword">DESC LIMIT</span> 5;</div>
+                <div class="mock-sql-safe"><i class="fa-solid fa-shield-check"></i> SELECT only &bull; no destructive ops</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <h3 class="pcard-title">SQLGenie</h3>
+            <div class="pcard-links">
+              <a class="pcard-link" href="https://github.com/Rajeshdevandla/sql-genie" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pcard-type"><div class="pcard-type-dot" style="background:#3b82f6"></div>GenAI &bull; NL-to-SQL &bull; Python</div>
+          <p class="pcard-desc">Type a question in plain English, get back a safe SQL query. Includes a safety layer that blocks all destructive operations and only returns SELECT statements.</p>
+          <div class="pcard-tags">
+            <span class="pcard-tag python">Python</span>
+            <span class="pcard-tag ai">Amazon Bedrock</span>
+            <span class="pcard-tag">NL-to-SQL</span>
+            <span class="pcard-tag">FastAPI</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4: AgentFlow -->
+      <article class="pcard">
+        <div class="pcard-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="browser-dot dot-red"></div><div class="browser-dot dot-yellow"></div><div class="browser-dot dot-green"></div></div>
+            <div class="browser-url">localhost:8000 &mdash; AgentFlow</div>
+          </div>
+          <div class="browser-screen">
+            <div class="mock-agent">
+              <div class="mock-agent-title">Task: "Research the current state of quantum computing"</div>
+              <div class="mock-agent-flow">
+                <div class="mock-agent-step">
+                  <div class="mock-agent-line-wrap"><div class="mock-agent-node node-planner">P</div><div class="mock-agent-connector"></div></div>
+                  <div class="mock-agent-info"><div class="mock-agent-name" style="color:#93c5fd">Planner</div><div class="mock-agent-out">Identified 4 focus areas: hardware, algorithms, applications, timeline</div></div>
+                </div>
+                <div class="mock-agent-step">
+                  <div class="mock-agent-line-wrap"><div class="mock-agent-node node-researcher">R</div><div class="mock-agent-connector"></div></div>
+                  <div class="mock-agent-info"><div class="mock-agent-name" style="color:#c4b5fd">Researcher</div><div class="mock-agent-out">Gathered info on IBM, Google, IonQ recent milestones...</div></div>
+                </div>
+                <div class="mock-agent-step">
+                  <div class="mock-agent-line-wrap"><div class="mock-agent-node node-summarizer">S</div></div>
+                  <div class="mock-agent-info"><div class="mock-agent-name" style="color:#86efac">Summarizer</div><div class="mock-agent-out">Synthesizing final answer...</div></div>
+                </div>
+              </div>
+              <div class="mock-agent-result">
+                <div class="mock-agent-result-label">Final answer</div>
+                Quantum computing has advanced significantly in 2024-25, with IBM reaching 1000+ qubit processors and Google demonstrating error correction at scale...
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <h3 class="pcard-title">AgentFlow</h3>
+            <div class="pcard-links">
+              <a class="pcard-link" href="https://github.com/Rajeshdevandla/agent-flow" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pcard-type"><div class="pcard-type-dot" style="background:#c084fc"></div>GenAI &bull; Multi-Agent &bull; Python</div>
+          <p class="pcard-desc">A multi-agent workflow where Planner, Researcher, and Summarizer agents collaborate in sequence. Built without LangChain — custom agent base class on top of Amazon Bedrock.</p>
+          <div class="pcard-tags">
+            <span class="pcard-tag python">Python</span>
+            <span class="pcard-tag ai">Amazon Bedrock</span>
+            <span class="pcard-tag ai">Multi-Agent</span>
+            <span class="pcard-tag">FastAPI</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5: AI Document Intelligence Platform -->
+      <article class="pcard">
+        <div class="pcard-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="browser-dot dot-red"></div><div class="browser-dot dot-yellow"></div><div class="browser-dot dot-green"></div></div>
+            <div class="browser-url">app.docai.internal &mdash; Document Intelligence</div>
+          </div>
+          <div class="browser-screen">
+            <div class="mock-doc">
+              <div class="mock-pipeline">
+                <div class="mock-pipe-node"><i class="fa-solid fa-file-pdf" style="color:#f87171"></i> Ingest</div>
+                <div class="mock-pipe-arrow">&rarr;</div>
+                <div class="mock-pipe-node"><i class="fa-solid fa-eye" style="color:#93c5fd"></i> OCR</div>
+                <div class="mock-pipe-arrow">&rarr;</div>
+                <div class="mock-pipe-node"><i class="fa-solid fa-microchip" style="color:#c4b5fd"></i> AI Extract</div>
+                <div class="mock-pipe-arrow">&rarr;</div>
+                <div class="mock-pipe-node"><i class="fa-solid fa-database" style="color:#4ade80"></i> Store</div>
+              </div>
+              <div class="mock-doc-result">
+                <div class="mock-doc-result-row"><span class="mock-doc-result-key">Document type</span><span class="mock-doc-result-val">Invoice</span></div>
+                <div class="mock-doc-result-row"><span class="mock-doc-result-key">Vendor</span><span class="mock-doc-result-val">Acme Corp Ltd.</span></div>
+                <div class="mock-doc-result-row"><span class="mock-doc-result-key">Total amount</span><span class="mock-doc-result-val">$12,450.00</span></div>
+                <div class="mock-doc-result-row"><span class="mock-doc-result-key">Due date</span><span class="mock-doc-result-val">2024-03-15</span></div>
+                <div class="mock-confidence"><span class="mock-confidence-label">Confidence</span><div class="mock-confidence-bar"><div class="mock-confidence-fill" style="width:94%"></div></div><span style="font-size:0.6rem;color:#a855f7">94%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <h3 class="pcard-title">AI Document Intelligence Platform</h3>
+            <div class="pcard-links">
+              <a class="pcard-link" href="https://github.com/Rajeshdevandla/ai-document-intelligence-platform" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pcard-type"><div class="pcard-type-dot" style="background:#f97316"></div>Java &bull; Spring Boot &bull; AWS</div>
+          <p class="pcard-desc">End-to-end platform to ingest documents, run OCR/AI extraction via AWS Textract, and expose results through REST APIs and a React dashboard.</p>
+          <div class="pcard-tags">
+            <span class="pcard-tag java">Java</span>
+            <span class="pcard-tag aws">AWS Textract</span>
+            <span class="pcard-tag aws">S3 &bull; SQS</span>
+            <span class="pcard-tag">Spring Boot</span>
+            <span class="pcard-tag">React</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6: Banking Transaction Microservices -->
+      <article class="pcard">
+        <div class="pcard-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="browser-dot dot-red"></div><div class="browser-dot dot-yellow"></div><div class="browser-dot dot-green"></div></div>
+            <div class="browser-url">banking.internal &mdash; Transactions</div>
+          </div>
+          <div class="browser-screen">
+            <div class="mock-banking">
+              <div class="mock-banking-header">
+                <div class="mock-banking-title">Account Overview</div>
+                <div class="mock-banking-badge">All services up</div>
+              </div>
+              <div class="mock-balance">
+                <div class="mock-balance-label">Available Balance</div>
+                <div class="mock-balance-amount">$24,831.50</div>
+              </div>
+              <div class="mock-txn"><div><div class="mock-txn-name">Direct Deposit</div><div class="mock-txn-type">Kafka &bull; notification service</div></div><div class="mock-txn-amount-credit">+$3,200.00</div></div>
+              <div class="mock-txn"><div><div class="mock-txn-name">Transfer to Savings</div><div class="mock-txn-type">SQS event &bull; async</div></div><div class="mock-txn-amount-debit">-$1,000.00</div></div>
+              <div class="mock-txn"><div><div class="mock-txn-name">Bill Payment</div><div class="mock-txn-type">REST API &bull; processed</div></div><div class="mock-txn-amount-debit">-$245.00</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <h3 class="pcard-title">Banking Transaction Microservices</h3>
+            <div class="pcard-links">
+              <a class="pcard-link" href="https://github.com/Rajeshdevandla/banking-transaction-microservices" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pcard-type"><div class="pcard-type-dot" style="background:#22c55e"></div>Java &bull; Kafka &bull; Microservices</div>
+          <p class="pcard-desc">Microservices architecture for banking transactions. Separate services for auth, transactions, and notifications, wired together with Kafka for event propagation.</p>
+          <div class="pcard-tags">
+            <span class="pcard-tag java">Java</span>
+            <span class="pcard-tag">Spring Boot</span>
+            <span class="pcard-tag">Kafka</span>
+            <span class="pcard-tag">Docker</span>
+            <span class="pcard-tag">Kubernetes</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7: Insurance Customer Portal -->
+      <article class="pcard">
+        <div class="pcard-mockup">
+          <div class="browser-bar">
+            <div class="browser-dots"><div class="browser-dot dot-red"></div><div class="browser-dot dot-yellow"></div><div class="browser-dot dot-green"></div></div>
+            <div class="browser-url">portal.insurance.app &mdash; My Policies</div>
+          </div>
+          <div class="browser-screen">
+            <div class="mock-insurance">
+              <div class="mock-ins-tabs">
+                <div class="mock-ins-tab active">My Policies</div>
+                <div class="mock-ins-tab inactive">Claims</div>
+                <div class="mock-ins-tab inactive">Profile</div>
+              </div>
+              <div class="mock-policy">
+                <div class="mock-policy-header"><div class="mock-policy-name">Auto Insurance &mdash; Premium</div><div class="mock-policy-status">Active</div></div>
+                <div class="mock-policy-row"><span>Policy #: AU-2024-00481</span><span>Renews: Dec 2025</span></div>
+              </div>
+              <div class="mock-claim">
+                <div class="mock-claim-header">Recent Claim #CL-0084</div>
+                <div class="mock-claim-meta"><span><i class="fa-solid fa-clock"></i> Submitted 3 days ago</span><span style="color:#fbbf24">Under Review</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top">
+            <h3 class="pcard-title">Insurance Customer Portal</h3>
+            <div class="pcard-links">
+              <a class="pcard-link" href="https://github.com/Rajeshdevandla/insurance-customer-portal" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <div class="pcard-type"><div class="pcard-type-dot" style="background:#f59e0b"></div>Java &bull; Angular &bull; Full Stack</div>
+          <p class="pcard-desc">Full stack portal for managing insurance policies, claims, and customer accounts. Built with Angular and Spring Boot, with JWT-based auth and a clean component structure.</p>
+          <div class="pcard-tags">
+            <span class="pcard-tag java">Java</span>
+            <span class="pcard-tag">Spring Boot</span>
+            <span class="pcard-tag">Angular</span>
+            <span class="pcard-tag">PostgreSQL</span>
+            <span class="pcard-tag">JWT</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">Contact</div>
+      <h2 class="section-title">Let's talk</h2>
+      <p class="section-subtitle">I'm actively exploring Java / Backend-leaning Full Stack roles. If my profile aligns with what you're building, I'd be happy to connect.</p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-row">
+        <div class="contact-info">
+          <span><i class="fa-solid fa-envelope"></i><a href="mailto:rajeshdevandla11@gmail.com">rajeshdevandla11@gmail.com</a></span>
+          <span><i class="fa-solid fa-location-dot"></i>Chicago Area &middot; Open to relocation within US</span>
+        </div>
+        <div class="contact-actions">
+          <a href="mailto:rajeshdevandla11@gmail.com?subject=Java%20Developer%20Opportunity" class="btn-primary"><i class="fa-solid fa-paper-plane"></i><span>Email me</span></a>
+          <a href="https://www.linkedin.com/in/rajeshdevandla" target="_blank" class="btn-ghost"><i class="fa-brands fa-linkedin-in"></i><span>Connect on LinkedIn</span></a>
+        </div>
+      </div>
+      <p style="font-size:0.8rem;color:#cbd5f5;margin-top:0.4rem;">I'm especially interested in roles involving microservices, event-driven systems, and cloud-native architectures.</p>
+      <div class="contact-form">
+        <div class="contact-form-title">Or send a message directly:</div>
+        <form id="contactForm" action="https://formspree.io/f/xdkogwvw" method="POST">
+          <div style="display:grid;gap:0.75rem;">
+            <div class="form-row">
+              <div class="form-group"><label for="cf-name">Your name</label><input type="text" id="cf-name" name="name" placeholder="Jane Smith" required /></div>
+              <div class="form-group"><label for="cf-email">Your email</label><input type="email" id="cf-email" name="email" placeholder="jane@company.com" required /></div>
+            </div>
+            <div class="form-group"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="4" placeholder="Hi Rajesh, we have a Java Developer role..." required></textarea></div>
+            <div class="form-submit">
+              <button type="submit" class="btn-primary"><i class="fa-solid fa-paper-plane"></i><span>Send message</span></button>
+              <span class="form-status" id="formStatus">Message sent! I'll get back to you soon.</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-meta">
+        <span>&copy; 2026 Rajesh Kumar</span>
+        <span class="dot"></span>
+        <span>Built with HTML, CSS, and JavaScript.</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/Rajeshdevandla" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/rajeshdevandla" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:rajeshdevandla11@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
 </div>
 
 <script>
-  // Mobile hamburger menu toggle
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileNav = document.getElementById('mobileNav');
-  const hamburgerIcon = document.getElementById('hamburgerIcon');
-
-  hamburgerBtn.addEventListener('click', function () {
-    const isOpen = mobileNav.classList.toggle('open');
-    hamburgerBtn.setAttribute('aria-expanded', isOpen);
-    hamburgerIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-  });
-
-  function closeMobileNav() {
-    mobileNav.classList.remove('open');
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-    hamburgerIcon.className = 'fa-solid fa-bars';
-  }
-
-  // Close mobile nav when clicking outside
-  document.addEventListener('click', function (e) {
-    if (!hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) {
-      closeMobileNav();
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const mobileNav = document.getElementById("mobileNav");
+const hamburgerIcon = document.getElementById("hamburgerIcon");
+hamburgerBtn.addEventListener("click", function() {
+  const isOpen = mobileNav.classList.toggle("open");
+  hamburgerBtn.setAttribute("aria-expanded", isOpen);
+  hamburgerIcon.className = isOpen ? "fa-solid fa-xmark" : "fa-solid fa-bars";
+});
+function closeMobileNav() {
+  mobileNav.classList.remove("open");
+  hamburgerBtn.setAttribute("aria-expanded", "false");
+  hamburgerIcon.className = "fa-solid fa-bars";
+}
+document.addEventListener("click", function(e) {
+  if (!hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) closeMobileNav();
+});
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+if (contactForm) {
+  contactForm.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const data = new FormData(contactForm);
+    try {
+      const res = await fetch(contactForm.action, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      if (res.ok) {
+        formStatus.textContent = "Message sent! I'll get back to you soon.";
+        formStatus.style.color = "#22d3ee";
+        formStatus.classList.add("visible");
+        contactForm.reset();
+      } else {
+        formStatus.textContent = "Something went wrong. Please email me directly.";
+        formStatus.style.color = "#f87171";
+        formStatus.classList.add("visible");
+      }
+    } catch(err) {
+      formStatus.textContent = "Network error. Please try emailing me directly.";
+      formStatus.style.color = "#f87171";
+      formStatus.classList.add("visible");
     }
   });
-
-  // Contact form AJAX submission
-  const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const data = new FormData(contactForm);
-      try {
-        const res = await fetch(contactForm.action, {
-          method: 'POST',
-          body: data,
-          headers: { Accept: 'application/json' }
-        });
-        if (res.ok) {
-          formStatus.textContent = 'Message sent! I'll get back to you soon.';
-          formStatus.style.color = '#22d3ee';
-          formStatus.classList.add('visible');
-          contactForm.reset();
-        } else {
-          formStatus.textContent = 'Something went wrong. Please email me directly.';
-          formStatus.style.color = '#f87171';
-          formStatus.classList.add('visible');
-        }
-      } catch {
-        formStatus.textContent = 'Network error. Please try emailing me directly.';
-        formStatus.style.color = '#f87171';
-        formStatus.classList.add('visible');
-      }
-    });
-  }
+}
 </script>
 </body>
-</html>
+                  </html>
