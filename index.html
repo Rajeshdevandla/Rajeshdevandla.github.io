@@ -317,6 +317,18 @@ section{padding:3rem 0;}
 /* RESPONSIVE */
 @media(max-width:900px){.hero-grid,.about-grid{grid-template-columns:1fr;}.hero-card{display:none;}}
 @media(max-width:700px){.nav-links,.nav-cta{display:none;}.nav-hamburger{display:flex;align-items:center;justify-content:center;}.projects-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.hero-actions{flex-direction:column;align-items:flex-start;}}
+
+/* CERTIFICATIONS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;}
+.cert-card{border-radius:var(--radius-md);background:rgba(255,255,255,0.03);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);padding:1rem 1.1rem;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);display:flex;gap:0.85rem;align-items:flex-start;}
+.cert-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(167,139,250,0.3);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+.cert-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.cert-body{display:grid;gap:0.18rem;}
+.cert-title{font-size:0.83rem;font-weight:600;color:#e2e8f0;}
+.cert-issuer{font-size:0.73rem;color:var(--muted);}
+.cert-meta{display:flex;align-items:center;gap:0.5rem;margin-top:0.22rem;flex-wrap:wrap;}
+.cert-date{font-size:0.67rem;color:#64748b;display:inline-flex;align-items:center;gap:0.28rem;}
+.cert-badge{font-size:0.64rem;padding:0.14rem 0.48rem;border-radius:var(--radius-pill);background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.28);color:#6ee7b7;}
 </style></head><body>
 <div class="bg-canvas"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
 <canvas id="particleCanvas"></canvas>
@@ -324,7 +336,7 @@ section{padding:3rem 0;}
 <header class="navbar" id="navbar">
 <div class="navbar-inner">
 <div class="brand"><div class="brand-avatar">RK</div><span class="brand-name">Rajesh Kumar</span></div>
-<nav class="nav-links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+<nav class="nav-links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#certifications">Certifications</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
 <div class="nav-cta">
 <a class="btn-resume" href="/Rajesh_Kumar_Resume.pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i>Resume</a>
 <a class="icon-link" href="https://github.com/Rajeshdevandla" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
@@ -335,6 +347,7 @@ section{padding:3rem 0;}
 <nav class="mobile-nav" id="mobileNav">
 <a href="#about" onclick="closeMobileNav()"><i class="fa-solid fa-user"></i>About</a>
 <a href="#skills" onclick="closeMobileNav()"><i class="fa-solid fa-code"></i>Skills</a>
+<a href="#certifications" onclick="closeMobileNav()"><i class="fa-solid fa-certificate"></i>Certifications</a>
 <a href="#projects" onclick="closeMobileNav()"><i class="fa-solid fa-diagram-project"></i>Projects</a>
 <a href="#contact" onclick="closeMobileNav()"><i class="fa-solid fa-paper-plane"></i>Contact</a>
 <a href="/Rajesh_Kumar_Resume.pdf" target="_blank"><i class="fa-solid fa-file-arrow-down"></i>Resume</a>
@@ -417,6 +430,46 @@ section{padding:3rem 0;}
 <div class="skill-card reveal" style="transition-delay:0.25s"><div class="sk-header"><span class="sk-title">GenAI &amp; AI</span><span class="sk-badge">Growing</span></div><div class="sk-tags"><span class="sk-tag">Amazon Bedrock</span><span class="sk-tag">RAG</span><span class="sk-tag">FAISS</span><span class="sk-tag">Python</span><span class="sk-tag">FastAPI</span><span class="sk-tag">LLM Apps</span></div></div>
 </div>
 </div></section>
+
+<section id="certifications"><div class="container">
+<div class="section-header reveal"><div class="section-kicker">Certifications</div><h2 class="section-title">Licenses &amp; Certifications</h2><p class="section-sub">Verified credentials from industry platforms.</p></div>
+<div class="certs-grid">
+<div class="cert-card reveal">
+<div class="cert-icon" style="background:linear-gradient(135deg,rgba(251,146,60,0.2),rgba(251,146,60,0.05));border:1px solid rgba(251,146,60,0.25)"><i class="fa-brands fa-aws" style="color:#fb923c"></i></div>
+<div class="cert-body">
+<div class="cert-title">Building GenAI Applications with AWS</div>
+<div class="cert-issuer">CodeSignal</div>
+<div class="cert-meta">
+<span class="cert-date"><i class="fa-solid fa-calendar-check"></i>Issued Jun 2026</span>
+<span class="cert-badge">GenAI &middot; AWS</span>
+</div>
+</div>
+</div>
+<div class="cert-card reveal" style="transition-delay:0.08s">
+<div class="cert-icon" style="background:linear-gradient(135deg,rgba(56,189,248,0.2),rgba(56,189,248,0.05));border:1px solid rgba(56,189,248,0.25)"><i class="fa-solid fa-robot" style="color:#38bdf8"></i></div>
+<div class="cert-body">
+<div class="cert-title">Amazon Bedrock</div>
+<div class="cert-issuer">CodeSignal</div>
+<div class="cert-meta">
+<span class="cert-date"><i class="fa-solid fa-calendar-check"></i>Issued Jun 2026</span>
+<span class="cert-badge">Amazon Bedrock</span>
+</div>
+</div>
+</div>
+<div class="cert-card reveal" style="transition-delay:0.16s">
+<div class="cert-icon" style="background:linear-gradient(135deg,rgba(52,211,153,0.2),rgba(52,211,153,0.05));border:1px solid rgba(52,211,153,0.25)"><i class="fa-solid fa-code" style="color:#34d399"></i></div>
+<div class="cert-body">
+<div class="cert-title">Software Engineer Certificate</div>
+<div class="cert-issuer">HackerRank</div>
+<div class="cert-meta">
+<span class="cert-date"><i class="fa-solid fa-calendar-check"></i>Issued May 2026</span>
+<span class="cert-badge">Software Engineering</span>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+
 <section id="projects"><div class="container">
 <div class="section-header reveal"><div class="section-kicker">Projects</div><h2 class="section-title">Things I have built</h2><p class="section-sub">Real applications with working APIs, clean architecture, and production-ready code.</p></div>
 <div class="projects-grid">
