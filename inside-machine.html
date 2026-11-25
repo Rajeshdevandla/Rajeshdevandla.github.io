@@ -1,0 +1,5 @@
+---
+layout: null
+---
+{% capture original %}{% include original-portfolio.html %}{% endcapture %}
+{{ original | replace_first: '</head>', '<link rel="stylesheet" href="machine-preview.css"><script defer src="machine-preview.js"></script></head>' }}
