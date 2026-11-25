@@ -1,0 +1,19 @@
+/* Leave the first frame and reduced-motion experience unchanged. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    #hero {
+      view-timeline-name: --hero-exit;
+      view-timeline-axis: block;
+    }
+    #hero .hero-right {
+      transform-origin: 52% 50%;
+      animation: robot-turn linear both;
+      animation-timeline: --hero-exit;
+      animation-range: exit 0% exit 95%;
+    }
+    @keyframes robot-turn {
+      from { transform: perspective(1000px) rotateY(0) scale(1); }
+      to { transform: perspective(1000px) rotateY(-12deg) scale(.94); }
+    }
+  }
+}
