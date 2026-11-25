@@ -1,0 +1,70 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 2 /Kids [3 0 R 5 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 938 >>
+stream
+q 0.975 0.971 0.936 rg 0 0 612 792 re f Q
+BT /F2 23 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 615 Tm (Release time fell from two days to four hours.) Tj ET
+BT /F2 14 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 548 Tm (Build and deployment) Tj ET
+BT /F1 12 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 516 Tm (Jenkins and GitHub Actions automated the build, test, and deployment) Tj ET
+BT /F1 12 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 494 Tm (steps for application releases at Mutual of Omaha.) Tj ET
+BT /F2 12 Tf 0.226 0.345 0.258 rg 1 0 0 1 54 715 Tm (ENGINEERING WORK NOTES) Tj ET
+BT /F1 10 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 684 Tm (Portfolio sample drawn from Rajesh Kumar's public resume.) Tj ET
+q 0.68 0.72 0.64 RG 0.8 w 54 664 m 558 664 l S 54 100 m 558 100 l S Q
+BT /F1 9 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 79 Tm (Source: Professional experience / Mutual of Omaha / Resume, page 1.) Tj ET
+BT /F1 9 Tf 0.116 0.180 0.149 rg 1 0 0 1 490 79 Tm (Page 1 of 2) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 7 0 R /F2 8 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 1060 >>
+stream
+q 0.975 0.971 0.936 rg 0 0 612 792 re f Q
+BT /F2 23 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 615 Tm (Synchronous API load fell by 45%.) Tj ET
+BT /F2 14 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 548 Tm (Event processing) Tj ET
+BT /F1 12 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 516 Tm (At Mutual of Omaha, Rajesh moved three event workflows to asynchronous) Tj ET
+BT /F1 12 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 494 Tm (processing with AWS Lambda and Amazon SQS. This reduced the load on) Tj ET
+BT /F1 12 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 472 Tm (APIs that previously handled those workflows synchronously.) Tj ET
+BT /F2 12 Tf 0.226 0.345 0.258 rg 1 0 0 1 54 715 Tm (ENGINEERING WORK NOTES) Tj ET
+BT /F1 10 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 684 Tm (Portfolio sample drawn from Rajesh Kumar's public resume.) Tj ET
+q 0.68 0.72 0.64 RG 0.8 w 54 664 m 558 664 l S 54 100 m 558 100 l S Q
+BT /F1 9 Tf 0.116 0.180 0.149 rg 1 0 0 1 54 79 Tm (Source: Professional experience / Mutual of Omaha / Resume, page 1.) Tj ET
+BT /F1 9 Tf 0.116 0.180 0.149 rg 1 0 0 1 490 79 Tm (Page 2 of 2) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+8 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+9 0 obj
+<< /Title (Engineering work notes) /Subject (Public portfolio sample for document question answering) >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000001245 00000 n 
+0000001381 00000 n 
+0000002492 00000 n 
+0000002562 00000 n 
+0000002637 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R /Info 9 0 R >>
+startxref
+2757
+%%EOF
