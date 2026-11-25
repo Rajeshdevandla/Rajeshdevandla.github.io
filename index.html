@@ -2,4 +2,4 @@
 layout: null
 ---
 {% capture homepage %}{% include original-portfolio.html %}{% endcapture %}
-{{ homepage | replace_first: '</head>', '<link rel="stylesheet" href="./robot-scroll.css"></head>' }}
+{{ homepage | replace_first: '</head>', '<link rel="stylesheet" href="./robot-scroll.css?v=assembly"><script defer src="./robot-assembly.js"></script></head>' }}

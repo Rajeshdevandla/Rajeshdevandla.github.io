@@ -1,19 +1,8 @@
-/* Leave the first frame and reduced-motion experience unchanged. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    #hero {
-      view-timeline-name: --hero-exit;
-      view-timeline-axis: block;
-    }
-    #hero .hero-right {
-      transform-origin: 52% 50%;
-      animation: robot-turn linear both;
-      animation-timeline: --hero-exit;
-      animation-range: exit 0% exit 95%;
-    }
-    @keyframes robot-turn {
-      from { transform: perspective(1000px) rotateY(0) scale(1); }
-      to { transform: perspective(1000px) rotateY(-12deg) scale(.94); }
-    }
-  }
+.robot-assembly { position:absolute; inset:0; perspective:1000px; pointer-events:none; display:none; }
+#hero .hero-right.robot-open { background-image:none !important; }
+.robot-open .robot-assembly { display:block; }
+.robot-part { position:absolute; left:0; width:100%; height:20%; overflow:hidden; box-shadow:0 3px 1px #405057; }
+.robot-texture { position:absolute; left:0; width:100%; height:500%; background-size:cover; background-repeat:no-repeat; }
+@media (max-width:760px) {
+  #hero .hero-right:has(.robot-assembly) { display:block; position:relative; width:100%; min-height:300px; }
 }
